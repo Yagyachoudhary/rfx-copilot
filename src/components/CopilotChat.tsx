@@ -69,7 +69,10 @@ export function useCopilot(rfqId: string | null) {
 
 export function Conversation({ msgs, compact }: { msgs: Msg[]; compact?: boolean }) {
   const bottom = useRef<HTMLDivElement>(null);
-  useEffect(() => bottom.current?.scrollIntoView({ behavior: "smooth" }), [msgs]);
+  // Braces matter: newer browsers return a Promise from scrollIntoView, and React must not get it back as a cleanup.
+  useEffect(() => {
+    bottom.current?.scrollIntoView({ behavior: "smooth" });
+  }, [msgs]);
   return (
     <div className={clsx("space-y-4", compact ? "text-[13px]" : "text-[13.5px]")}>
       {msgs.map((m, i) =>
