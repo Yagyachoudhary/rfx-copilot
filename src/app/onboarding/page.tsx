@@ -13,7 +13,7 @@ export default async function Onboarding() {
   const { data: mem } = await sb.from("memberships").select("org_id").eq("user_id", user.id).limit(1);
   if (mem?.length) redirect("/");
   return (
-    <div className="min-h-screen grid place-items-center p-6 bg-canvas">
+    <div className="min-h-screen bg-surface px-4 md:px-8 py-8">
       <OnboardingForm email={user.email ?? ""} />
     </div>
   );

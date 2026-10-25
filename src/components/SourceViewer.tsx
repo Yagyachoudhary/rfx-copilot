@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Loader2, ZoomIn, ZoomOut } from "lucide-react";
 import clsx from "clsx";
 
@@ -135,10 +135,10 @@ export function SourceViewer({ fileId, target }: { fileId: string; target: Targe
     const items: { n: number; text: string; kind?: string; cells?: string[] }[] =
       data.kind === "doc" ? data.paragraphs : data.lines.map((t: string, i: number) => ({ n: i + 1, text: t }));
     let hl = loc.paragraph ? Number(loc.paragraph) : null;
-    if (!hl) {
-      const i = findBySnippet(items, (x) => x.text, snippet);
-      hl = i >= 0 ? items[i].n : null;
-    }
+    const si = findBySnippet(items, (x) => x.text, snippet);
+    const atRef = hl ? items.find((x) => x.n === hl) : null;
+    // prefer the quoted text when the given paragraph doesn't contain it
+    if (si >= 0 && (!atRef || findBySnippet([atRef], (x) => x.text, snippet) < 0)) hl = items[si].n;
     return (
       <div className={clsx("overflow-auto h-full", data.kind === "lines" ? "p-4 font-mono text-[12.5px]" : "px-8 py-6 text-[13.5px] leading-relaxed")}>
         {items.map((p) => {

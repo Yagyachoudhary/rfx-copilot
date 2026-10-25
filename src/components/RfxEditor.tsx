@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { AlertTriangle, Loader2, Plus, Save, Sparkles, Trash2, Wand2 } from "lucide-react";
 import { AiBadge } from "./ui";
@@ -13,16 +13,19 @@ export function RfxEditor({
   rfqId,
   linesLocked,
   showCopilot,
+  initialBrief,
 }: {
   suppliers: { id: string; name: string; location: string | null }[];
   initial: EditorState;
   rfqId?: string;
   linesLocked?: boolean;
   showCopilot?: boolean;
+  initialBrief?: string;
 }) {
   const router = useRouter();
   const [s, setS] = useState<EditorState>(initial);
-  const [brief, setBrief] = useState("");
+  const [brief, setBrief] = useState(initialBrief ?? "");
+  const autoRan = useRef(false);
   const [pasted, setPasted] = useState("");
   const [drafting, setDrafting] = useState(false);
   const [saving, setSaving] = useState(false);
@@ -33,6 +36,14 @@ export function RfxEditor({
     setS((p) => ({ ...p, ...patch }));
   };
   const weightSum = s.criteria.reduce((a, c) => a + (Number(c.weight) || 0), 0);
+
+  useEffect(() => {
+    if (initialBrief && !autoRan.current) {
+      autoRan.current = true;
+      generate();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [initialBrief]);
 
   async function generate() {
     setDrafting(true);

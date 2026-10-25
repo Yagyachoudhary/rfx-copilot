@@ -44,18 +44,28 @@ export function mapExtraction(out: ExtractionOutput, ctx: { orgId: string; respo
     flags: [] as string[],
   }));
 
+  const o: any = out;
+  const obj = (v: any) => (v && typeof v === "object" ? v : {});
+  const ccy = o.currency_code ?? obj(o.currency).code ?? null;
+  const freightType = o.freight_type ?? obj(o.freight).type ?? "not_stated";
   const terms: ResponseTerms = {
-    currency: out.currency?.code ? out.currency.code.toUpperCase() : null,
-    currency_evidence: out.currency?.evidence ?? null,
-    tax_treatment: out.tax?.treatment ?? "not_stated",
-    tax_rate_percent: out.tax?.rate_percent ?? null,
-    tax_text: out.tax?.text ?? null,
-    freight: { ...(out.freight ?? { type: "not_stated" }), source: loc(out.freight?.source) },
-    payment_terms: out.payment_terms?.text ?? null,
-    payment_days: out.payment_terms?.days ?? null,
-    validity_days: out.validity_days ?? null,
-    lead_time_days: out.lead_time?.days ?? null,
-    lead_time_text: out.lead_time?.text ?? null,
+    currency: ccy ? String(ccy).toUpperCase() : null,
+    currency_evidence: o.currency_evidence ?? obj(o.currency).evidence ?? null,
+    tax_treatment: o.tax_treatment ?? obj(o.tax).treatment ?? "not_stated",
+    tax_rate_percent: num(o.tax_rate_percent ?? obj(o.tax).rate_percent),
+    tax_text: o.tax_text ?? obj(o.tax).text ?? null,
+    freight: {
+      type: freightType,
+      percent: num(o.freight_percent ?? obj(o.freight).percent),
+      amount: num(o.freight_amount ?? obj(o.freight).amount),
+      text: o.freight_text ?? obj(o.freight).text ?? null,
+      source: o.freight_where ? { file: ctx.files[0]?.file_name ?? null, region: o.freight_where } : loc(obj(o.freight).source),
+    },
+    payment_terms: o.payment_terms_text ?? obj(o.payment_terms).text ?? null,
+    payment_days: num(o.payment_days ?? obj(o.payment_terms).days),
+    validity_days: num(o.validity_days),
+    lead_time_days: num(o.lead_time_days ?? obj(o.lead_time).days),
+    lead_time_text: o.lead_time_text ?? obj(o.lead_time).text ?? null,
     discounts: (out.discounts ?? []).map((d) => ({ ...d, percent: d.percent ?? null, condition: d.condition ?? null, source: loc(d.source) })),
     unresolved_references: (out.unresolved_references ?? []).map((r) => ({ text: r.text, source: loc(r.source) })),
     other_notes: [out.document_overview, ...(out.other_notes ?? []), ...(out.extraction_warnings ?? []).map((w) => `⚠ ${w}`)].filter(Boolean),

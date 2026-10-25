@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import { createClient } from "./supabase/server";
-import { DEFAULT_THEME, sanitizeTokens, type ThemeTokens } from "./theme";
+import { DEFAULT_THEME, type ThemeTokens } from "./theme";
 
 export type AppContext = {
   supabase: Awaited<ReturnType<typeof createClient>>;
@@ -40,19 +40,6 @@ export async function getContext(mode: "page" | "api" = "page"): Promise<AppCont
     throw new HttpError(403, "No workspace for this user");
   }
   const org = (mem as any).organizations ?? {};
-  const { data: themeRow } = await supabase
-    .from("organization_theme")
-    .select("tokens, mode, logo_path, version")
-    .eq("org_id", mem.org_id)
-    .eq("status", "applied")
-    .order("applied_at", { ascending: false })
-    .limit(1)
-    .maybeSingle();
-  let logoUrl: string | null = null;
-  if (themeRow?.logo_path) {
-    const { data } = await supabase.storage.from("branding").createSignedUrl(themeRow.logo_path, 60 * 60);
-    logoUrl = data?.signedUrl ?? null;
-  }
   return {
     supabase,
     user: { id: user.id, email: user.email ?? null },
@@ -60,12 +47,7 @@ export async function getContext(mode: "page" | "api" = "page"): Promise<AppCont
     orgName: org.name ?? "Workspace",
     plan: org.plan ?? "growth",
     role: mem.role as AppContext["role"],
-    theme: {
-      tokens: themeRow ? sanitizeTokens(themeRow.tokens as any) : DEFAULT_THEME,
-      mode: (themeRow?.mode as any) ?? "light",
-      logoUrl,
-      version: themeRow?.version ?? null,
-    },
+    theme: { tokens: DEFAULT_THEME, mode: "light", logoUrl: null, version: null },
   };
 }
 

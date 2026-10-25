@@ -1,4 +1,4 @@
-// Design tokens. Stored per organization in `organization_theme.tokens`, applied as CSS variables.
+// Design tokens, applied as CSS variables.
 
 export type ThemeTokens = {
   brandStart: string;

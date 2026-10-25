@@ -68,3 +68,14 @@ export async function DELETE(_req: Request, { params }: { params: Promise<{ id: 
     return jsonError(e);
   }
 }
+
+export async function GET(_req: Request, { params }: { params: Promise<{ id: string }> }) {
+  try {
+    const { id } = await params;
+    const ctx = await getContext("api");
+    const { data } = await ctx.supabase.from("analyst_messages").select("role, content, artifacts, created_at").eq("rfq_id", id).order("created_at");
+    return Response.json({ messages: data ?? [] });
+  } catch (e) {
+    return jsonError(e);
+  }
+}

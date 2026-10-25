@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { History, Sparkles } from "lucide-react";
+import { ArrowRight, CheckCircle2, History, Loader2 } from "lucide-react";
+import { CopilotButton } from "@/components/Copilot";
 import { getContext } from "@/lib/context";
 import { fmtDate } from "@/components/ui";
 import { FlowStepper, type Step } from "./RfxTabs";
@@ -40,8 +41,24 @@ export default async function RfxLayout({ children, params }: { children: React.
     { href: `${base}/compare`, label: "Compare", status: active.length ? `${active.length} suppliers` : "Waiting", state: active.length ? "current" : "todo" },
     { href: `${base}/decision`, label: "Decide", status: dec?.length ? "Recommended" : "Open", state: dec?.length ? "done" : active.length ? "current" : "todo" },
   ];
+  const next: { text: string; href?: string; cta?: string; tone?: "busy" | "done" } =
+    rfq.status === "draft" && !sent
+      ? { text: "Review the draft, then send it to suppliers.", href: `${base}/send`, cta: "Review & send" }
+      : busy
+        ? { text: `Reading ${busy} supplier ${busy > 1 ? "replies" : "reply"} — about a minute each. You can keep working.`, tone: "busy" }
+        : active.length === 0
+          ? { text: "Waiting for supplier replies. Add them as they arrive — any format works.", href: `${base}/responses`, cta: "Add replies" }
+          : issues > 0
+            ? { text: `${issues} thing${issues > 1 ? "s" : ""} need${issues > 1 ? "" : "s"} your decision before every price is comparable.`, href: `${base}/responses`, cta: "Fix issues" }
+            : !dec?.length
+              ? { text: "Every price is comparable. Compare suppliers and record your recommendation.", href: `${base}/compare`, cta: "Compare" }
+              : { text: "Recommendation recorded. You can still revisit any step.", tone: "done" };
   return (
     <div className="max-w-[1440px] mx-auto">
+      <div className="relative -mx-4 md:-mx-7 -mt-6 px-4 md:px-7 pt-6 pb-4 mb-1 overflow-hidden">
+        <div aria-hidden className="absolute -top-24 -left-16 w-80 h-64 rounded-full opacity-[0.16]" style={{ background: "rgb(var(--c-brand-mid))" }} />
+        <div aria-hidden className="absolute -top-28 right-10 w-96 h-60 rounded-[45%] opacity-[0.12]" style={{ background: "rgb(var(--c-accent))" }} />
+        <div className="relative">
       <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
         <div className="min-w-0">
           <div className="text-[12px] text-ink-muted">
@@ -50,11 +67,18 @@ export default async function RfxLayout({ children, params }: { children: React.
           <h1 className="text-[20px] font-bold leading-tight mt-0.5">{rfq.title}</h1>
         </div>
         <div className="flex gap-2">
-          <Link href={`${base}/analyst`} className="btn-secondary"><Sparkles className="w-4 h-4 text-brand-mid" /> Ask the analyst</Link>
+          <CopilotButton />
           <Link href={`${base}/activity`} className="btn-ghost" title="Activity log" aria-label="Activity log"><History className="w-4 h-4" /></Link>
         </div>
       </div>
       <FlowStepper steps={steps} />
+        </div>
+      </div>
+      <div className={`mt-2 flex items-center gap-2 text-[13px] px-1 ${next.tone === "done" ? "text-ok-strong" : "text-ink-muted"}`}>
+        {next.tone === "busy" ? <Loader2 className="w-3.5 h-3.5 animate-spin text-accent" /> : next.tone === "done" ? <CheckCircle2 className="w-3.5 h-3.5" /> : <ArrowRight className="w-3.5 h-3.5 text-primary" />}
+        <span><span className="font-semibold text-ink">Next:</span> {next.text}</span>
+        {next.href && <Link href={next.href} className="text-accent font-semibold hover:underline">{next.cta}</Link>}
+      </div>
       <div className="mt-5">{children}</div>
     </div>
   );

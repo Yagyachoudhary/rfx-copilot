@@ -61,34 +61,21 @@ const SCHEMA = {
     quote_reference: { type: ["string", "null"] },
     quote_date: { type: ["string", "null"] },
     supersedes_note: { type: ["string", "null"], description: "If this says it revises/supersedes an earlier quote, quote that statement." },
-    currency: {
-      type: "object",
-      properties: { code: { type: ["string", "null"] }, evidence: { type: ["string", "null"] } },
-      required: ["code"],
-    },
-    tax: {
-      type: "object",
-      properties: {
-        treatment: { type: "string", enum: ["exclusive", "inclusive", "not_stated"] },
-        rate_percent: { type: ["number", "null"] },
-        text: { type: ["string", "null"] },
-      },
-      required: ["treatment"],
-    },
-    freight: {
-      type: "object",
-      properties: {
-        type: { type: "string", enum: ["included", "extra_percent", "extra_amount", "extra_unquantified", "not_stated"] },
-        percent: { type: ["number", "null"] },
-        amount: { type: ["number", "null"] },
-        text: { type: ["string", "null"] },
-        source: SOURCE,
-      },
-      required: ["type"],
-    },
-    payment_terms: { type: "object", properties: { text: { type: ["string", "null"] }, days: { type: ["integer", "null"] } } },
+    currency_code: { type: ["string", "null"], description: "ISO code of the quote currency as evidenced (INR for ₹/Rs/Rupees)." },
+    currency_evidence: { type: ["string", "null"] },
+    tax_treatment: { type: "string", enum: ["exclusive", "inclusive", "not_stated"], description: "'GST extra' → exclusive; 'inclusive of GST' → inclusive." },
+    tax_rate_percent: { type: ["number", "null"] },
+    tax_text: { type: ["string", "null"], description: "Verbatim tax wording." },
+    freight_type: { type: "string", enum: ["included", "extra_percent", "extra_amount", "extra_unquantified", "not_stated"] },
+    freight_percent: { type: ["number", "null"] },
+    freight_amount: { type: ["number", "null"] },
+    freight_text: { type: ["string", "null"], description: "Verbatim freight wording." },
+    freight_where: { type: ["string", "null"], description: "Where the freight wording is, e.g. 'p.1 footnote *'." },
+    payment_terms_text: { type: ["string", "null"] },
+    payment_days: { type: ["integer", "null"] },
     validity_days: { type: ["integer", "null"] },
-    lead_time: { type: "object", properties: { days: { type: ["integer", "null"] }, text: { type: ["string", "null"] } } },
+    lead_time_days: { type: ["integer", "null"] },
+    lead_time_text: { type: ["string", "null"] },
     discounts: {
       type: "array",
       items: {
@@ -131,7 +118,7 @@ const SCHEMA = {
     },
     extraction_warnings: { type: "array", items: { type: "string" }, description: "Anything you could not read or were unsure about." },
   },
-  required: ["document_overview", "currency", "tax", "freight", "lines", "questionnaire", "discounts", "unresolved_references", "extraction_warnings"],
+  required: ["document_overview", "currency_code", "tax_treatment", "freight_type", "lines", "questionnaire", "discounts", "unresolved_references", "extraction_warnings"],
 };
 
 export type ExtractionOutput = {
@@ -139,12 +126,27 @@ export type ExtractionOutput = {
   quote_reference?: string | null;
   quote_date?: string | null;
   supersedes_note?: string | null;
-  currency: { code: string | null; evidence?: string | null };
-  tax: { treatment: "exclusive" | "inclusive" | "not_stated"; rate_percent?: number | null; text?: string | null };
-  freight: { type: any; percent?: number | null; amount?: number | null; text?: string | null; source?: any };
-  payment_terms?: { text?: string | null; days?: number | null };
+  currency_code?: string | null;
+  currency_evidence?: string | null;
+  tax_treatment?: "exclusive" | "inclusive" | "not_stated";
+  tax_rate_percent?: number | null;
+  tax_text?: string | null;
+  freight_type?: any;
+  freight_percent?: number | null;
+  freight_amount?: number | null;
+  freight_text?: string | null;
+  freight_where?: string | null;
+  payment_terms_text?: string | null;
+  payment_days?: number | null;
   validity_days?: number | null;
-  lead_time?: { days?: number | null; text?: string | null };
+  lead_time_days?: number | null;
+  lead_time_text?: string | null;
+  // legacy nested shapes (older runs)
+  currency?: any;
+  tax?: any;
+  freight?: any;
+  payment_terms?: any;
+  lead_time?: any;
   discounts: { description: string; percent?: number | null; conditional: boolean; condition?: string | null; source?: any }[];
   unresolved_references: { text: string; source?: any }[];
   other_notes?: string[];
@@ -164,8 +166,9 @@ Rules:
 - If an item is explicitly not quoted ('unable to quote', 'not quoting'), do NOT create a line for it; add a note in other_notes.
 - Prices can hide in footnotes, email bodies, paragraphs and second sheets. Read everything, including small print. Footnote discounts/freight belong in discounts/freight, not in line prices.
 - References to prices that are not in the files ('rest same as last year', 'as per previous PO') go to unresolved_references; never assume those prices.
+- Header terms are flat fields: currency_code, tax_treatment (+ tax_rate_percent), freight_type (+ freight_percent/amount), payment_days, validity_days, lead_time_days. Read headers, notes and footnotes for them.
 - Tax: 'GST extra' → exclusive; 'inclusive of GST 18%' → inclusive with rate 18; silence → not_stated.
-- Freight: included / extra_percent (with percent) / extra_amount / extra_unquantified ('freight extra' with no amount) / not_stated.
+- Freight: included ('delivered', 'door delivery') / extra_percent (with percent) / extra_amount / extra_unquantified ('freight extra' with no amount) / not_stated.
 - Questionnaire: answer only questions the supplier actually addressed, by q_no. evidence_type 'document_attached' only when a supporting file (e.g. a certificate) is actually present in FILES; 'certificate available on request' or 'to follow' is a 'claim'.
 - Source references: always give file_index plus the most precise coordinate available (sheet+cell for Excel, page for PDF, ¶ number for Word, line number for email, a short region description for photos), and a short verbatim source_snippet.
 - For photos: read row by row along the printed lines; if a value is blurred or shadowed, do not guess digits.`;

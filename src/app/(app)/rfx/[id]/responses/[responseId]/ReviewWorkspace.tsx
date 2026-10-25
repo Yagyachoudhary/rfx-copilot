@@ -93,7 +93,7 @@ export function ReviewWorkspace(props: Any) {
     return l ? `L${l.line_no} ${l.description}` : "";
   };
 
-  const open = exceptions.filter((x: Any) => x.status === "open");
+  const open = exceptions.filter((x: Any) => x.status === "open" && x.severity !== "info");
   const tasks: Task[] = [];
   const headsUps: Any[] = [];
   const groupedUom: Any[] = [];
@@ -368,7 +368,7 @@ function TaskCard({ task, active, busy, onPick }: { task: Task; active: boolean;
     <li className={clsx("px-4 py-3 cursor-pointer", active ? "bg-accent/[0.06] shadow-[inset_3px_0_0_rgb(var(--c-accent))]" : "hover:bg-surface-muted/30")} onClick={onPick}>
       <div className="font-semibold text-[13.5px] leading-snug">{task.title}</div>
       {task.context && <div className="text-[12.5px] text-ink-muted mt-0.5 line-clamp-2">{task.context}</div>}
-      <div className="flex flex-wrap gap-1.5 mt-2" onClick={(e) => e.stopPropagation()}>
+      <div className="flex flex-wrap gap-1.5 mt-2">
         {task.options?.map((o, i) => (
           <button key={i} className="btn-secondary h-auto py-1 flex-col items-start !gap-0 text-left max-w-[190px]" disabled={busy} onClick={o.act} title={o.sub}>
             <span className="num">{o.label}</span>

@@ -17,7 +17,7 @@ with every number traceable to its source. Then the buyer asks questions in plai
 | Claude extraction to a strict schema with raw values, mapping, confidence, source refs | FX: a buyer-set fixed rate per RFx (no live FX feed) |
 | Deterministic normalization (units, pack sizes, currency, GST) + exceptions in TypeScript | |
 | Analyst: Claude tool-use agent that answers only via read-only SQL over a snapshot of current data | |
-| Buyer overrides, version history, audit trail, XLSX/CSV exports, theme tokens per org | |
+| Buyer overrides, version history, audit trail, XLSX/CSV exports | |
 
 ## Architecture
 
@@ -28,10 +28,10 @@ Browser (Next.js 15 App Router, React 19, Tailwind tokens)
 Next.js route handlers on Vercel  ── after() background processing, status polled from DB
    │                       │
    │                       ├─ parsers: exceljs · mammoth · sharp (EXIF rotate/resize)
-   │                       ├─ Claude (Anthropic API): extraction · RFx draft · analyst (tools) · theme vision
+   │                       ├─ Claude (Anthropic API): extraction · RFx draft · analyst (tools)
    │                       └─ deterministic core: normalize.ts · exceptions.ts · compare.ts · qualification.ts
    ▼
-Supabase: Postgres (RLS on every table) + Storage (private buckets: source-files, exports, branding)
+Supabase: Postgres (RLS on every table) + Storage (private buckets: source-files, exports)
 ```
 
 Key design choices:
@@ -103,8 +103,6 @@ npm run dev
    quality questionnaire?"* Expand the SQL to show how it was computed. Ask for an export.
 7. **Decision** → compare presets, toggle freight / qualified-only / conditional discounts, draft rationale with AI,
    confirm. Check **Activity** for the audit trail.
-8. **Settings → Brand & appearance** → upload a portal screenshot → AI-proposed tokens → edit → contrast checks →
-   preview → apply (versioned, per org).
 
 ## Tests and checks
 
@@ -126,6 +124,6 @@ reportlab, python-docx, Pillow, OpenCV).
 - FX is a buyer-set fixed rate per RFx; production should snapshot a treasury rate with source + timestamp.
 - Re-running extraction replaces previous extracted lines (and their overrides) for that response; runs and audit
   events are kept. Production should diff runs and carry overrides forward.
-- No role-based permissions beyond admin (theme) vs member; no SSO; no supplier-side portal.
+- No role-based permissions beyond admin vs member; no SSO; no supplier-side portal.
 - Confidence is the model's self-assessment — used as a review aid, not a guarantee. An eval set with labelled
   quotes is the next step before trusting it.

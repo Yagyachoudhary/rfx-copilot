@@ -9,7 +9,7 @@ export function PageHeader({ title, subtitle, actions, eyebrow }: { title: React
   return (
     <div className="flex flex-wrap items-end justify-between gap-3 mb-5">
       <div className="min-w-0">
-        {eyebrow && <div className="text-[11px] font-semibold uppercase tracking-wider text-ink-muted mb-1">{eyebrow}</div>}
+        {eyebrow && <div className="text-[12.5px] text-ink-muted mb-0.5">{eyebrow}</div>}
         <h1 className="text-[22px] font-bold text-ink leading-tight">{title}</h1>
         {subtitle && <p className="text-ink-muted mt-1 max-w-3xl">{subtitle}</p>}
       </div>
@@ -35,7 +35,7 @@ export function Card({ children, className, title, actions, pad = true }: { chil
 export function Stat({ label, value, hint, tone }: { label: string; value: ReactNode; hint?: ReactNode; tone?: "ok" | "warn" | "bad" }) {
   return (
     <div className="card px-4 py-3">
-      <div className="text-[11px] font-semibold uppercase tracking-wide text-ink-muted">{label}</div>
+      <div className="text-[12.5px] text-ink-muted">{label}</div>
       <div className={cx("text-[22px] font-bold num mt-0.5", tone === "ok" && "text-ok-strong", tone === "warn" && "text-warn-strong", tone === "bad" && "text-bad-strong")}>{value}</div>
       {hint && <div className="text-[12px] text-ink-muted mt-0.5">{hint}</div>}
     </div>

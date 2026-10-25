@@ -3,14 +3,16 @@ import { AlertTriangle, FilePlus2, Inbox, Sparkles } from "lucide-react";
 import { getContext } from "@/lib/context";
 import { Card, Empty, fmtDate, LinkBtn, PageHeader, RfqStatusChip, Stat } from "@/components/ui";
 import { SeedDemoButton } from "./SeedDemoButton";
+import { GettingStarted } from "@/components/GettingStarted";
 
 export const dynamic = "force-dynamic";
 
-export default async function Dashboard() {
+export default async function Dashboard({ searchParams }: { searchParams: Promise<{ q?: string }> }) {
+  const { q } = await searchParams;
   const ctx = await getContext();
   const db = ctx.supabase;
   const [{ data: rfqs }, { data: invites }, { data: exc }, { data: resps }] = await Promise.all([
-    db.from("rfqs").select("id, ref_code, title, status, response_deadline, category, ai_draft, is_demo, created_at").order("created_at", { ascending: false }),
+    (q ? db.from("rfqs").select("id, ref_code, title, status, response_deadline, category, ai_draft, is_demo, created_at").or(`title.ilike.%${q.replace(/[%,()]/g, " ")}%,ref_code.ilike.%${q.replace(/[%,()]/g, " ")}%,category.ilike.%${q.replace(/[%,()]/g, " ")}%`) : db.from("rfqs").select("id, ref_code, title, status, response_deadline, category, ai_draft, is_demo, created_at")).order("created_at", { ascending: false }),
     db.from("rfq_suppliers").select("rfq_id, response_status, delivery_status"),
     db.from("exceptions").select("rfq_id, severity, status, response_id").eq("status", "open"),
     db.from("supplier_responses").select("id, rfq_id, status, is_active"),
@@ -31,12 +33,20 @@ export default async function Dashboard() {
     };
   });
   const open = rows.filter((r) => !["decided", "cancelled"].includes(r.status));
+  const demo = rows.find((r) => r.is_demo);
+  let guide = null;
+  if (demo) {
+    const [{ count: resolved }, { count: asked }, { count: decided }] = await Promise.all([
+      db.from("exceptions").select("id", { count: "exact", head: true }).eq("rfq_id", demo.id).neq("status", "open"),
+      db.from("analyst_messages").select("id", { count: "exact", head: true }).eq("rfq_id", demo.id),
+      db.from("award_decisions").select("id", { count: "exact", head: true }).eq("rfq_id", demo.id),
+    ]);
+    guide = { rfqId: demo.id, received: demo.responded >= demo.total && demo.total > 0, fixed: (resolved ?? 0) > 0, asked: (asked ?? 0) > 0, decided: (decided ?? 0) > 0 };
+  }
   return (
     <div className="max-w-6xl">
       <PageHeader
-        eyebrow={ctx.orgName}
-        title="Sourcing events"
-        subtitle="Active RFx events, supplier response progress and what needs a buyer's attention."
+        title={q ? `Events matching “${q}”` : "Sourcing events"}
         actions={
           <>
             <SeedDemoButton />
@@ -46,6 +56,7 @@ export default async function Dashboard() {
           </>
         }
       />
+      {guide && <GettingStarted f={guide} />}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
         <Stat label="Open events" value={open.length} />
         <Stat label="Responses received" value={rows.reduce((a, r) => a + r.responded, 0)} hint={`of ${rows.reduce((a, r) => a + r.total, 0)} invited suppliers`} />
