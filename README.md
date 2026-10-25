@@ -71,8 +71,14 @@ npm run dev
 1. Create a project at supabase.com.
 2. SQL Editor → paste and run `supabase/migrations/0001_schema.sql` (idempotent; creates tables, RLS policies,
    the `create_organization` RPC, and three private storage buckets with tenant-scoped policies).
-3. Authentication → Providers → Email: for a frictionless demo, turn **off** "Confirm email" (or keep it on and confirm
-   via the email link). Authentication → URL Configuration: set Site URL to your Vercel URL.
+3. Sign-in is passwordless: the user enters their email and types the 6-digit code they receive (the same code creates
+   the account the first time). In Supabase:
+   - Authentication → Emails → **Magic Link** template (and **Confirm signup**): include `{{ .Token }}` so the email
+     shows the code, e.g. `<h2>Your RFx Copilot sign-in code</h2><p>Enter this code: <b>{{ .Token }}</b></p>`.
+   - Authentication → Emails → **SMTP Settings**: add a custom SMTP sender (Brevo, Resend, Postmark…). Supabase's
+     built-in sender only delivers to members of your Supabase team, about 2 emails an hour, so outside users never get a code.
+   - Authentication → URL Configuration: set Site URL to your Vercel URL and add `https://<your-app>/auth/callback`
+     to Redirect URLs (used if someone clicks the link in the email instead of typing the code).
 
 ## Deploy to Vercel
 
@@ -83,7 +89,7 @@ npm run dev
 
 ## Demo script (≈8 minutes)
 
-1. Sign up → "Set up your workspace" with **Load the demo sourcing event** ticked.
+1. Enter your email, type the emailed code → "Set up your workspace" with **Load the demo sourcing event** ticked.
 2. **Responses** tab → *Receive all 5 demo responses*. Watch states move: parsing → extracting → normalizing → needs review.
 3. Open each supplier's **Review extraction**:
    - Shree Balaji (Excel): `per 100 Nos` converted ÷100; a duplicated master-carton line flagged as a **conflict**;
