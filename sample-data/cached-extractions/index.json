@@ -1,0 +1,49 @@
+{
+ "note": "Saved real model readings of the fixed sample files. Used only for demo events whose lines match the sample manifest.",
+ "line_signature": "9da30e42c47dc20b1feb4296d6bd38daef6cf194525930dd169fa741de416191",
+ "entries": [
+  {
+   "id": "shree-balaji-v1",
+   "file_sha256": [
+    "7121d96d773016eba6f8571250a9e1722a5f1ef5aabfe1fd918d69495ef36d2f"
+   ],
+   "extraction_version": "v1.0"
+  },
+  {
+   "id": "deccan-v1",
+   "file_sha256": [
+    "57b5d8c26545114459fc93bf4a23957171f83617b0586afa99a339cb28226c6b",
+    "824f8854bd8f7261c375f03a07ccb68756b815365fdaed932162832fa8ba3cf9"
+   ],
+   "extraction_version": "v1.0"
+  },
+  {
+   "id": "pacific-v1",
+   "file_sha256": [
+    "f8998942bbfc7c551cb1aaf20baedd18c51676b9a2d474b8ba1e8b7e58ed05cb"
+   ],
+   "extraction_version": "v1.0"
+  },
+  {
+   "id": "hosur-box-v1",
+   "file_sha256": [
+    "b935949c7d3332a88a4a8e732d9eaa6e43c6deff0f7ae91e1448cfc1939b9410"
+   ],
+   "extraction_version": "v1.0"
+  },
+  {
+   "id": "sri-lakshmi-v1",
+   "file_sha256": [
+    "ff1ab3c237fbf8834a3aa8d02c02b9c2fd93838fd7b00be27cf65b5daa37a0e6"
+   ],
+   "extraction_version": "v1.0"
+  },
+  {
+   "id": "shree-balaji-v2",
+   "file_sha256": [
+    "46c4d2fd797a57a00c6be88788191da86fe17f7028bdb1839d477eca01b99cf4"
+   ],
+   "extraction_version": "v1.0"
+  }
+ ]
+}

@@ -1,0 +1,827 @@
+{
+ "document_overview": "Single Excel quotation from Shree Balaji Corrugators (3 sheets: Quotation, Terms, Vendor Questionnaire) with 31 rate rows. Supplier serial numbers do not match RFQ line numbers, so mapping was done by size/ply/type. Some rates are per 100 Nos. A revised rate row for the 450x300x300 5-ply printed master carton appears at the bottom.",
+ "quote_reference": "SBC/Q/26-27/0418",
+ "quote_date": "29-10-2026",
+ "validity_days": 30,
+ "supersedes_note": "Row 38 (Sl 31, SBC-5P-008A) '5 Ply Master Carton Printed (revised)' with remark 'revised rate' appears to supersede Sl 8 (SBC-5P-008) for 450x300x300 at Rs 41.5; the file does not explicitly state that it replaces the earlier row.",
+ "lines": [
+  {
+   "raw_text": "3 Ply Box 250 x 200 x 150 | 9.54 | Nos | Plain",
+   "raw_item_code": "SBC-3P-001",
+   "raw_description": "3 Ply Box",
+   "rfq_line_no": 1,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size and 3-ply match; plain",
+   "unit_price": 9.54,
+   "uom": "Nos",
+   "price_basis": "per_unit",
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "sheet": "Quotation",
+    "cell": "F8",
+    "row": 8
+   },
+   "source_snippet": "SBC-3P-001 | 3 Ply Box | 250 x 200 x 150 | 3 | 9.54 | Nos | Plain"
+  },
+  {
+   "raw_text": "3 Ply Box Printed 1 col 300 x 200 x 150 | 11.91 | Nos | Logo print",
+   "raw_item_code": "SBC-3P-002",
+   "raw_description": "3 Ply Box Printed 1 col",
+   "rfq_line_no": 2,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size, ply and 1-colour print match",
+   "unit_price": 11.91,
+   "uom": "Nos",
+   "price_basis": "per_unit",
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "sheet": "Quotation",
+    "cell": "F9",
+    "row": 9
+   },
+   "source_snippet": "SBC-3P-002 | 3 Ply Box Printed 1 col | 300 x 200 x 150 | 3 | 11.91 | Nos"
+  },
+  {
+   "raw_text": "3 Ply Box 350 x 250 x 200 | 1.63 | Nos | Plain",
+   "raw_item_code": "SBC-3P-003",
+   "raw_description": "3 Ply Box",
+   "rfq_line_no": 3,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size and 3-ply match; plain",
+   "unit_price": 1.63,
+   "uom": "Nos",
+   "price_basis": "per_unit",
+   "currency": "INR",
+   "confidence": "medium",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "sheet": "Quotation",
+    "cell": "F11",
+    "row": 11
+   },
+   "source_snippet": "SBC-3P-003 | 3 Ply Box | 350 x 250 x 200 | 3 | 1.63 | Nos | Plain",
+   "notes": "Price Rs 1.63/Nos is far lower than neighbouring sizes (9.54 for a smaller box, 20.17 for the next larger); possible typo/decimal error. Reported as quoted; buyer should confirm with supplier."
+  },
+  {
+   "raw_text": "3 Ply Box 400 x 300 x 200 | 20.17 | Nos | Plain",
+   "raw_item_code": "SBC-3P-004",
+   "raw_description": "3 Ply Box",
+   "rfq_line_no": 4,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size and 3-ply match",
+   "unit_price": 20.17,
+   "uom": "Nos",
+   "price_basis": "per_unit",
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "sheet": "Quotation",
+    "cell": "F12",
+    "row": 12
+   },
+   "source_snippet": "SBC-3P-004 | 3 Ply Box | 400 x 300 x 200 | 3 | 20.17 | Nos | Plain"
+  },
+  {
+   "raw_text": "3 Ply Box (small) 200 x 150 x 100 | 549.32 | 100 Nos | Rate per 100 Nos",
+   "raw_item_code": "SBC-3P-005",
+   "raw_description": "3 Ply Box (small)",
+   "rfq_line_no": 5,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size and 3-ply match (e-com small)",
+   "unit_price": 549.32,
+   "uom": "Nos",
+   "price_basis": "per_n_units",
+   "basis_quantity": 100,
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "sheet": "Quotation",
+    "cell": "F10",
+    "row": 10
+   },
+   "source_snippet": "SBC-3P-005 | 3 Ply Box (small) | 200 x 150 x 100 | 549.32 | 100 Nos | Rate per 100 Nos",
+   "notes": "Price is per 100 Nos, not per piece."
+  },
+  {
+   "raw_text": "3 Ply Box C-flute 450 x 350 x 250 | 28.02 | Nos | 180 GSM",
+   "raw_item_code": "SBC-3P-006",
+   "raw_description": "3 Ply Box C-flute",
+   "rfq_line_no": 6,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size, 3-ply, C-flute, 180 GSM match",
+   "unit_price": 28.02,
+   "uom": "Nos",
+   "price_basis": "per_unit",
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "sheet": "Quotation",
+    "cell": "F13",
+    "row": 13
+   },
+   "source_snippet": "SBC-3P-006 | 3 Ply Box C-flute | 450 x 350 x 250 | 3 | 28.02 | Nos | 180 GSM"
+  },
+  {
+   "raw_text": "5 Ply Box 400 x 300 x 300 | 31.32 | Nos | BCT 350",
+   "raw_item_code": "SBC-5P-007",
+   "raw_description": "5 Ply Box",
+   "rfq_line_no": 7,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size, 5-ply and BCT 350 match",
+   "unit_price": 31.32,
+   "uom": "Nos",
+   "price_basis": "per_unit",
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "sheet": "Quotation",
+    "cell": "F14",
+    "row": 14
+   },
+   "source_snippet": "SBC-5P-007 | 5 Ply Box | 400 x 300 x 300 | 5 | 31.32 | Nos | BCT 350"
+  },
+  {
+   "raw_text": "5 Ply Master Carton Printed 450 x 300 x 300 | 41.5 | Nos | BCT 400",
+   "raw_item_code": "SBC-5P-008",
+   "raw_description": "5 Ply Master Carton Printed",
+   "rfq_line_no": 8,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size, 5-ply, BCT 400, printed match",
+   "unit_price": 41.5,
+   "uom": "Nos",
+   "price_basis": "per_unit",
+   "currency": "INR",
+   "confidence": "medium",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "sheet": "Quotation",
+    "cell": "F15",
+    "row": 15
+   },
+   "source_snippet": "SBC-5P-008 | 5 Ply Master Carton Printed | 450 x 300 x 300 | 5 | 41.5 | Nos | BCT 400",
+   "notes": "CONFLICT: same item priced again at row 38 (SBC-5P-008A, revised, Rs 39.8). Buyer must confirm which price applies; likely the revised rate."
+  },
+  {
+   "raw_text": "5 Ply Master Carton Printed (revised) 450 x 300 x 300 | 39.8 | Nos | revised rate",
+   "raw_item_code": "SBC-5P-008A",
+   "raw_description": "5 Ply Master Carton Printed (revised)",
+   "rfq_line_no": 8,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Same size/ply/print as SBC-5P-008, marked revised",
+   "unit_price": 39.8,
+   "uom": "Nos",
+   "price_basis": "per_unit",
+   "currency": "INR",
+   "confidence": "medium",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "sheet": "Quotation",
+    "cell": "F38",
+    "row": 38
+   },
+   "source_snippet": "SBC-5P-008A | 5 Ply Master Carton Printed (revised) | 450 x 300 x 300 | 5 | 39.8 | Nos | revised rate",
+   "notes": "Revised rate for L8; conflicts with row 15 (41.5). Not explicitly stated as superseding but labelled 'revised'."
+  },
+  {
+   "raw_text": "5 Ply Box 500 x 400 x 300 | 44.13 | Nos",
+   "raw_item_code": "SBC-5P-009",
+   "raw_description": "5 Ply Box",
+   "rfq_line_no": 9,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size and 5-ply match; BCT not stated by supplier",
+   "unit_price": 44.13,
+   "uom": "Nos",
+   "price_basis": "per_unit",
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "sheet": "Quotation",
+    "cell": "F17",
+    "row": 17
+   },
+   "source_snippet": "SBC-5P-009 | 5 Ply Box | 500 x 400 x 300 | 5 | 44.13 | Nos",
+   "notes": "BCT (>=420 kgf) not confirmed in the quote."
+  },
+  {
+   "raw_text": "5 Ply Box 600 x 400 x 400 | 64.15 | Nos",
+   "raw_item_code": "SBC-5P-010",
+   "raw_description": "5 Ply Box",
+   "rfq_line_no": 10,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size and 5-ply match; BCT not stated",
+   "unit_price": 64.15,
+   "uom": "Nos",
+   "price_basis": "per_unit",
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "sheet": "Quotation",
+    "cell": "F18",
+    "row": 18
+   },
+   "source_snippet": "SBC-5P-010 | 5 Ply Box | 600 x 400 x 400 | 5 | 64.15 | Nos",
+   "notes": "BCT (>=500 kgf) not confirmed in the quote."
+  },
+  {
+   "raw_text": "5 Ply Box 2 col print 350 x 300 x 250 | 32.34 | Nos",
+   "raw_item_code": "SBC-5P-011",
+   "raw_description": "5 Ply Box 2 col print",
+   "rfq_line_no": 11,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size, 5-ply, 2-colour print match",
+   "unit_price": 32.34,
+   "uom": "Nos",
+   "price_basis": "per_unit",
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "sheet": "Quotation",
+    "cell": "F16",
+    "row": 16
+   },
+   "source_snippet": "SBC-5P-011 | 5 Ply Box 2 col print | 350 x 300 x 250 | 5 | 32.34 | Nos"
+  },
+  {
+   "raw_text": "5 Ply Box 550 x 450 x 350 | 59.92 | Nos",
+   "raw_item_code": "SBC-5P-012",
+   "raw_description": "5 Ply Box",
+   "rfq_line_no": 12,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size and 5-ply match; BCT not stated",
+   "unit_price": 59.92,
+   "uom": "Nos",
+   "price_basis": "per_unit",
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "sheet": "Quotation",
+    "cell": "F19",
+    "row": 19
+   },
+   "source_snippet": "SBC-5P-012 | 5 Ply Box | 550 x 450 x 350 | 5 | 59.92 | Nos",
+   "notes": "BCT (>=520 kgf) not confirmed in the quote."
+  },
+  {
+   "raw_text": "7 Ply HD Box 600 x 500 x 500 | 117.06 | Nos | BCT 900",
+   "raw_item_code": "SBC-7P-013",
+   "raw_description": "7 Ply HD Box",
+   "rfq_line_no": 13,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size, 7-ply, BCT 900 match",
+   "unit_price": 117.06,
+   "uom": "Nos",
+   "price_basis": "per_unit",
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "sheet": "Quotation",
+    "cell": "F20",
+    "row": 20
+   },
+   "source_snippet": "SBC-7P-013 | 7 Ply HD Box | 600 x 500 x 500 | 7 | 117.06 | Nos | BCT 900"
+  },
+  {
+   "raw_text": "7 Ply Export Box 450 x 300 x 300 | 52.49 | Nos | Export grade",
+   "raw_item_code": "SBC-7P-014",
+   "raw_description": "7 Ply Export Box",
+   "rfq_line_no": 14,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size, 7-ply, export grade match (distinct from 5-ply L8)",
+   "unit_price": 52.49,
+   "uom": "Nos",
+   "price_basis": "per_unit",
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "sheet": "Quotation",
+    "cell": "F21",
+    "row": 21
+   },
+   "source_snippet": "SBC-7P-014 | 7 Ply Export Box | 450 x 300 x 300 | 7 | 52.49 | Nos | Export grade",
+   "notes": "BCT >=750 kgf not stated."
+  },
+  {
+   "raw_text": "Mailer Box E-flute 2 col 300 x 220 x 80 | 14.16 | Nos | Die cut",
+   "raw_item_code": "SBC-XP-015",
+   "raw_description": "Mailer Box E-flute 2 col",
+   "rfq_line_no": 15,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size, E-flute, 2-colour, die-cut match",
+   "unit_price": 14.16,
+   "uom": "Nos",
+   "price_basis": "per_unit",
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "sheet": "Quotation",
+    "cell": "F22",
+    "row": 22
+   },
+   "source_snippet": "SBC-XP-015 | Mailer Box E-flute 2 col | 300 x 220 x 80 | E | 14.16 | Nos | Die cut"
+  },
+  {
+   "raw_text": "Mailer Box E-flute 220 x 160 x 60 | 821.94 | 100 Nos | Rate per 100 Nos",
+   "raw_item_code": "SBC-XP-016",
+   "raw_description": "Mailer Box E-flute",
+   "rfq_line_no": 16,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size and E-flute match",
+   "unit_price": 821.94,
+   "uom": "Nos",
+   "price_basis": "per_n_units",
+   "basis_quantity": 100,
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "sheet": "Quotation",
+    "cell": "F23",
+    "row": 23
+   },
+   "source_snippet": "SBC-XP-016 | Mailer Box E-flute | 220 x 160 x 60 | E | 821.94 | 100 Nos | Rate per 100 Nos",
+   "notes": "Price per 100 Nos."
+  },
+  {
+   "raw_text": "Tray + Lid 400 x 300 x 100 | 21.84 | Nos | 2 pc",
+   "raw_item_code": "SBC-3P-017",
+   "raw_description": "Tray + Lid",
+   "rfq_line_no": 17,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size and tray+lid match",
+   "unit_price": 21.84,
+   "uom": "Nos",
+   "price_basis": "per_unit",
+   "currency": "INR",
+   "confidence": "medium",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "sheet": "Quotation",
+    "cell": "F24",
+    "row": 24
+   },
+   "source_snippet": "SBC-3P-017 | Tray + Lid | 400 x 300 x 100 | 3 | 21.84 | Nos | 2 pc",
+   "notes": "Remark '2 pc' suggests the price covers tray + lid (2 pieces) per Nos; not explicitly confirmed."
+  },
+  {
+   "raw_text": "Partition 12 cell for 400x300x300 | 8.3 | Set | per set",
+   "raw_item_code": "SBC-3P-018",
+   "raw_description": "Partition 12 cell",
+   "rfq_line_no": 18,
+   "mapping_confidence": "high",
+   "mapping_rationale": "12-cell; fits 400x300x300 = L7 carton, as RFQ L18 requires",
+   "unit_price": 8.3,
+   "uom": "Set",
+   "price_basis": "per_unit",
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "sheet": "Quotation",
+    "cell": "F26",
+    "row": 26
+   },
+   "source_snippet": "SBC-3P-018 | Partition 12 cell | for 400x300x300 | 3 | 8.3 | Set | per set"
+  },
+  {
+   "raw_text": "Partition 24 cell for 500x400x300 | 12.96 | Set | per set",
+   "raw_item_code": "SBC-3P-019",
+   "raw_description": "Partition 24 cell",
+   "rfq_line_no": 19,
+   "mapping_confidence": "high",
+   "mapping_rationale": "24-cell; fits 500x400x300 = L9 carton",
+   "unit_price": 12.96,
+   "uom": "Set",
+   "price_basis": "per_unit",
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "sheet": "Quotation",
+    "cell": "F27",
+    "row": 27
+   },
+   "source_snippet": "SBC-3P-019 | Partition 24 cell | for 500x400x300 | 3 | 12.96 | Set | per set"
+  },
+  {
+   "raw_text": "Partition 6 cell for 350x250x200 | 5.18 | Set | per set",
+   "raw_item_code": "SBC-3P-020",
+   "raw_description": "Partition 6 cell",
+   "rfq_line_no": 20,
+   "mapping_confidence": "high",
+   "mapping_rationale": "6-cell; fits 350x250x200 = L3 carton",
+   "unit_price": 5.18,
+   "uom": "Set",
+   "price_basis": "per_unit",
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "sheet": "Quotation",
+    "cell": "F25",
+    "row": 25
+   },
+   "source_snippet": "SBC-3P-020 | Partition 6 cell | for 350x250x200 | 3 | 5.18 | Set | per set"
+  },
+  {
+   "raw_text": "Layer Pad 1200 x 1000 | 29.54 | Nos",
+   "raw_item_code": "SBC-3P-021",
+   "raw_description": "Layer Pad",
+   "rfq_line_no": 21,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size and 3-ply match",
+   "unit_price": 29.54,
+   "uom": "Nos",
+   "price_basis": "per_unit",
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "sheet": "Quotation",
+    "cell": "F28",
+    "row": 28
+   },
+   "source_snippet": "SBC-3P-021 | Layer Pad | 1200 x 1000 | 3 | 29.54 | Nos"
+  },
+  {
+   "raw_text": "Corrugated Roll 2 ply 1 mtr x 50 mtr | 639.15 | Roll | per roll",
+   "raw_item_code": "SBC-2P-022",
+   "raw_description": "Corrugated Roll 2 ply",
+   "rfq_line_no": 22,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size and 2-ply match; flute not stated",
+   "unit_price": 639.15,
+   "uom": "Roll",
+   "price_basis": "per_unit",
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "sheet": "Quotation",
+    "cell": "F29",
+    "row": 29
+   },
+   "source_snippet": "SBC-2P-022 | Corrugated Roll 2 ply | 1 mtr x 50 mtr | 2 | 639.15 | Roll | per roll"
+  },
+  {
+   "raw_text": "Edge Board 50x50x5 1000 mm | 949.89 | 100 Nos | Rate per 100 Nos",
+   "raw_item_code": "SBC-ACC-023",
+   "raw_description": "Edge Board 50x50x5",
+   "rfq_line_no": 23,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Profile and length match",
+   "unit_price": 949.89,
+   "uom": "Nos",
+   "price_basis": "per_n_units",
+   "basis_quantity": 100,
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "sheet": "Quotation",
+    "cell": "F30",
+    "row": 30
+   },
+   "source_snippet": "SBC-ACC-023 | Edge Board 50x50x5 | 1000 mm | 949.89 | 100 Nos | Rate per 100 Nos",
+   "notes": "Price per 100 Nos."
+  },
+  {
+   "raw_text": "Edge Board 35x35x3 800 mm | 554.54 | 100 Nos | Rate per 100 Nos",
+   "raw_item_code": "SBC-ACC-024",
+   "raw_description": "Edge Board 35x35x3",
+   "rfq_line_no": 24,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Profile and length match",
+   "unit_price": 554.54,
+   "uom": "Nos",
+   "price_basis": "per_n_units",
+   "basis_quantity": 100,
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "sheet": "Quotation",
+    "cell": "F31",
+    "row": 31
+   },
+   "source_snippet": "SBC-ACC-024 | Edge Board 35x35x3 | 800 mm | 554.54 | 100 Nos | Rate per 100 Nos",
+   "notes": "Price per 100 Nos."
+  },
+  {
+   "raw_text": "BOPP Tape Clear 48mm 65 mtr | 33.63 | Roll | 40 mic, per roll",
+   "raw_item_code": "SBC-ACC-025",
+   "raw_description": "BOPP Tape Clear 48mm",
+   "rfq_line_no": 25,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Width, length, 40 micron match",
+   "unit_price": 33.63,
+   "uom": "Roll",
+   "price_basis": "per_unit",
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "sheet": "Quotation",
+    "cell": "F32",
+    "row": 32
+   },
+   "source_snippet": "SBC-ACC-025 | BOPP Tape Clear 48mm | 65 mtr | 33.63 | Roll | 40 mic, per roll"
+  },
+  {
+   "raw_text": "BOPP Tape Printed 72mm 65 mtr | 59.46 | Roll | 45 mic, per roll",
+   "raw_item_code": "SBC-ACC-026",
+   "raw_description": "BOPP Tape Printed 72mm",
+   "rfq_line_no": 26,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Width, length, 45 micron, printed match",
+   "unit_price": 59.46,
+   "uom": "Roll",
+   "price_basis": "per_unit",
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "sheet": "Quotation",
+    "cell": "F33",
+    "row": 33
+   },
+   "source_snippet": "SBC-ACC-026 | BOPP Tape Printed 72mm | 65 mtr | 59.46 | Roll | 45 mic, per roll"
+  },
+  {
+   "raw_text": "Stretch Film Hand 23 mic 500 mm | 177.15 | Kg | per Kg",
+   "raw_item_code": "SBC-ACC-027",
+   "raw_description": "Stretch Film Hand 23 mic",
+   "rfq_line_no": 27,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Hand grade, 23 mic, 500 mm match",
+   "unit_price": 177.15,
+   "uom": "Kg",
+   "price_basis": "per_kg",
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "sheet": "Quotation",
+    "cell": "F34",
+    "row": 34
+   },
+   "source_snippet": "SBC-ACC-027 | Stretch Film Hand 23 mic | 500 mm | 177.15 | Kg | per Kg"
+  },
+  {
+   "raw_text": "Stretch Film Machine 17 mic 500 mm | 177.54 | Kg | per Kg",
+   "raw_item_code": "SBC-ACC-028",
+   "raw_description": "Stretch Film Machine 17 mic",
+   "rfq_line_no": 28,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Machine grade, 17 mic, 500 mm match",
+   "unit_price": 177.54,
+   "uom": "Kg",
+   "price_basis": "per_kg",
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "sheet": "Quotation",
+    "cell": "F35",
+    "row": 35
+   },
+   "source_snippet": "SBC-ACC-028 | Stretch Film Machine 17 mic | 500 mm | 177.54 | Kg | per Kg"
+  },
+  {
+   "raw_text": "Pallet Sleeve with cap 1200 x 1000 x 1000 | 431.07 | Nos",
+   "raw_item_code": "SBC-5P-029",
+   "raw_description": "Pallet Sleeve with cap",
+   "rfq_line_no": 29,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size, 5-ply, top cap match",
+   "unit_price": 431.07,
+   "uom": "Nos",
+   "price_basis": "per_unit",
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "sheet": "Quotation",
+    "cell": "F36",
+    "row": 36
+   },
+   "source_snippet": "SBC-5P-029 | Pallet Sleeve with cap | 1200 x 1000 x 1000 | 5 | 431.07 | Nos"
+  },
+  {
+   "raw_text": "Kraft Void Fill Roll 70 GSM 450 mm x 300 m | 1220.79 | Roll | per roll",
+   "raw_item_code": "SBC-ACC-030",
+   "raw_description": "Kraft Void Fill Roll 70 GSM",
+   "rfq_line_no": 30,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size and GSM match",
+   "unit_price": 1220.79,
+   "uom": "Roll",
+   "price_basis": "per_unit",
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "sheet": "Quotation",
+    "cell": "F37",
+    "row": 37
+   },
+   "source_snippet": "SBC-ACC-030 | Kraft Void Fill Roll 70 GSM | 450 mm x 300 m | 1220.79 | Roll | per roll"
+  }
+ ],
+ "questionnaire": [
+  {
+   "q_no": 1,
+   "raw_answer": "Yes - certificate available on request",
+   "evidence_type": "claim",
+   "confidence": "high",
+   "value_bool": true,
+   "evidence_snippet": "Yes - certificate available on request",
+   "source": {
+    "file_index": 1,
+    "sheet": "Vendor Questionnaire",
+    "cell": "B3",
+    "row": 3
+   }
+  },
+  {
+   "q_no": 2,
+   "raw_answer": "Yes, in-house calibrated BCT tester",
+   "evidence_type": "claim",
+   "confidence": "high",
+   "value_bool": true,
+   "evidence_snippet": "Yes, in-house calibrated BCT tester",
+   "source": {
+    "file_index": 1,
+    "sheet": "Vendor Questionnaire",
+    "cell": "B4",
+    "row": 4
+   }
+  },
+  {
+   "q_no": 3,
+   "raw_answer": "220 MT / month",
+   "evidence_type": "claim",
+   "confidence": "high",
+   "value_number": 220,
+   "value_unit": "MT/month",
+   "evidence_snippet": "220 MT / month",
+   "source": {
+    "file_index": 1,
+    "sheet": "Vendor Questionnaire",
+    "cell": "B5",
+    "row": 5
+   }
+  },
+  {
+   "q_no": 4,
+   "raw_answer": "10 days regular, 15 days printed",
+   "evidence_type": "claim",
+   "confidence": "high",
+   "value_number": 10,
+   "value_unit": "days",
+   "value_text": "10 days regular, 15 days printed",
+   "evidence_snippet": "10 days regular, 15 days printed",
+   "source": {
+    "file_index": 1,
+    "sheet": "Vendor Questionnaire",
+    "cell": "B6",
+    "row": 6
+   }
+  },
+  {
+   "q_no": 5,
+   "raw_answer": "No - our standard is 45 days",
+   "evidence_type": "claim",
+   "confidence": "high",
+   "value_bool": false,
+   "evidence_snippet": "No - our standard is 45 days",
+   "source": {
+    "file_index": 1,
+    "sheet": "Vendor Questionnaire",
+    "cell": "B7",
+    "row": 7
+   }
+  },
+  {
+   "q_no": 6,
+   "raw_answer": "Yes, FSC Mix available",
+   "evidence_type": "claim",
+   "confidence": "high",
+   "value_bool": true,
+   "evidence_snippet": "Yes, FSC Mix available",
+   "source": {
+    "file_index": 1,
+    "sheet": "Vendor Questionnaire",
+    "cell": "B8",
+    "row": 8
+   }
+  },
+  {
+   "q_no": 7,
+   "raw_answer": "Approx. 38 km",
+   "evidence_type": "claim",
+   "confidence": "high",
+   "value_number": 38,
+   "value_unit": "km",
+   "evidence_snippet": "Approx. 38 km",
+   "source": {
+    "file_index": 1,
+    "sheet": "Vendor Questionnaire",
+    "cell": "B9",
+    "row": 9
+   }
+  },
+  {
+   "q_no": 8,
+   "raw_answer": "Kaveri Snacks (demo), Malnad Dairy (demo)",
+   "evidence_type": "claim",
+   "confidence": "high",
+   "value_text": "Kaveri Snacks (demo), Malnad Dairy (demo)",
+   "evidence_snippet": "Kaveri Snacks (demo), Malnad Dairy (demo)",
+   "source": {
+    "file_index": 1,
+    "sheet": "Vendor Questionnaire",
+    "cell": "B10",
+    "row": 10
+   }
+  }
+ ],
+ "discounts": [],
+ "unresolved_references": [],
+ "other_notes": [
+  "MOQ: 1,000 Nos per size for printed items (Terms sheet B8).",
+  "Delivery: 10 working days from PO for regular items; 15 days for printed items (Terms B7).",
+  "Validity: 30 days from quotation date (29-10-2026).",
+  "Payment: supplier offers 45 days from invoice and explicitly declined 60 days (Q5).",
+  "ISO 9001 certificate was NOT attached; only 'available on request' (Q1 is must-pass with attachment requested).",
+  "Supplier serial numbers (Sl) differ from RFQ line numbers; partition rows are ordered 6-cell, 12-cell, 24-cell, which map to RFQ L20, L18, L19 respectively.",
+  "Supplier's Q3 capacity is stated in MT (assumed equivalent to tonnes)."
+ ],
+ "extraction_warnings": [
+  "L8 (450x300x300 5-ply printed) is priced twice: Rs 41.5 (row 15) and revised Rs 39.8 (row 38). Buyer must confirm which applies.",
+  "L3 rate Rs 1.63/Nos looks anomalously low versus adjacent sizes; possible typo. Reported as quoted.",
+  "Rows priced per 100 Nos: L5, L16, L23, L24 \u2014 not per piece.",
+  "L17 remark '2 pc' \u2014 unclear whether price covers tray+lid together; assumed but not confirmed.",
+  "BCT values not stated for L9, L10, L12, L14; construction (ply) and size match only.",
+  "Quantities were not provided by the supplier; quantity fields left null."
+ ],
+ "currency_code": "INR",
+ "currency_evidence": "Column header 'Rate (Rs)'",
+ "tax_treatment": "exclusive",
+ "tax_rate_percent": 18,
+ "tax_text": "Rates exclusive of GST @ 18% / GST @ 18% extra as applicable",
+ "freight_type": "included",
+ "freight_percent": null,
+ "freight_amount": null,
+ "freight_text": "Included - door delivery Hosur DC",
+ "freight_where": "Terms!B4",
+ "payment_terms_text": "45 days from invoice",
+ "payment_days": 45,
+ "lead_time_days": 10,
+ "lead_time_text": "10 working days from PO for regular items; 15 days for printed items"
+}

@@ -64,6 +64,7 @@ npm run dev
 | `ANTHROPIC_API_KEY` | console.anthropic.com | Server-only |
 | `AI_MODEL_EXTRACTION`, `AI_MODEL_ANALYST`, `AI_MODEL_FAST` | optional | default `claude-sonnet-5-5` / `claude-sonnet-5-5` / `claude-haiku-5-5` |
 | `DEMO_FX_USD_INR`, `DEMO_FX_AS_OF` | optional | default USD→INR rate for new RFx (editable per RFx) |
+| `DISABLE_SAMPLE_CACHE` | optional | set to `1` to make the sample event call the model live instead of reusing its saved reading |
 
 ### Supabase setup (once)
 
@@ -111,6 +112,11 @@ npm run typecheck && npm run lint && npm test && npm run build
 # Live AI check on the sample documents (no database needed):
 ANTHROPIC_API_KEY=... npx tsx scripts/test-pipeline.ts --analyst "Which suppliers quoted fewer than 30 lines?"
 ```
+
+**Sample event costs nothing to replay.** The sample supplier files never change, so their real model readings are
+saved in `sample-data/cached-extractions/` and reused when a demo event's lines and the files' SHA-256 match exactly
+(`src/lib/sample-cache.ts`). Every other file, and any edited demo event, is read live. After changing the extraction
+prompt, bump `EXTRACTION_VERSION`, re-run `scripts/test-pipeline.ts`, then `python3 scripts/build-sample-cache.py`.
 
 `scripts/generate_demo_data.py` regenerates the fictional vendor documents in `sample-data/` (Python: openpyxl,
 reportlab, python-docx, Pillow, OpenCV).

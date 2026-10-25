@@ -6,6 +6,7 @@
  */
 import { createClient as createSbClient, type SupabaseClient } from "@supabase/supabase-js";
 import { buildExtractionContent, EXTRACTION_VERSION, runExtraction, type ExtractionOutput } from "./ai/extract";
+import { findSampleReading, sha256 } from "./sample-cache";
 import { MODELS } from "./ai/client";
 import { buildOutlierExceptions, buildResponseExceptions } from "./exceptions";
 import { normalizeLine, resolveConflicts } from "./normalize";
@@ -67,10 +68,12 @@ export async function processResponse(db: SupabaseClient, actor: Actor, response
 
     const parts: PreparedPart[] = [];
     const parserNotes: Record<string, string[]> = {};
+    const fileShas: string[] = [];
     for (const f of files) {
       const { data: blob, error: dlErr } = await db.storage.from("source-files").download(f.storage_path);
       if (dlErr || !blob) throw new Error(`Could not download ${f.file_name}: ${dlErr?.message}`);
       const buf = Buffer.from(await blob.arrayBuffer());
+      fileShas.push(sha256(buf));
       const fmt = detectFormat(f.file_name, f.mime_type);
       const label = `${f.file_name} (${f.file_kind}, ${fmt})`;
       const part = await prepareFile(buf, f.file_name, fmt, label);
@@ -79,10 +82,13 @@ export async function processResponse(db: SupabaseClient, actor: Actor, response
       await db.from("source_files").update({ processing_state: "parsed", detected_format: fmt }).eq("id", f.id);
     }
 
-    await setStatus(db, responseId, "extracting", `AI extraction (${MODELS.extraction})`);
+    // Built-in sample files: reuse the saved real reading instead of spending API credit (see sample-cache.ts).
+    const saved = findSampleReading({ isDemo: !!(rfq as any).is_demo, lines: lines as RfqLine[], fileSha256: fileShas });
+    const model = saved ? `${MODELS.extraction} (saved sample reading)` : MODELS.extraction;
+    await setStatus(db, responseId, "extracting", saved ? "Using the saved AI reading of this sample file" : `AI extraction (${MODELS.extraction})`);
     const { data: run } = await db
       .from("extraction_runs")
-      .insert({ org_id: actor.orgId, response_id: responseId, model: MODELS.extraction, extraction_version: EXTRACTION_VERSION, parser_notes: parserNotes })
+      .insert({ org_id: actor.orgId, response_id: responseId, model, extraction_version: EXTRACTION_VERSION, parser_notes: parserNotes })
       .select("id")
       .single();
     runId = run?.id ?? null;
@@ -95,7 +101,7 @@ export async function processResponse(db: SupabaseClient, actor: Actor, response
       emailMeta: { subject: resp.email_subject, body: resp.email_body, channel: resp.channel },
     });
     const t0 = Date.now();
-    const { input: out, usage } = await runExtraction(content);
+    const { input: out, usage } = saved ? { input: saved.output, usage: { input: 0, output: 0 } } : await runExtraction(content);
     await db
       .from("extraction_runs")
       .update({ status: "succeeded", finished_at: new Date().toISOString(), input_tokens: usage.input, output_tokens: usage.output, raw_output: out })
@@ -114,7 +120,8 @@ export async function processResponse(db: SupabaseClient, actor: Actor, response
     if (["sent", "collecting"].includes((rfq as Rfq).status)) await db.from("rfqs").update({ status: "evaluating" }).eq("id", rfqId);
     await logAudit(db, actor, "extraction.completed", rfqId, responseId, {
       run_id: runId,
-      model: MODELS.extraction,
+      model,
+      saved_sample_reading: saved?.id ?? null,
       seconds: Math.round((Date.now() - t0) / 1000),
       lines: out.lines?.length ?? 0,
       ...summary,

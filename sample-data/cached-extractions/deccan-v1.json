@@ -1,0 +1,766 @@
+{
+ "document_overview": "Two-page PDF quotation from Deccan Packaging Industries (No. DPI/HSR/2026/1187, 30 Oct 2026) with a 27-row rate table, terms and footnotes on page 1, and a supplier questionnaire annexure on page 2. A separate ISO 9001 certificate PDF is attached. Supplier row numbers differ from RFQ line numbers after row 21 because the supplier did not quote L22, L27 and L28.",
+ "currency_code": "INR",
+ "currency_evidence": "Column headers \"Rate* (Rs/unit)\" and \"Amount (Rs)\"",
+ "quote_reference": "DPI/HSR/2026/1187",
+ "quote_date": "2026-10-30",
+ "tax_treatment": "exclusive",
+ "tax_rate_percent": 18,
+ "tax_text": "GST @ 18% extra.",
+ "freight_type": "extra_percent",
+ "freight_percent": 2.5,
+ "freight_text": "* Rates are ex-works Hosur. Freight to customer DC will be charged extra @ 2.5% of basic value.",
+ "freight_where": "p.1 footnote * (below rate table)",
+ "payment_days": 60,
+ "payment_terms_text": "Payment: 60 days from invoice acceptable.",
+ "validity_days": 60,
+ "lead_time_days": 7,
+ "lead_time_text": "Delivery: 7 working days from PO.",
+ "lines": [
+  {
+   "raw_text": "1 3-ply carton 250x200x150 3-ply, B-flute, 150 GSM kraft liner, plain, 40,000 pcs 9.26 370,400.00",
+   "rfq_line_no": 1,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size and 3-ply/B-flute/150 GSM plain match L1",
+   "unit_price": 9.26,
+   "price_basis": "per_unit",
+   "uom": "pcs",
+   "quantity": 40000,
+   "extended_price": 370400,
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "raw_description": "3-ply carton 250x200x150",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "row": 1,
+    "region": "rate table row 1"
+   },
+   "source_snippet": "9.26 370,400.00",
+   "notes": "Ex-works; freight extra 2.5%; conditional 3% discount per footnote **"
+  },
+  {
+   "raw_text": "2 3-ply carton 300x200x150, 1-colour print 3-ply, B-flute, 1-colour flexo print (logo), 60,000 pcs 10.99 659,400.00",
+   "rfq_line_no": 2,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size, construction and print match L2",
+   "unit_price": 10.99,
+   "price_basis": "per_unit",
+   "uom": "pcs",
+   "quantity": 60000,
+   "extended_price": 659400,
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "raw_description": "3-ply carton 300x200x150, 1-colour print",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "row": 2,
+    "region": "rate table row 2"
+   },
+   "source_snippet": "10.99 659,400.00"
+  },
+  {
+   "raw_text": "3 3-ply carton 350x250x200 3-ply, B-flute, 150 GSM kraft, plain 35,000 pcs 15.20 532,000.00",
+   "rfq_line_no": 3,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size and construction match L3",
+   "unit_price": 15.2,
+   "price_basis": "per_unit",
+   "uom": "pcs",
+   "quantity": 35000,
+   "extended_price": 532000,
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "raw_description": "3-ply carton 350x250x200",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "row": 3,
+    "region": "rate table row 3"
+   },
+   "source_snippet": "15.20 532,000.00"
+  },
+  {
+   "raw_text": "4 3-ply carton 400x300x200 3-ply, B-flute, 150 GSM kraft, plain 25,000 pcs 18.98 474,500.00",
+   "rfq_line_no": 4,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size and construction match L4",
+   "unit_price": 18.98,
+   "price_basis": "per_unit",
+   "uom": "pcs",
+   "quantity": 25000,
+   "extended_price": 474500,
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "raw_description": "3-ply carton 400x300x200",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "row": 4,
+    "region": "rate table row 4"
+   },
+   "source_snippet": "18.98 474,500.00"
+  },
+  {
+   "raw_text": "5 3-ply carton 200x150x100 (e-com small) 3-ply, B-flute, 120 GSM kraft, plain 50,000 pcs 5.09 254,500.00",
+   "rfq_line_no": 5,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size and construction match L5",
+   "unit_price": 5.09,
+   "price_basis": "per_unit",
+   "uom": "pcs",
+   "quantity": 50000,
+   "extended_price": 254500,
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "raw_description": "3-ply carton 200x150x100 (e-com small)",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "row": 5,
+    "region": "rate table row 5"
+   },
+   "source_snippet": "5.09 254,500.00"
+  },
+  {
+   "raw_text": "6 3-ply carton 450x350x250 3-ply, C-flute, 180 GSM kraft, plain 15,000 pcs 24.98 374,700.00",
+   "rfq_line_no": 6,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size and C-flute 180 GSM match L6",
+   "unit_price": 24.98,
+   "price_basis": "per_unit",
+   "uom": "pcs",
+   "quantity": 15000,
+   "extended_price": 374700,
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "raw_description": "3-ply carton 450x350x250",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "row": 6,
+    "region": "rate table row 6"
+   },
+   "source_snippet": "24.98 374,700.00"
+  },
+  {
+   "raw_text": "7 5-ply carton 400x300x300 5-ply, BC-flute, BCT >= 350 kgf, plain 30,000 pcs 29.74 892,200.00",
+   "rfq_line_no": 7,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size and 5-ply BCT 350 match L7",
+   "unit_price": 29.74,
+   "price_basis": "per_unit",
+   "uom": "pcs",
+   "quantity": 30000,
+   "extended_price": 892200,
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "raw_description": "5-ply carton 400x300x300",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "row": 7,
+    "region": "rate table row 7"
+   },
+   "source_snippet": "29.74 892,200.00"
+  },
+  {
+   "raw_text": "8 5-ply master carton 450x300x300 5-ply, BC-flute, BCT >= 400 kgf, 1-colour pr 25,000 pcs 34.87 871,750.00",
+   "rfq_line_no": 8,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size, 5-ply, BCT 400 and 1-colour print match L8 (spec text truncated in PDF cell)",
+   "unit_price": 34.87,
+   "price_basis": "per_unit",
+   "uom": "pcs",
+   "quantity": 25000,
+   "extended_price": 871750,
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "raw_description": "5-ply master carton 450x300x300",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "row": 8,
+    "region": "rate table row 8"
+   },
+   "source_snippet": "34.87 871,750.00",
+   "notes": "Spec text truncated at '1-colour pr' in the document"
+  },
+  {
+   "raw_text": "9 5-ply carton 500x400x300 5-ply, BC-flute, BCT >= 420 kgf, plain 18,000 pcs 43.94 790,920.00",
+   "rfq_line_no": 9,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size and construction match L9",
+   "unit_price": 43.94,
+   "price_basis": "per_unit",
+   "uom": "pcs",
+   "quantity": 18000,
+   "extended_price": 790920,
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "raw_description": "5-ply carton 500x400x300",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "row": 9,
+    "region": "rate table row 9"
+   },
+   "source_snippet": "43.94 790,920.00"
+  },
+  {
+   "raw_text": "10 5-ply carton 600x400x400 5-ply, BC-flute, BCT >= 500 kgf, plain 12,000 pcs 59.96 719,520.00",
+   "rfq_line_no": 10,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size and construction match L10",
+   "unit_price": 59.96,
+   "price_basis": "per_unit",
+   "uom": "pcs",
+   "quantity": 12000,
+   "extended_price": 719520,
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "raw_description": "5-ply carton 600x400x400",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "row": 10,
+    "region": "rate table row 10"
+   },
+   "source_snippet": "59.96 719,520.00"
+  },
+  {
+   "raw_text": "11 5-ply carton 350x300x250, 2-colour print 5-ply, BC-flute, 2-colour flexo print 20,000 pcs 28.83 576,600.00",
+   "rfq_line_no": 11,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size, construction and print match L11",
+   "unit_price": 28.83,
+   "price_basis": "per_unit",
+   "uom": "pcs",
+   "quantity": 20000,
+   "extended_price": 576600,
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "raw_description": "5-ply carton 350x300x250, 2-colour print",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "row": 11,
+    "region": "rate table row 11"
+   },
+   "source_snippet": "28.83 576,600.00"
+  },
+  {
+   "raw_text": "12 5-ply carton 550x450x350 5-ply, BC-flute, BCT >= 520 kgf, plain 8,000 pcs 55.94 447,520.00",
+   "rfq_line_no": 12,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size and construction match L12",
+   "unit_price": 55.94,
+   "price_basis": "per_unit",
+   "uom": "pcs",
+   "quantity": 8000,
+   "extended_price": 447520,
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "raw_description": "5-ply carton 550x450x350",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "row": 12,
+    "region": "rate table row 12"
+   },
+   "source_snippet": "55.94 447,520.00"
+  },
+  {
+   "raw_text": "13 7-ply heavy-duty carton 600x500x500 7-ply, BCB-flute, BCT >= 900 kgf 4,000 pcs 112.17 448,680.00",
+   "rfq_line_no": 13,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size and 7-ply BCB BCT 900 match L13",
+   "unit_price": 112.17,
+   "price_basis": "per_unit",
+   "uom": "pcs",
+   "quantity": 4000,
+   "extended_price": 448680,
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "raw_description": "7-ply heavy-duty carton 600x500x500",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "row": 13,
+    "region": "rate table row 13"
+   },
+   "source_snippet": "112.17 448,680.00"
+  },
+  {
+   "raw_text": "14 7-ply heavy-duty export carton 450x300x300 7-ply, BCB-flute, export grade, BCT >= 750 k 5,000 pcs 49.01 245,050.00",
+   "rfq_line_no": 14,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size and 7-ply export grade match L14 (spec text truncated)",
+   "unit_price": 49.01,
+   "price_basis": "per_unit",
+   "uom": "pcs",
+   "quantity": 5000,
+   "extended_price": 245050,
+   "currency": "INR",
+   "confidence": "medium",
+   "legibility": "clear",
+   "raw_description": "7-ply heavy-duty export carton 450x300x300",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "row": 14,
+    "region": "rate table row 14"
+   },
+   "source_snippet": "49.01 245,050.00",
+   "notes": "Price is notably lower than L13 (7-ply) and below some 5-ply lines of similar size (L8 450x300x300 5-ply at 34.87 is lower, but a 7-ply at 49.01 vs 7-ply L13 112.17 is not size-proportional); buyer may wish to verify. Spec text truncated at 'BCT >= 750 k'."
+  },
+  {
+   "raw_text": "15 Die-cut mailer box 300x220x80, 2-colour print E-flute, die-cut, tuck-front, 2-colour print 30,000 pcs 14.03 420,900.00",
+   "rfq_line_no": 15,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size and spec match L15",
+   "unit_price": 14.03,
+   "price_basis": "per_unit",
+   "uom": "pcs",
+   "quantity": 30000,
+   "extended_price": 420900,
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "raw_description": "Die-cut mailer box 300x220x80, 2-colour print",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "row": 15,
+    "region": "rate table row 15"
+   },
+   "source_snippet": "14.03 420,900.00"
+  },
+  {
+   "raw_text": "16 Die-cut mailer box 220x160x60 E-flute, die-cut, tuck-front, plain 40,000 pcs 7.77 310,800.00",
+   "rfq_line_no": 16,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size and spec match L16",
+   "unit_price": 7.77,
+   "price_basis": "per_unit",
+   "uom": "pcs",
+   "quantity": 40000,
+   "extended_price": 310800,
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "raw_description": "Die-cut mailer box 220x160x60",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "row": 16,
+    "region": "rate table row 16"
+   },
+   "source_snippet": "7.77 310,800.00"
+  },
+  {
+   "raw_text": "17 Die-cut tray with lid 400x300x100 3-ply, B-flute, two-piece tray + lid 10,000 pcs 20.68 206,800.00",
+   "rfq_line_no": 17,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size and spec match L17",
+   "unit_price": 20.68,
+   "price_basis": "per_unit",
+   "uom": "pcs",
+   "quantity": 10000,
+   "extended_price": 206800,
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "raw_description": "Die-cut tray with lid 400x300x100",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "row": 17,
+    "region": "rate table row 17"
+   },
+   "source_snippet": "20.68 206,800.00"
+  },
+  {
+   "raw_text": "18 Corrugated partition set, 12-cell (1 L bottles) 3-ply, B-flute, interlocking, fits line 7 ca 20,000 sets 7.46 149,200.00",
+   "rfq_line_no": 18,
+   "mapping_confidence": "high",
+   "mapping_rationale": "12-cell partition set matches L18",
+   "unit_price": 7.46,
+   "price_basis": "per_unit",
+   "uom": "sets",
+   "quantity": 20000,
+   "extended_price": 149200,
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "raw_description": "Corrugated partition set, 12-cell (1 L bottles)",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "row": 18,
+    "region": "rate table row 18"
+   },
+   "source_snippet": "7.46 149,200.00",
+   "notes": "Spec text truncated at 'fits line 7 ca'"
+  },
+  {
+   "raw_text": "19 Corrugated partition set, 24-cell 3-ply, B-flute, interlocking, fits line 9 ca 10,000 sets 12.45 124,500.00",
+   "rfq_line_no": 19,
+   "mapping_confidence": "high",
+   "mapping_rationale": "24-cell partition set matches L19",
+   "unit_price": 12.45,
+   "price_basis": "per_unit",
+   "uom": "sets",
+   "quantity": 10000,
+   "extended_price": 124500,
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "raw_description": "Corrugated partition set, 24-cell",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "row": 19,
+    "region": "rate table row 19"
+   },
+   "source_snippet": "12.45 124,500.00"
+  },
+  {
+   "raw_text": "20 Corrugated partition set, 6-cell 3-ply, B-flute, interlocking, fits line 3 ca 15,000 sets 4.91 73,650.00",
+   "rfq_line_no": 20,
+   "mapping_confidence": "high",
+   "mapping_rationale": "6-cell partition set matches L20",
+   "unit_price": 4.91,
+   "price_basis": "per_unit",
+   "uom": "sets",
+   "quantity": 15000,
+   "extended_price": 73650,
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "raw_description": "Corrugated partition set, 6-cell",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "row": 20,
+    "region": "rate table row 20"
+   },
+   "source_snippet": "4.91 73,650.00"
+  },
+  {
+   "raw_text": "21 Corrugated layer pad 1200x1000 3-ply, B-flute, pallet layer pad 12,000 pcs 28.40 340,800.00",
+   "rfq_line_no": 21,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Layer pad 1200x1000 matches L21",
+   "unit_price": 28.4,
+   "price_basis": "per_unit",
+   "uom": "pcs",
+   "quantity": 12000,
+   "extended_price": 340800,
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "raw_description": "Corrugated layer pad 1200x1000",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "row": 21,
+    "region": "rate table row 21"
+   },
+   "source_snippet": "28.40 340,800.00"
+  },
+  {
+   "raw_text": "22 Paper edge protector 50x50x5 x 1000 Laminated kraft, L-profile 25,000 pcs 9.62 240,500.00",
+   "rfq_line_no": 23,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Supplier S.No 22 (50x50x5x1000 edge protector) matches RFQ L23; supplier numbering is shifted by one because the sheet roll (L22) was not quoted",
+   "unit_price": 9.62,
+   "price_basis": "per_unit",
+   "uom": "pcs",
+   "quantity": 25000,
+   "extended_price": 240500,
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "raw_description": "Paper edge protector 50x50x5 x 1000",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "row": 22,
+    "region": "rate table S.No 22"
+   },
+   "source_snippet": "9.62 240,500.00",
+   "notes": "Supplier S.No 22 = RFQ L23"
+  },
+  {
+   "raw_text": "23 Paper edge protector 35x35x3 x 800 Laminated kraft, L-profile 20,000 pcs 4.99 99,800.00",
+   "rfq_line_no": 24,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Supplier S.No 23 (35x35x3x800) matches RFQ L24",
+   "unit_price": 4.99,
+   "price_basis": "per_unit",
+   "uom": "pcs",
+   "quantity": 20000,
+   "extended_price": 99800,
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "raw_description": "Paper edge protector 35x35x3 x 800",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "row": 23,
+    "region": "rate table S.No 23"
+   },
+   "source_snippet": "4.99 99,800.00",
+   "notes": "Supplier S.No 23 = RFQ L24"
+  },
+  {
+   "raw_text": "24 BOPP tape 48 x 65 m, clear 40 micron, acrylic adhesive 18,000 rolls 33.64 605,520.00",
+   "rfq_line_no": 25,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Supplier S.No 24 BOPP 48mm clear matches RFQ L25",
+   "unit_price": 33.64,
+   "price_basis": "per_unit",
+   "uom": "rolls",
+   "quantity": 18000,
+   "extended_price": 605520,
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "raw_description": "BOPP tape 48 x 65 m, clear",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "row": 24,
+    "region": "rate table S.No 24"
+   },
+   "source_snippet": "33.64 605,520.00",
+   "notes": "Supplier S.No 24 = RFQ L25"
+  },
+  {
+   "raw_text": "25 BOPP tape 72 x 65 m, printed logo 45 micron, 1-colour logo print 6,000 rolls 55.87 335,220.00",
+   "rfq_line_no": 26,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Supplier S.No 25 BOPP 72mm printed matches RFQ L26",
+   "unit_price": 55.87,
+   "price_basis": "per_unit",
+   "uom": "rolls",
+   "quantity": 6000,
+   "extended_price": 335220,
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "raw_description": "BOPP tape 72 x 65 m, printed logo",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "row": 25,
+    "region": "rate table S.No 25"
+   },
+   "source_snippet": "55.87 335,220.00",
+   "notes": "Supplier S.No 25 = RFQ L26"
+  },
+  {
+   "raw_text": "26 Corrugated pallet sleeve 1200x1000x1000 5-ply, BC-flute, with top cap 1,500 pcs 389.81 584,715.00",
+   "rfq_line_no": 29,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Supplier S.No 26 pallet sleeve matches RFQ L29",
+   "unit_price": 389.81,
+   "price_basis": "per_unit",
+   "uom": "pcs",
+   "quantity": 1500,
+   "extended_price": 584715,
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "raw_description": "Corrugated pallet sleeve 1200x1000x1000",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "row": 26,
+    "region": "rate table S.No 26"
+   },
+   "source_snippet": "389.81 584,715.00",
+   "notes": "Supplier S.No 26 = RFQ L29"
+  },
+  {
+   "raw_text": "27 Kraft paper void-fill roll 450 x 300 m 70 GSM recycled kraft 800 rolls 1,126.04 900,832.00",
+   "rfq_line_no": 30,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Supplier S.No 27 void-fill roll matches RFQ L30",
+   "unit_price": 1126.04,
+   "price_basis": "per_unit",
+   "uom": "rolls",
+   "quantity": 800,
+   "extended_price": 900832,
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "raw_description": "Kraft paper void-fill roll 450 x 300 m",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "row": 27,
+    "region": "rate table S.No 27"
+   },
+   "source_snippet": "1,126.04 900,832.00",
+   "notes": "Supplier S.No 27 = RFQ L30"
+  }
+ ],
+ "questionnaire": [
+  {
+   "q_no": 1,
+   "raw_answer": "Yes. Certificate no. QMS-DEMO-44817 attached (valid till 14-Mar-2027).",
+   "evidence_type": "document_attached",
+   "confidence": "high",
+   "value_bool": true,
+   "value_text": "Certificate QMS-DEMO-44817, valid till 14-Mar-2027",
+   "evidence_snippet": "Certificate no. QMS-DEMO-44817 attached",
+   "source": {
+    "file_index": 1,
+    "page": 2,
+    "row": 1,
+    "region": "Annexure A Q1"
+   }
+  },
+  {
+   "q_no": 2,
+   "raw_answer": "Yes - in-house lab, equipment calibrated annually (NABL-traceable).",
+   "evidence_type": "claim",
+   "confidence": "high",
+   "value_bool": true,
+   "value_text": "In-house lab, calibrated annually (NABL-traceable)",
+   "evidence_snippet": "in-house lab, equipment calibrated annually (NABL-traceable)",
+   "source": {
+    "file_index": 1,
+    "page": 2,
+    "region": "Annexure A Q2"
+   }
+  },
+  {
+   "q_no": 3,
+   "raw_answer": "300 tonnes per month",
+   "evidence_type": "claim",
+   "confidence": "high",
+   "value_number": 300,
+   "value_unit": "tonnes/month",
+   "evidence_snippet": "300 tonnes per month",
+   "source": {
+    "file_index": 1,
+    "page": 2,
+    "region": "Annexure A Q3"
+   }
+  },
+  {
+   "q_no": 4,
+   "raw_answer": "7 working days",
+   "evidence_type": "claim",
+   "confidence": "high",
+   "value_number": 7,
+   "value_unit": "working days",
+   "evidence_snippet": "7 working days",
+   "source": {
+    "file_index": 1,
+    "page": 2,
+    "region": "Annexure A Q4"
+   }
+  },
+  {
+   "q_no": 5,
+   "raw_answer": "Accepted",
+   "evidence_type": "claim",
+   "confidence": "high",
+   "value_bool": true,
+   "evidence_snippet": "Accepted",
+   "source": {
+    "file_index": 1,
+    "page": 2,
+    "region": "Annexure A Q5"
+   }
+  },
+  {
+   "q_no": 6,
+   "raw_answer": "Recycled board standard; FSC on request at +4%",
+   "evidence_type": "claim",
+   "confidence": "high",
+   "value_bool": true,
+   "value_text": "Recycled board standard; FSC available on request at +4% price",
+   "evidence_snippet": "Recycled board standard; FSC on request at +4%",
+   "source": {
+    "file_index": 1,
+    "page": 2,
+    "region": "Annexure A Q6"
+   }
+  },
+  {
+   "q_no": 7,
+   "raw_answer": "6 km",
+   "evidence_type": "claim",
+   "confidence": "high",
+   "value_number": 6,
+   "value_unit": "km",
+   "evidence_snippet": "6 km",
+   "source": {
+    "file_index": 1,
+    "page": 2,
+    "region": "Annexure A Q7"
+   }
+  },
+  {
+   "q_no": 8,
+   "raw_answer": "Cauvery Beverages (demo); Western Ghats Foods (demo)",
+   "evidence_type": "claim",
+   "confidence": "high",
+   "value_text": "Cauvery Beverages; Western Ghats Foods",
+   "evidence_snippet": "Cauvery Beverages (demo); Western Ghats Foods (demo)",
+   "source": {
+    "file_index": 1,
+    "page": 2,
+    "region": "Annexure A Q8"
+   }
+  }
+ ],
+ "discounts": [
+  {
+   "description": "Special discount of 3% on basic rates for purchase orders released on or before 30-Nov-2026",
+   "conditional": true,
+   "percent": 3,
+   "condition": "PO released on or before 30-Nov-2026",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "region": "footnote **"
+   }
+  }
+ ],
+ "unresolved_references": [],
+ "other_notes": [
+  "Supplier explicitly unable to quote RFQ L22 (corrugated sheet roll), L27 and L28 (stretch film): 'We regret we are unable to quote for the corrugated sheet roll and stretch film items at this time.'",
+  "Supplier's stated Basic total is Rs 12,050,977.00 (before 3% conditional discount, 2.5% freight and 18% GST).",
+  "Rates are ex-works Hosur; freight to DC extra at 2.5% of basic value.",
+  "Lead time 7 working days from PO (not calendar days).",
+  "FSC-certified board available at +4% surcharge (Q6).",
+  "Supplier S.No 1-21 correspond to RFQ L1-L21; supplier S.No 22-27 correspond to RFQ L23, L24, L25, L26, L29, L30."
+ ],
+ "extraction_warnings": [
+  "Spec text truncated in the PDF for supplier rows 8, 14, 18, 19, 20 (e.g. '1-colour pr', 'BCT >= 750 k', 'fits line 7 ca'); mapping relies on size and visible spec.",
+  "The attached ISO certificate carries a 'SPECIMEN - FICTIONAL CERTIFICATE ... NOT ISSUED BY ANY CERTIFICATION BODY' footer, so it may not be a valid certificate. Certificate number and validity (issued 15-Mar-2024, valid until 14-Mar-2027) match the quote.",
+  "The quote has no explicit per-unit pack basis; all rates read as per single pc/set/roll per the 'Rate* (Rs/unit)' header.",
+  "Row 14 (7-ply export carton) rate of 49.01 looks low relative to L13 (112.17) and to 5-ply lines of similar size; extracted as quoted, buyer should verify."
+ ]
+}

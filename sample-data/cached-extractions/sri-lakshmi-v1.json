@@ -1,0 +1,456 @@
+{
+ "document_overview": "Short informal email from Sri Lakshmi Paper Products (Jigani) with no attachments. It gives group per-kg prices for 5-ply and 3-ply, per-roll prices for two tapes, and brief terms. It says \"rest same as last year\", which points to prices that are not in the files.",
+ "quote_date": "2026-11-02",
+ "lines": [
+  {
+   "raw_text": "Rs 42/kg for the 5-ply",
+   "rfq_line_no": 7,
+   "mapping_confidence": "medium",
+   "unit_price": 42,
+   "price_basis": "per_kg",
+   "uom": "kg",
+   "currency": "INR",
+   "confidence": "medium",
+   "legibility": "clear",
+   "quantity": 30000,
+   "source": {
+    "file_index": 1,
+    "region": "email body line 8"
+   },
+   "source_snippet": "Rs 42/kg for the 5-ply, 38 for the 3-ply",
+   "notes": "Group price: applies to all 5-ply lines. The price is per kg, but the RFQ quantity is in pcs and no carton weight is given, so it cannot be converted to a per-piece price. The supplier gave no flute, BCT or size detail.",
+   "mapping_rationale": "Supplier price for '5-ply' covers this 5-ply RFQ line."
+  },
+  {
+   "raw_text": "Rs 42/kg for the 5-ply",
+   "rfq_line_no": 8,
+   "mapping_confidence": "medium",
+   "unit_price": 42,
+   "price_basis": "per_kg",
+   "uom": "kg",
+   "currency": "INR",
+   "confidence": "medium",
+   "legibility": "clear",
+   "quantity": 25000,
+   "source": {
+    "file_index": 1,
+    "region": "email body line 8"
+   },
+   "source_snippet": "Rs 42/kg for the 5-ply, 38 for the 3-ply",
+   "notes": "Group price. The price is per kg, with no carton weight given. The supplier did not mention the 1-colour print or whether it costs extra.",
+   "mapping_rationale": "Group price for 5-ply."
+  },
+  {
+   "raw_text": "Rs 42/kg for the 5-ply",
+   "rfq_line_no": 9,
+   "mapping_confidence": "medium",
+   "unit_price": 42,
+   "price_basis": "per_kg",
+   "uom": "kg",
+   "currency": "INR",
+   "confidence": "medium",
+   "legibility": "clear",
+   "quantity": 18000,
+   "source": {
+    "file_index": 1,
+    "region": "email body line 8"
+   },
+   "source_snippet": "Rs 42/kg for the 5-ply, 38 for the 3-ply",
+   "notes": "Group price. The price is per kg, with no carton weight given.",
+   "mapping_rationale": "Group price for 5-ply."
+  },
+  {
+   "raw_text": "Rs 42/kg for the 5-ply",
+   "rfq_line_no": 10,
+   "mapping_confidence": "medium",
+   "unit_price": 42,
+   "price_basis": "per_kg",
+   "uom": "kg",
+   "currency": "INR",
+   "confidence": "medium",
+   "legibility": "clear",
+   "quantity": 12000,
+   "source": {
+    "file_index": 1,
+    "region": "email body line 8"
+   },
+   "source_snippet": "Rs 42/kg for the 5-ply, 38 for the 3-ply",
+   "notes": "Group price. The price is per kg, with no carton weight given.",
+   "mapping_rationale": "Group price for 5-ply."
+  },
+  {
+   "raw_text": "Rs 42/kg for the 5-ply",
+   "rfq_line_no": 11,
+   "mapping_confidence": "medium",
+   "unit_price": 42,
+   "price_basis": "per_kg",
+   "uom": "kg",
+   "currency": "INR",
+   "confidence": "medium",
+   "legibility": "clear",
+   "quantity": 20000,
+   "source": {
+    "file_index": 1,
+    "region": "email body line 8"
+   },
+   "source_snippet": "Rs 42/kg for the 5-ply, 38 for the 3-ply",
+   "notes": "Group price. The price is per kg, with no carton weight given. The supplier did not mention the 2-colour print or whether it costs extra.",
+   "mapping_rationale": "Group price for 5-ply."
+  },
+  {
+   "raw_text": "Rs 42/kg for the 5-ply",
+   "rfq_line_no": 12,
+   "mapping_confidence": "medium",
+   "unit_price": 42,
+   "price_basis": "per_kg",
+   "uom": "kg",
+   "currency": "INR",
+   "confidence": "medium",
+   "legibility": "clear",
+   "quantity": 8000,
+   "source": {
+    "file_index": 1,
+    "region": "email body line 8"
+   },
+   "source_snippet": "Rs 42/kg for the 5-ply, 38 for the 3-ply",
+   "notes": "Group price. The price is per kg, with no carton weight given.",
+   "mapping_rationale": "Group price for 5-ply."
+  },
+  {
+   "raw_text": "Rs 42/kg for the 5-ply",
+   "rfq_line_no": 29,
+   "mapping_confidence": "low",
+   "unit_price": 42,
+   "price_basis": "per_kg",
+   "uom": "kg",
+   "currency": "INR",
+   "confidence": "low",
+   "legibility": "clear",
+   "quantity": 1500,
+   "source": {
+    "file_index": 1,
+    "region": "email body line 8"
+   },
+   "source_snippet": "Rs 42/kg for the 5-ply, 38 for the 3-ply",
+   "notes": "Group price. It is unclear whether the supplier meant the 5-ply price to cover the pallet sleeve with top cap. The price is per kg, with no weight given.",
+   "mapping_rationale": "The sleeve is 5-ply, but it is not a standard carton, so the supplier may not have meant it.",
+   "candidate_line_nos": [
+    29
+   ]
+  },
+  {
+   "raw_text": "38 for the 3-ply",
+   "rfq_line_no": 1,
+   "mapping_confidence": "medium",
+   "unit_price": 38,
+   "price_basis": "per_kg",
+   "uom": "kg",
+   "currency": "INR",
+   "confidence": "medium",
+   "legibility": "clear",
+   "quantity": 40000,
+   "source": {
+    "file_index": 1,
+    "region": "email body line 8"
+   },
+   "source_snippet": "Rs 42/kg for the 5-ply, 38 for the 3-ply",
+   "notes": "Group price. The unit '/kg' and currency Rs are inferred from the preceding phrase, because '38' is written bare. The price is per kg, with no carton weight given.",
+   "mapping_rationale": "Group price for 3-ply."
+  },
+  {
+   "raw_text": "38 for the 3-ply",
+   "rfq_line_no": 2,
+   "mapping_confidence": "medium",
+   "unit_price": 38,
+   "price_basis": "per_kg",
+   "uom": "kg",
+   "currency": "INR",
+   "confidence": "medium",
+   "legibility": "clear",
+   "quantity": 60000,
+   "source": {
+    "file_index": 1,
+    "region": "email body line 8"
+   },
+   "source_snippet": "Rs 42/kg for the 5-ply, 38 for the 3-ply",
+   "notes": "Group price. The unit is inferred as /kg. The supplier did not mention the 1-colour print or whether it costs extra.",
+   "mapping_rationale": "Group price for 3-ply."
+  },
+  {
+   "raw_text": "38 for the 3-ply",
+   "rfq_line_no": 3,
+   "mapping_confidence": "medium",
+   "unit_price": 38,
+   "price_basis": "per_kg",
+   "uom": "kg",
+   "currency": "INR",
+   "confidence": "medium",
+   "legibility": "clear",
+   "quantity": 35000,
+   "source": {
+    "file_index": 1,
+    "region": "email body line 8"
+   },
+   "source_snippet": "Rs 42/kg for the 5-ply, 38 for the 3-ply",
+   "notes": "Group price. The unit is inferred as /kg.",
+   "mapping_rationale": "Group price for 3-ply."
+  },
+  {
+   "raw_text": "38 for the 3-ply",
+   "rfq_line_no": 4,
+   "mapping_confidence": "medium",
+   "unit_price": 38,
+   "price_basis": "per_kg",
+   "uom": "kg",
+   "currency": "INR",
+   "confidence": "medium",
+   "legibility": "clear",
+   "quantity": 25000,
+   "source": {
+    "file_index": 1,
+    "region": "email body line 8"
+   },
+   "source_snippet": "Rs 42/kg for the 5-ply, 38 for the 3-ply",
+   "notes": "Group price. The unit is inferred as /kg.",
+   "mapping_rationale": "Group price for 3-ply."
+  },
+  {
+   "raw_text": "38 for the 3-ply",
+   "rfq_line_no": 5,
+   "mapping_confidence": "medium",
+   "unit_price": 38,
+   "price_basis": "per_kg",
+   "uom": "kg",
+   "currency": "INR",
+   "confidence": "medium",
+   "legibility": "clear",
+   "quantity": 50000,
+   "source": {
+    "file_index": 1,
+    "region": "email body line 8"
+   },
+   "source_snippet": "Rs 42/kg for the 5-ply, 38 for the 3-ply",
+   "notes": "Group price. The unit is inferred as /kg.",
+   "mapping_rationale": "Group price for 3-ply."
+  },
+  {
+   "raw_text": "38 for the 3-ply",
+   "rfq_line_no": 6,
+   "mapping_confidence": "medium",
+   "unit_price": 38,
+   "price_basis": "per_kg",
+   "uom": "kg",
+   "currency": "INR",
+   "confidence": "medium",
+   "legibility": "clear",
+   "quantity": 15000,
+   "source": {
+    "file_index": 1,
+    "region": "email body line 8"
+   },
+   "source_snippet": "Rs 42/kg for the 5-ply, 38 for the 3-ply",
+   "notes": "Group price. The unit is inferred as /kg. The RFQ asks for C-flute 180 GSM, and the supplier gave no flute detail.",
+   "mapping_rationale": "Group price for 3-ply."
+  },
+  {
+   "raw_text": "38 for the 3-ply",
+   "rfq_line_no": 17,
+   "mapping_confidence": "low",
+   "unit_price": 38,
+   "price_basis": "per_kg",
+   "uom": "kg",
+   "currency": "INR",
+   "confidence": "low",
+   "legibility": "clear",
+   "quantity": 10000,
+   "source": {
+    "file_index": 1,
+    "region": "email body line 8"
+   },
+   "source_snippet": "Rs 42/kg for the 5-ply, 38 for the 3-ply",
+   "notes": "Group price. It is unclear whether the supplier meant this to cover a die-cut tray with lid, which may carry tooling or die-cut charges. The unit is inferred as /kg.",
+   "mapping_rationale": "The tray is 3-ply B-flute, but it is a die-cut item."
+  },
+  {
+   "raw_text": "38 for the 3-ply",
+   "rfq_line_no": 18,
+   "mapping_confidence": "low",
+   "unit_price": 38,
+   "price_basis": "per_kg",
+   "uom": "kg",
+   "currency": "INR",
+   "confidence": "low",
+   "legibility": "clear",
+   "quantity": 20000,
+   "source": {
+    "file_index": 1,
+    "region": "email body line 8"
+   },
+   "source_snippet": "Rs 42/kg for the 5-ply, 38 for the 3-ply",
+   "notes": "Group price. It is unclear whether the supplier meant this to cover partition sets, which are priced per set. The unit is inferred as /kg.",
+   "mapping_rationale": "The partition set is 3-ply B-flute."
+  },
+  {
+   "raw_text": "38 for the 3-ply",
+   "rfq_line_no": 19,
+   "mapping_confidence": "low",
+   "unit_price": 38,
+   "price_basis": "per_kg",
+   "uom": "kg",
+   "currency": "INR",
+   "confidence": "low",
+   "legibility": "clear",
+   "quantity": 10000,
+   "source": {
+    "file_index": 1,
+    "region": "email body line 8"
+   },
+   "source_snippet": "Rs 42/kg for the 5-ply, 38 for the 3-ply",
+   "notes": "Group price. It is unclear whether the supplier meant this to cover partition sets. The unit is inferred as /kg.",
+   "mapping_rationale": "The partition set is 3-ply B-flute."
+  },
+  {
+   "raw_text": "38 for the 3-ply",
+   "rfq_line_no": 20,
+   "mapping_confidence": "low",
+   "unit_price": 38,
+   "price_basis": "per_kg",
+   "uom": "kg",
+   "currency": "INR",
+   "confidence": "low",
+   "legibility": "clear",
+   "quantity": 15000,
+   "source": {
+    "file_index": 1,
+    "region": "email body line 8"
+   },
+   "source_snippet": "Rs 42/kg for the 5-ply, 38 for the 3-ply",
+   "notes": "Group price. It is unclear whether the supplier meant this to cover partition sets. The unit is inferred as /kg.",
+   "mapping_rationale": "The partition set is 3-ply B-flute."
+  },
+  {
+   "raw_text": "38 for the 3-ply",
+   "rfq_line_no": 21,
+   "mapping_confidence": "low",
+   "unit_price": 38,
+   "price_basis": "per_kg",
+   "uom": "kg",
+   "currency": "INR",
+   "confidence": "low",
+   "legibility": "clear",
+   "quantity": 12000,
+   "source": {
+    "file_index": 1,
+    "region": "email body line 8"
+   },
+   "source_snippet": "Rs 42/kg for the 5-ply, 38 for the 3-ply",
+   "notes": "Group price. It is unclear whether the supplier meant this to cover layer pads. The unit is inferred as /kg.",
+   "mapping_rationale": "The layer pad is 3-ply B-flute."
+  },
+  {
+   "raw_text": "48mm tape we can do at Rs 31 per roll",
+   "rfq_line_no": 25,
+   "mapping_confidence": "high",
+   "unit_price": 31,
+   "price_basis": "per_unit",
+   "uom": "roll",
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "quantity": 18000,
+   "source": {
+    "file_index": 1,
+    "region": "email body line 9"
+   },
+   "source_snippet": "48mm tape we can do at Rs 31 per roll",
+   "notes": "The supplier gave no micron, adhesive or length detail. Mapped by the 48 mm width alone.",
+   "mapping_rationale": "The 48 mm width matches the only 48 mm tape line."
+  },
+  {
+   "raw_text": "72mm printed tape Rs 55",
+   "rfq_line_no": 26,
+   "mapping_confidence": "high",
+   "unit_price": 55,
+   "price_basis": "per_unit",
+   "uom": "roll",
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "quantity": 6000,
+   "source": {
+    "file_index": 1,
+    "region": "email body line 9"
+   },
+   "source_snippet": "72mm printed tape Rs 55",
+   "notes": "The unit is 'per roll' by context, since the sentence follows the 'per roll' phrase for the 48 mm tape. It is not stated explicitly."
+  }
+ ],
+ "questionnaire": [
+  {
+   "q_no": 4,
+   "raw_answer": "Delivery 2 weeks from PO",
+   "evidence_type": "claim",
+   "confidence": "medium",
+   "value_number": 14,
+   "value_unit": "days",
+   "evidence_snippet": "Delivery 2 weeks from PO",
+   "source": {
+    "file_index": 1,
+    "region": "email body line 11"
+   }
+  },
+  {
+   "q_no": 5,
+   "raw_answer": "Payment 60 days ok for us",
+   "evidence_type": "claim",
+   "confidence": "high",
+   "value_bool": true,
+   "evidence_snippet": "Payment 60 days ok for us",
+   "source": {
+    "file_index": 1,
+    "region": "email body line 11"
+   }
+  }
+ ],
+ "discounts": [],
+ "unresolved_references": [
+  {
+   "text": "rest same as last year",
+   "source": {
+    "file_index": 1,
+    "region": "email body line 8"
+   }
+  }
+ ],
+ "other_notes": [
+  "Material 'as per your spec' (line 11). This is a general statement with no line detail.",
+  "Q1, Q2, Q3, Q6, Q7 and Q8 are not addressed. No ISO certificate or other attachment was received.",
+  "No prices were given for L13-L16, L22-L24 or L27-L28. L13 and L14 are 7-ply, L15 and L16 are E-flute mailers, and L22 is a sheet roll. The mailers and the sheet roll are not covered by the 3-ply or 5-ply price statement. The rest depend on the 'same as last year' reference.",
+  "L30 (void-fill roll) has no price either, and nothing in the email mentions it.",
+  "Per-kg pricing for cartons cannot be compared with per-piece quantities without carton weights, which are not provided.",
+  "The quote has no stated validity, no tax treatment, and no freight amount."
+ ],
+ "extraction_warnings": [
+  "The 3-ply and 5-ply prices are per kg and one statement covers many RFQ lines. The unit of '38' is inferred as Rs/kg.",
+  "Mapping the group prices to accessory items (partitions, tray, layer pad, pallet sleeve) is uncertain, so those lines are marked low.",
+  "'Rest same as last year' refers to prices that are not in the files, so no prices were assumed for the remaining lines.",
+  "The email gives no tax or freight amount."
+ ],
+ "quote_reference": null,
+ "validity_days": null,
+ "supersedes_note": null,
+ "currency_code": "INR",
+ "currency_evidence": "Rs 42/kg ... Rs 31 per roll, 72mm printed tape Rs 55",
+ "tax_treatment": "not_stated",
+ "tax_rate_percent": null,
+ "tax_text": null,
+ "freight_type": "extra_unquantified",
+ "freight_percent": null,
+ "freight_amount": null,
+ "freight_text": "freight extra",
+ "freight_where": "email body line 8",
+ "payment_terms_text": "Payment 60 days ok for us",
+ "payment_days": 60,
+ "lead_time_days": 14,
+ "lead_time_text": "Delivery 2 weeks from PO"
+}

@@ -1,0 +1,593 @@
+{
+ "document_overview": "Word offer letter from Pacific Pack Solutions Pte Ltd (Singapore) with prices in USD. Most prices are in prose paragraphs (\u00b68-\u00b610, \u00b622), and a table covers mailers, partitions, pads and the roll (\u00b612-\u00b620). Edge protectors, pallet sleeves and void-fill rolls are explicitly not quoted.",
+ "validity_days": 45,
+ "quote_date": "2026-10-31",
+ "lines": [
+  {
+   "raw_text": "USD 0.105 per piece for 250x200x150 mm",
+   "rfq_line_no": 1,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size matches; listed under the 3-ply range",
+   "unit_price": 0.105,
+   "price_basis": "per_unit",
+   "uom": "pc",
+   "currency": "USD",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "paragraph": 8
+   },
+   "source_snippet": "USD 0.105 per piece for 250x200x150 mm"
+  },
+  {
+   "raw_text": "USD 0.124 for the 300x200x150 mm printed carton",
+   "rfq_line_no": 2,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size and printed match; 3-ply range",
+   "unit_price": 0.124,
+   "price_basis": "per_unit",
+   "uom": "pc",
+   "currency": "USD",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "paragraph": 8
+   },
+   "source_snippet": "USD 0.124 for the 300x200x150 mm printed carton",
+   "notes": "Per piece assumed from the sentence context ('per piece' stated for the first price)."
+  },
+  {
+   "raw_text": "USD 0.175 for 350x250x200 mm",
+   "rfq_line_no": 3,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size matches; 3-ply range",
+   "unit_price": 0.175,
+   "price_basis": "per_unit",
+   "uom": "pc",
+   "currency": "USD",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "paragraph": 8
+   },
+   "source_snippet": "USD 0.175 for 350x250x200 mm"
+  },
+  {
+   "raw_text": "USD 0.221 for 400x300x200 mm",
+   "rfq_line_no": 4,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size matches; 3-ply range",
+   "unit_price": 0.221,
+   "price_basis": "per_unit",
+   "uom": "pc",
+   "currency": "USD",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "paragraph": 8
+   },
+   "source_snippet": "USD 0.221 for 400x300x200 mm"
+  },
+  {
+   "raw_text": "small e-commerce carton (200x150x100 mm) is USD 57.65 per thousand pieces",
+   "rfq_line_no": 5,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size and e-com small description match",
+   "unit_price": 57.65,
+   "price_basis": "per_n_units",
+   "basis_quantity": 1000,
+   "uom": "pc",
+   "currency": "USD",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "paragraph": 8
+   },
+   "source_snippet": "USD 57.65 per thousand pieces",
+   "notes": "Price per 1000 pieces, not per piece."
+  },
+  {
+   "raw_text": "450x350x250 mm C-flute carton is USD 0.281 per piece",
+   "rfq_line_no": 6,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size and C-flute match",
+   "unit_price": 0.281,
+   "price_basis": "per_unit",
+   "uom": "pc",
+   "currency": "USD",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "paragraph": 8
+   },
+   "source_snippet": "450x350x250 mm C-flute carton is USD 0.281 per piece"
+  },
+  {
+   "raw_text": "In 5-ply we offer 400x300x300 mm at USD 0.353",
+   "rfq_line_no": 7,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size and 5-ply match",
+   "unit_price": 0.353,
+   "price_basis": "per_unit",
+   "uom": "pc",
+   "currency": "USD",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "paragraph": 9
+   },
+   "source_snippet": "400x300x300 mm at USD 0.353 ... all per piece",
+   "notes": "BCT not stated."
+  },
+  {
+   "raw_text": "For the heavy-duty 450x300x300 mm carton we can offer USD 0.440 per piece",
+   "rfq_line_no": 14,
+   "candidate_line_nos": [
+    8,
+    14
+   ],
+   "mapping_confidence": "low",
+   "mapping_rationale": "450x300x300 appears in both L8 (5-ply master, printed, BCT 400) and L14 (7-ply heavy-duty export, BCT 750). Supplier says 'heavy-duty' with no ply or print stated, which suggests L14, but this is not certain. No other supplier line covers L8 or L14.",
+   "unit_price": 0.44,
+   "price_basis": "per_unit",
+   "uom": "pc",
+   "currency": "USD",
+   "confidence": "low",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "paragraph": 10
+   },
+   "source_snippet": "For the heavy-duty 450x300x300 mm carton we can offer USD 0.440 per piece",
+   "notes": "Ambiguous mapping. Price is low for a 7-ply BCB carton compared with the 7-ply 600x500x500 at 1.352. Print and ply are not stated, so buyer should confirm."
+  },
+  {
+   "raw_text": "500x400x300 mm at USD 0.491",
+   "rfq_line_no": 9,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size and 5-ply match",
+   "unit_price": 0.491,
+   "price_basis": "per_unit",
+   "uom": "pc",
+   "currency": "USD",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "paragraph": 9
+   },
+   "source_snippet": "500x400x300 mm at USD 0.491"
+  },
+  {
+   "raw_text": "600x400x400 mm at USD 0.701",
+   "rfq_line_no": 10,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size and 5-ply match",
+   "unit_price": 0.701,
+   "price_basis": "per_unit",
+   "uom": "pc",
+   "currency": "USD",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "paragraph": 9
+   },
+   "source_snippet": "600x400x400 mm at USD 0.701"
+  },
+  {
+   "raw_text": "the 2-colour 350x300x250 mm at USD 0.347",
+   "rfq_line_no": 11,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size, 5-ply and 2-colour match",
+   "unit_price": 0.347,
+   "price_basis": "per_unit",
+   "uom": "pc",
+   "currency": "USD",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "paragraph": 9
+   },
+   "source_snippet": "the 2-colour 350x300x250 mm at USD 0.347"
+  },
+  {
+   "raw_text": "550x450x350 mm at USD 0.652",
+   "rfq_line_no": 12,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size and 5-ply match",
+   "unit_price": 0.652,
+   "price_basis": "per_unit",
+   "uom": "pc",
+   "currency": "USD",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "paragraph": 9
+   },
+   "source_snippet": "550x450x350 mm at USD 0.652"
+  },
+  {
+   "raw_text": "7-ply 600x500x500 mm heavy-duty carton is USD 1.352 per piece",
+   "rfq_line_no": 13,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size and 7-ply match",
+   "unit_price": 1.352,
+   "price_basis": "per_unit",
+   "uom": "pc",
+   "currency": "USD",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "paragraph": 10
+   },
+   "source_snippet": "Our 7-ply 600x500x500 mm heavy-duty carton is USD 1.352 per piece"
+  },
+  {
+   "raw_text": "Mailer 300x220x80 E-flute, 2-col | 0.163 | per pc",
+   "rfq_line_no": 15,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size, E-flute and 2-colour match",
+   "unit_price": 0.163,
+   "price_basis": "per_unit",
+   "uom": "pc",
+   "currency": "USD",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "paragraph": 13,
+    "region": "table row 2"
+   },
+   "source_snippet": "Mailer 300x220x80 E-flute, 2-col | 0.163 | per pc"
+  },
+  {
+   "raw_text": "Mailer 220x160x60 E-flute | 0.092 | per pc",
+   "rfq_line_no": 16,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size and E-flute match",
+   "unit_price": 0.092,
+   "price_basis": "per_unit",
+   "uom": "pc",
+   "currency": "USD",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "paragraph": 14,
+    "region": "table row 3"
+   },
+   "source_snippet": "Mailer 220x160x60 E-flute | 0.092 | per pc"
+  },
+  {
+   "raw_text": "Tray + lid 400x300x100 | 0.229 | per pc",
+   "rfq_line_no": 17,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size and tray+lid match",
+   "unit_price": 0.229,
+   "price_basis": "per_unit",
+   "uom": "pc",
+   "currency": "USD",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "paragraph": 15,
+    "region": "table row 4"
+   },
+   "source_snippet": "Tray + lid 400x300x100 | 0.229 | per pc"
+  },
+  {
+   "raw_text": "Partition 12-cell | 0.086 | per set",
+   "rfq_line_no": 18,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Cell count matches",
+   "unit_price": 0.086,
+   "price_basis": "per_unit",
+   "uom": "set",
+   "currency": "USD",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "paragraph": 16,
+    "region": "table row 5"
+   },
+   "source_snippet": "Partition 12-cell | 0.086 | per set"
+  },
+  {
+   "raw_text": "Partition 24-cell | 0.134 | per set",
+   "rfq_line_no": 19,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Cell count matches",
+   "unit_price": 0.134,
+   "price_basis": "per_unit",
+   "uom": "set",
+   "currency": "USD",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "paragraph": 17,
+    "region": "table row 6"
+   },
+   "source_snippet": "Partition 24-cell | 0.134 | per set"
+  },
+  {
+   "raw_text": "Partition 6-cell | 0.055 | per set",
+   "rfq_line_no": 20,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Cell count matches",
+   "unit_price": 0.055,
+   "price_basis": "per_unit",
+   "uom": "set",
+   "currency": "USD",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "paragraph": 18,
+    "region": "table row 7"
+   },
+   "source_snippet": "Partition 6-cell | 0.055 | per set"
+  },
+  {
+   "raw_text": "Layer pad 1200x1000, 3-ply | 0.298 | per pc",
+   "rfq_line_no": 21,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size and 3-ply match",
+   "unit_price": 0.298,
+   "price_basis": "per_unit",
+   "uom": "pc",
+   "currency": "USD",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "paragraph": 19,
+    "region": "table row 8"
+   },
+   "source_snippet": "Layer pad 1200x1000, 3-ply | 0.298 | per pc"
+  },
+  {
+   "raw_text": "Single-face roll 1 m x 50 m | 7.20 | per roll",
+   "rfq_line_no": 22,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size and single-face match",
+   "unit_price": 7.2,
+   "price_basis": "per_unit",
+   "uom": "roll",
+   "currency": "USD",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "paragraph": 20,
+    "region": "table row 9"
+   },
+   "source_snippet": "Single-face roll 1 m x 50 m | 7.20 | per roll"
+  },
+  {
+   "raw_text": "Clear BOPP tape 48 mm x 65 m (40 mic) is USD 13.06 per box; each carton box contains 36 rolls",
+   "rfq_line_no": 25,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size, micron and clear match",
+   "unit_price": 13.06,
+   "price_basis": "per_pack",
+   "basis_quantity": 36,
+   "uom": "box",
+   "currency": "USD",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "paragraph": 22
+   },
+   "source_snippet": "USD 13.06 per box; each carton box contains 36 rolls",
+   "pack_size_evidence": "each carton box contains 36 rolls",
+   "notes": "Price is per box of 36 rolls (RFQ unit is rolls)."
+  },
+  {
+   "raw_text": "Printed 72 mm x 65 m logo tape is USD 15.40 per box",
+   "rfq_line_no": 26,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size and printed logo match",
+   "unit_price": 15.4,
+   "price_basis": "per_pack",
+   "basis_quantity": null,
+   "uom": "box",
+   "currency": "USD",
+   "confidence": "low",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "paragraph": 22
+   },
+   "source_snippet": "Printed 72 mm x 65 m logo tape is USD 15.40 per box",
+   "notes": "Pack size not stated for the printed tape. The 36 rolls per box statement is made only for the clear 48 mm tape, so it must not be assumed here. Buyer should confirm rolls per box."
+  },
+  {
+   "raw_text": "Hand stretch film 23 mic is USD 1.92/kg",
+   "rfq_line_no": 27,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Hand film, 23 micron match",
+   "unit_price": 1.92,
+   "price_basis": "per_kg",
+   "uom": "kg",
+   "currency": "USD",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "paragraph": 22
+   },
+   "source_snippet": "Hand stretch film 23 mic is USD 1.92/kg",
+   "notes": "Width 500 mm not stated explicitly."
+  },
+  {
+   "raw_text": "machine film 17 mic is USD 2.02/kg",
+   "rfq_line_no": 28,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Machine film, 17 micron match",
+   "unit_price": 2.02,
+   "price_basis": "per_kg",
+   "uom": "kg",
+   "currency": "USD",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "paragraph": 22
+   },
+   "source_snippet": "machine film 17 mic is USD 2.02/kg",
+   "notes": "Width 500 mm and pre-stretch not stated explicitly."
+  }
+ ],
+ "questionnaire": [
+  {
+   "q_no": 1,
+   "raw_answer": "Yes, our Singapore plant is ISO 9001:2015 certified (certificate to follow).",
+   "evidence_type": "claim",
+   "confidence": "high",
+   "value_bool": true,
+   "evidence_snippet": "certificate to follow",
+   "source": {
+    "file_index": 1,
+    "paragraph": 27
+   }
+  },
+  {
+   "q_no": 2,
+   "raw_answer": "Yes, third-party SGS reports per shipment.",
+   "evidence_type": "claim",
+   "confidence": "high",
+   "value_bool": true,
+   "value_text": "SGS third-party reports per shipment (per shipment, not per batch)",
+   "evidence_snippet": "third-party SGS reports per shipment",
+   "source": {
+    "file_index": 1,
+    "paragraph": 28
+   }
+  },
+  {
+   "q_no": 3,
+   "raw_answer": "500 tonnes per month across our regional network.",
+   "evidence_type": "claim",
+   "confidence": "high",
+   "value_number": 500,
+   "value_unit": "tonnes/month",
+   "value_text": "Across regional network, not a single plant",
+   "evidence_snippet": "500 tonnes per month across our regional network",
+   "source": {
+    "file_index": 1,
+    "paragraph": 29
+   }
+  },
+  {
+   "q_no": 4,
+   "raw_answer": "21 days to Hosur DC.",
+   "evidence_type": "claim",
+   "confidence": "high",
+   "value_number": 21,
+   "value_unit": "days",
+   "evidence_snippet": "21 days to Hosur DC",
+   "source": {
+    "file_index": 1,
+    "paragraph": 30
+   }
+  },
+  {
+   "q_no": 5,
+   "raw_answer": "Not possible; LC 30 days.",
+   "evidence_type": "claim",
+   "confidence": "high",
+   "value_bool": false,
+   "evidence_snippet": "Not possible; LC 30 days",
+   "source": {
+    "file_index": 1,
+    "paragraph": 31
+   }
+  },
+  {
+   "q_no": 6,
+   "raw_answer": "Yes, FSC-certified board available as standard.",
+   "evidence_type": "claim",
+   "confidence": "high",
+   "value_bool": true,
+   "evidence_snippet": "FSC-certified board available as standard",
+   "source": {
+    "file_index": 1,
+    "paragraph": 32
+   }
+  },
+  {
+   "q_no": 7,
+   "raw_answer": "Chennai warehouse is approx. 280 km from Hosur.",
+   "evidence_type": "claim",
+   "confidence": "medium",
+   "value_number": 280,
+   "value_unit": "km",
+   "value_text": "Distance is to the Chennai warehouse; manufacturing plant is in Singapore",
+   "evidence_snippet": "Chennai warehouse is approx. 280 km from Hosur",
+   "source": {
+    "file_index": 1,
+    "paragraph": 33
+   }
+  },
+  {
+   "q_no": 8,
+   "raw_answer": "Straits Confectionery (demo); Lion City Foods (demo).",
+   "evidence_type": "claim",
+   "confidence": "high",
+   "value_text": "Straits Confectionery; Lion City Foods",
+   "evidence_snippet": "Straits Confectionery (demo); Lion City Foods (demo)",
+   "source": {
+    "file_index": 1,
+    "paragraph": 34
+   }
+  }
+ ],
+ "discounts": [],
+ "unresolved_references": [],
+ "other_notes": [
+  "Not quoted (explicit): edge protectors (L23, L24), pallet sleeves (L29) and void-fill rolls (L30) - 'sourced locally by our partners'; supplier offers to include them in a second round.",
+  "Prices are in USD, with invoices in USD. Exchange rate risk is with the buyer.",
+  "Payment is 30 days from bill of lading against irrevocable LC. Supplier declines 60-day payment terms.",
+  "Supplier is based in Singapore, with an India warehouse at Sriperumbudur, Chennai. Goods are converted ex-Singapore and delivered cleared to Hosur, with import duties included.",
+  "The ISO 9001 certificate is not attached; the supplier says 'to follow'.",
+  "Supplier's quoted BCT/ECT reports are per shipment, whereas the RFQ asks for every batch.",
+  "No BCT values, GSM or flute specs are confirmed for most carton lines. Prices are given by size and ply only.",
+  "Supplier letter date: 31 October 2026. Validity is 45 days."
+ ],
+ "extraction_warnings": [
+  "L8 vs L14: the 'heavy-duty 450x300x300 mm' USD 0.440 line is ambiguous. It has been mapped to L14 with low confidence, and L8 (5-ply printed master carton) is left unpriced.",
+  "L26: the printed tape is priced per box but the pack size is not stated. The 36-roll pack size applies only to the clear tape, so basis_quantity is left null.",
+  "L2 and several other carton prices have no explicit 'per piece' wording. Per piece is inferred from the paragraph context (\u00b68 and \u00b69 'all per piece').",
+  "Q2 and Q3 answers differ from what was asked: reports are per shipment rather than per batch, and capacity is across a regional network."
+ ],
+ "supersedes_note": null,
+ "currency_code": "USD",
+ "currency_evidence": "All prices below are in US Dollars (USD), delivered to your Hosur DC",
+ "tax_treatment": "exclusive",
+ "tax_rate_percent": null,
+ "tax_text": "inclusive of import duties but exclusive of Indian GST",
+ "freight_type": "included",
+ "freight_percent": null,
+ "freight_amount": null,
+ "freight_text": "delivered to your Hosur DC, inclusive of import duties",
+ "freight_where": "\u00b66",
+ "payment_terms_text": "30 days from bill of lading against irrevocable LC",
+ "payment_days": 30,
+ "lead_time_days": 21,
+ "lead_time_text": "21 days from PO (ex-Singapore converting, cleared and delivered to Hosur)"
+}

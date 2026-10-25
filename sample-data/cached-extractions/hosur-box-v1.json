@@ -1,0 +1,383 @@
+{
+ "document_overview": "WhatsApp photo of a printed, angled rate card from Hosur Box Works (effective 01 Oct 2026). It lists 18 items. The bottom-right of the photo is blurred or shadowed, so the last 4 item prices and units and the end of the footnote can't be read.",
+ "currency_code": "INR",
+ "currency_evidence": "\"All rates in Rupees, INCLUSIVE of GST 18%, delivered Hosur\"",
+ "tax_treatment": "inclusive",
+ "tax_rate_percent": 18,
+ "tax_text": "All rates in Rupees, INCLUSIVE of GST 18%, delivered Hosur",
+ "freight_type": "included",
+ "freight_text": "delivered Hosur",
+ "freight_where": "File 1, header line under 'RATE CARD - effective 01 Oct 2026'",
+ "quote_date": "2026-10-01",
+ "quote_reference": "Rate card effective 01 Oct 2026",
+ "payment_days": null,
+ "validity_days": null,
+ "lead_time_days": null,
+ "lines": [
+  {
+   "raw_text": "3 Ply Box 250x200x150 | 10.4 | pc",
+   "raw_description": "3 Ply Box 250x200x150",
+   "rfq_line_no": 1,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size and 3-ply match. Flute and GSM are not stated on the rate card.",
+   "unit_price": 10.4,
+   "price_basis": "per_unit",
+   "uom": "pc",
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "region": "row 1 of rate table"
+   },
+   "source_snippet": "3 Ply Box 250x200x150 10.4 pc",
+   "tax_note": "Inclusive of GST 18%"
+  },
+  {
+   "raw_text": "3 Ply Box 300x200x150 (1 col) | 13.3 | pc",
+   "raw_description": "3 Ply Box 300x200x150 (1 col)",
+   "rfq_line_no": 2,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size, 3-ply and 1-colour print match.",
+   "unit_price": 13.3,
+   "price_basis": "per_unit",
+   "uom": "pc",
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "region": "row 2 of rate table"
+   },
+   "source_snippet": "3 Ply Box 300x200x150 (1 col) 13.3 pc",
+   "tax_note": "Inclusive of GST 18%",
+   "notes": "The footer says 'Printing extra @ Rs 0.80 per colour per ...'. It is unclear whether this price already includes the 1-colour print. Please confirm with the supplier."
+  },
+  {
+   "raw_text": "3 Ply Box 350x250x200 | 18.2 | pc",
+   "raw_description": "3 Ply Box 350x250x200",
+   "rfq_line_no": 3,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size and 3-ply match.",
+   "unit_price": 18.2,
+   "price_basis": "per_unit",
+   "uom": "pc",
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "region": "row 3 of rate table"
+   },
+   "source_snippet": "3 Ply Box 350x250x200 18.2 pc",
+   "tax_note": "Inclusive of GST 18%"
+  },
+  {
+   "raw_text": "3 Ply Box 400x300x200 | 22.3 | pc",
+   "raw_description": "3 Ply Box 400x300x200",
+   "rfq_line_no": 4,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size and 3-ply match.",
+   "unit_price": 22.3,
+   "price_basis": "per_unit",
+   "uom": "pc",
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "region": "row 4 of rate table"
+   },
+   "source_snippet": "3 Ply Box 400x300x200 22.3 pc",
+   "tax_note": "Inclusive of GST 18%"
+  },
+  {
+   "raw_text": "3 Ply Box 200x150x100 | 6.3 | pc",
+   "raw_description": "3 Ply Box 200x150x100",
+   "rfq_line_no": 5,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size and 3-ply match.",
+   "unit_price": 6.3,
+   "price_basis": "per_unit",
+   "uom": "pc",
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "region": "row 5 of rate table"
+   },
+   "source_snippet": "3 Ply Box 200x150x100 6.3 pc",
+   "tax_note": "Inclusive of GST 18%"
+  },
+  {
+   "raw_text": "5 Ply Box 400x300x300 | 34.1 | pc",
+   "raw_description": "5 Ply Box 400x300x300",
+   "rfq_line_no": 7,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size and 5-ply match. BCT is not stated.",
+   "unit_price": 34.1,
+   "price_basis": "per_unit",
+   "uom": "pc",
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "region": "row 6 of rate table"
+   },
+   "source_snippet": "5 Ply Box 400x300x300 34.1 pc",
+   "tax_note": "Inclusive of GST 18%"
+  },
+  {
+   "raw_text": "5 Ply Box 450x300x300 | 41.2 | pc",
+   "raw_description": "5 Ply Box 450x300x300",
+   "rfq_line_no": 8,
+   "mapping_confidence": "medium",
+   "mapping_rationale": "Size and 5-ply match L8. L8 asks for a 1-colour print and BCT >= 400, but the rate card says neither. L14 has the same size but is 7-ply, so it is not a match.",
+   "unit_price": 41.2,
+   "price_basis": "per_unit",
+   "uom": "pc",
+   "currency": "INR",
+   "confidence": "medium",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "region": "row 7 of rate table"
+   },
+   "source_snippet": "5 Ply Box 450x300x300 41.2 pc",
+   "tax_note": "Inclusive of GST 18%",
+   "notes": "The print is not mentioned. The 'Printing extra Rs 0.80 per colour' footnote may add to this price."
+  },
+  {
+   "raw_text": "5 Ply Box 500x400x300 | 50.3 | pc",
+   "raw_description": "5 Ply Box 500x400x300",
+   "rfq_line_no": 9,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size and 5-ply match.",
+   "unit_price": 50.3,
+   "price_basis": "per_unit",
+   "uom": "pc",
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "region": "row 8 of rate table"
+   },
+   "source_snippet": "5 Ply Box 500x400x300 50.3 pc",
+   "tax_note": "Inclusive of GST 18%"
+  },
+  {
+   "raw_text": "5 Ply Box 600x400x400 | 69.3 | pc",
+   "raw_description": "5 Ply Box 600x400x400",
+   "rfq_line_no": 10,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size and 5-ply match.",
+   "unit_price": 69.3,
+   "price_basis": "per_unit",
+   "uom": "pc",
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "region": "row 9 of rate table"
+   },
+   "source_snippet": "5 Ply Box 600x400x400 69.3 pc",
+   "tax_note": "Inclusive of GST 18%"
+  },
+  {
+   "raw_text": "5 Ply Box 350x300x250 (2 col) | 35.5 | pc",
+   "raw_description": "5 Ply Box 350x300x250 (2 col)",
+   "rfq_line_no": 11,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size, 5-ply and 2-colour print match.",
+   "unit_price": 35.5,
+   "price_basis": "per_unit",
+   "uom": "pc",
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "region": "row 10 of rate table"
+   },
+   "source_snippet": "5 Ply Box 350x300x250 (2 col) 35.5 pc",
+   "tax_note": "Inclusive of GST 18%",
+   "notes": "It is unclear whether the print charge is included. See the printing footnote."
+  },
+  {
+   "raw_text": "7 Ply Box 600x500x500 | 140 | pc",
+   "raw_description": "7 Ply Box 600x500x500",
+   "rfq_line_no": 13,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size and 7-ply match.",
+   "unit_price": 140,
+   "price_basis": "per_unit",
+   "uom": "pc",
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "region": "row 11 of rate table"
+   },
+   "source_snippet": "7 Ply Box 600x500x500 140 pc",
+   "tax_note": "Inclusive of GST 18%"
+  },
+  {
+   "raw_text": "Mailer E-flute 220x160x60 | 9.1 | pc",
+   "raw_description": "Mailer E-flute 220x160x60",
+   "rfq_line_no": 16,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size and E-flute mailer match. Die-cut and tuck-front are not stated.",
+   "unit_price": 9.1,
+   "price_basis": "per_unit",
+   "uom": "pc",
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "region": "row 12 of rate table"
+   },
+   "source_snippet": "Mailer E-flute 220x160x60 9.1 pc",
+   "tax_note": "Inclusive of GST 18%"
+  },
+  {
+   "raw_text": "Partition 12 cell | 438 | bundle of 50 sets",
+   "raw_description": "Partition 12 cell",
+   "rfq_line_no": 18,
+   "mapping_confidence": "high",
+   "mapping_rationale": "12-cell partition matches L18.",
+   "unit_price": 438,
+   "price_basis": "per_pack",
+   "basis_quantity": 50,
+   "pack_size_evidence": "bundle of 50 sets",
+   "uom": "bundle",
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "region": "row 13 of rate table"
+   },
+   "source_snippet": "Partition 12 cell 438 bundle of 50 sets",
+   "tax_note": "Inclusive of GST 18%"
+  },
+  {
+   "raw_text": "Partition 6 cell | 284 | bundle of 50 sets",
+   "raw_description": "Partition 6 cell",
+   "rfq_line_no": 20,
+   "mapping_confidence": "high",
+   "mapping_rationale": "6-cell partition matches L20.",
+   "unit_price": 284,
+   "price_basis": "per_pack",
+   "basis_quantity": 50,
+   "pack_size_evidence": "bundle of 50 sets",
+   "uom": "bundle",
+   "currency": "INR",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "region": "row 14 of rate table"
+   },
+   "source_snippet": "Partition 6 cell 284 bundle of 50 sets",
+   "tax_note": "Inclusive of GST 18%"
+  },
+  {
+   "raw_text": "Layer Pad 1200x1000 | (rate blurred) | (unit blurred)",
+   "raw_description": "Layer Pad 1200x1000",
+   "rfq_line_no": 21,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Item name and size match L21.",
+   "unit_price": null,
+   "price_basis": "unknown",
+   "uom": null,
+   "currency": "INR",
+   "confidence": "low",
+   "legibility": "unreadable",
+   "source": {
+    "file_index": 1,
+    "region": "row 15 of rate table, blurred rate and unit columns"
+   },
+   "source_snippet": "Layer Pad 1200x1000 [rate blurred]",
+   "notes": "The rate and unit are blurred and cut off. The digits may begin with '32' but cannot be read, so no price is given."
+  },
+  {
+   "raw_text": "Edge Protector 50x50x5 1m | (rate blurred) | (probably 100 pcs, blurred)",
+   "raw_description": "Edge Protector 50x50x5 1m",
+   "rfq_line_no": 23,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size and length match L23.",
+   "unit_price": null,
+   "price_basis": "unknown",
+   "uom": null,
+   "currency": "INR",
+   "confidence": "low",
+   "legibility": "unreadable",
+   "source": {
+    "file_index": 1,
+    "region": "row 16 of rate table, blurred rate and unit columns"
+   },
+   "source_snippet": "Edge Protector 50x50x5 1m [rate blurred]",
+   "notes": "The rate is blurred. The unit appears to be per 100 pcs but is not reliable. No price is given."
+  },
+  {
+   "raw_text": "Edge Protector 35x35x3 0.8m | (rate blurred) | (probably 100 pcs, blurred)",
+   "raw_description": "Edge Protector 35x35x3 0.8m",
+   "rfq_line_no": 24,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Size and length match L24.",
+   "unit_price": null,
+   "price_basis": "unknown",
+   "uom": null,
+   "currency": "INR",
+   "confidence": "low",
+   "legibility": "unreadable",
+   "source": {
+    "file_index": 1,
+    "region": "row 17 of rate table, blurred rate and unit columns"
+   },
+   "source_snippet": "Edge Protector 35x35x3 0.8m [rate blurred]",
+   "notes": "The rate is blurred. The unit appears to be per 100 pcs but is not reliable. No price is given."
+  },
+  {
+   "raw_text": "Pallet Sleeve 1200x1000x1000 | (rate blurred) | (unit blurred)",
+   "raw_description": "Pallet Sleeve 1200x1000x1000",
+   "rfq_line_no": 29,
+   "mapping_confidence": "high",
+   "mapping_rationale": "Item name and size match L29.",
+   "unit_price": null,
+   "price_basis": "unknown",
+   "uom": null,
+   "currency": "INR",
+   "confidence": "low",
+   "legibility": "unreadable",
+   "source": {
+    "file_index": 1,
+    "region": "row 18 of rate table, blurred rate and unit columns"
+   },
+   "source_snippet": "Pallet Sleeve 1200x1000x1000 [rate blurred]",
+   "notes": "The rate and unit are blurred, so no price is given."
+  }
+ ],
+ "questionnaire": [],
+ "discounts": [],
+ "unresolved_references": [],
+ "other_notes": [
+  "Footnote (partly legible): 'Printing extra @ Rs 0.80 per colour per ...'. The rest of the line is blurred. A second blurred phrase seems to read 'Rates subject to paper price change', but it is not reliably legible. The printing charge basis (per box or per piece) is unknown.",
+  "The card has a '(DEMO)' marker and a 'Fictional rate card generated for a prototype demo' line, so check that it is genuine.",
+  "No rates are given for RFQ lines L6, L12, L14, L15, L17, L19, L22, L25, L26, L27, L28 and L30. They were not on the rate card and are not mentioned as declined.",
+  "The WhatsApp message from Murugan has no prices, terms or questionnaire answers.",
+  "The card gives no payment terms, validity, lead time, ISO certificate or other questionnaire answers."
+ ],
+ "extraction_warnings": [
+  "The bottom-right of the photo is blurred or shadowed. The rates for the layer pad, both edge protectors and the pallet sleeve are unreadable, so no numbers were guessed.",
+  "The printing footnote is cut off, so the print surcharge can't be fully interpreted. It may apply on top of the L2, L8 and L11 prices.",
+  "The L8 mapping (5-ply 450x300x300) does not confirm the 1-colour print or the BCT requirement.",
+  "The card does not state flute, GSM or BCT specifications, so those can't be verified for any line."
+ ]
+}
