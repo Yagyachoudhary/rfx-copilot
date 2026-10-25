@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Default tokens (violet palette). Organization themes override these at runtime. */
+:root {
+  --c-brand-start: 62 15 189;
+  --c-brand-mid: 109 41 214;
+  --c-brand-end: 144 50 246;
+  --c-primary: 91 31 209;
+  --c-on-primary: 255 255 255;
+  --c-accent: 47 128 255;
+  --c-bg: 245 247 251;
+  --c-surface: 255 255 255;
+  --c-surface-muted: 231 228 243;
+  --c-frame: 158 153 201;
+  --c-text: 23 21 43;
+  --c-muted: 94 97 112;
+  --c-border: 229 231 239;
+  --c-success: 46 173 85;
+  --c-warning: 245 158 11;
+  --c-danger: 233 71 61;
+  --c-nav-bg: 62 15 189;
+  --c-nav-fg: 255 255 255;
+  --radius: 10px;
+  --density-row: 2rem;
+  --density-pad: 0.5rem;
+  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --nav-gradient: linear-gradient(180deg, #3E0FBD 0%, #6D29D6 100%);
+}
+
+@layer base {
+  html { -webkit-font-smoothing: antialiased; }
+  body { @apply bg-canvas text-ink font-sans; font-size: 14px; }
+  :focus-visible { outline: 2px solid rgb(var(--c-accent)); outline-offset: 2px; border-radius: 4px; }
+  h1, h2, h3 { letter-spacing: -0.01em; }
+  input, select, textarea { font: inherit; }
+}
+
+@layer components {
+  .card { @apply bg-surface border border-line; border-radius: var(--radius); }
+  .btn { @apply inline-flex items-center justify-center gap-1.5 whitespace-nowrap font-semibold text-[13px] px-3 h-8 border transition-colors disabled:opacity-50 disabled:cursor-not-allowed; border-radius: calc(var(--radius) - 2px); }
+  .btn-primary { @apply btn bg-primary text-primary-fg border-transparent hover:opacity-90; }
+  .btn-secondary { @apply btn bg-surface text-ink border-line hover:bg-surface-muted/60; }
+  .btn-ghost { @apply btn bg-transparent text-ink-muted border-transparent hover:bg-surface-muted/60 hover:text-ink; }
+  .btn-danger { @apply btn bg-surface border-line; color: rgb(var(--c-danger)); }
+  .btn-sm { @apply h-7 px-2 text-xs; }
+  .input { @apply w-full bg-surface border border-line px-2.5 h-8 text-[13px] text-ink placeholder:text-ink-muted/70 focus:border-accent focus:outline-none; border-radius: calc(var(--radius) - 3px); }
+  textarea.input { @apply h-auto py-2; }
+  .label { @apply block text-[12px] font-semibold text-ink-muted mb-1; }
+  .chip { @apply inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-semibold border whitespace-nowrap; }
+  .chip-ok { background: rgb(var(--c-success) / 0.12); border-color: rgb(var(--c-success) / 0.35); color: color-mix(in srgb, rgb(var(--c-success)) 55%, #000); }
+  .chip-warn { background: rgb(var(--c-warning) / 0.14); border-color: rgb(var(--c-warning) / 0.45); color: color-mix(in srgb, rgb(var(--c-warning)) 45%, #000); }
+  .chip-bad { background: rgb(var(--c-danger) / 0.10); border-color: rgb(var(--c-danger) / 0.35); color: color-mix(in srgb, rgb(var(--c-danger)) 70%, #000); }
+  .chip-info { background: rgb(var(--c-accent) / 0.10); border-color: rgb(var(--c-accent) / 0.30); color: color-mix(in srgb, rgb(var(--c-accent)) 60%, #000); }
+  .chip-muted { @apply bg-surface-muted/60 border-line text-ink-muted; }
+  .chip-brand { background: rgb(var(--c-brand-mid) / 0.10); border-color: rgb(var(--c-brand-mid) / 0.3); color: rgb(var(--c-brand-start)); }
+  .tbl { @apply w-full text-[13px] border-separate border-spacing-0; }
+  .tbl th { @apply sticky top-0 z-10 bg-surface text-left text-[12px] font-medium text-ink-muted border-b border-line px-2 py-2; }
+  .tbl td { @apply border-b border-line px-2 align-top; padding-top: calc(var(--density-pad) * 0.8); padding-bottom: calc(var(--density-pad) * 0.8); }
+  .tbl tr:hover td { background: rgb(var(--c-surface-muted) / 0.25); }
+  .brand-gradient { background: linear-gradient(100deg, rgb(var(--c-brand-start)) 0%, rgb(var(--c-brand-mid)) 55%, rgb(var(--c-brand-end)) 100%); }
+  .ai-mark { background: linear-gradient(135deg, rgb(var(--c-accent)) 0%, rgb(var(--c-brand-end)) 100%); }
+  .num { font-variant-numeric: tabular-nums; }
+  .text-ok-strong { color: color-mix(in srgb, rgb(var(--c-success)) 55%, #000); }
+  .text-warn-strong { color: color-mix(in srgb, rgb(var(--c-warning)) 45%, #000); }
+  .text-bad-strong { color: color-mix(in srgb, rgb(var(--c-danger)) 70%, #000); }
+  .hatch { background-image: repeating-linear-gradient(135deg, rgb(var(--c-border)) 0 1px, transparent 1px 7px); }
+}
+
+.markdown table { @apply my-2 text-[12.5px] border-collapse; }
+.markdown th, .markdown td { @apply border border-line px-2 py-1 text-left; }
+.markdown th { @apply bg-surface-muted/50 font-semibold; }
+.markdown p { @apply my-1.5 leading-relaxed; }
+.markdown ul { @apply list-disc pl-5 my-1.5; }
+.markdown ol { @apply list-decimal pl-5 my-1.5; }
+.markdown code { @apply bg-surface-muted/60 px-1 rounded text-[12px]; }
+.markdown strong { @apply font-semibold; }
+.markdown h3, .markdown h4 { @apply font-semibold mt-3 mb-1; }
+
+.heat-1 { background: rgb(var(--c-success) / 0.16); }
+.heat-2 { background: rgb(var(--c-success) / 0.07); }
+.ring-target { box-shadow: 0 0 0 2px rgb(var(--c-accent)), 0 0 0 6px rgb(var(--c-accent) / 0.15); }
+@keyframes flash { 0% { background: rgb(var(--c-accent) / .28); } 100% { background: rgb(var(--c-accent) / .10); } }
+.hl { animation: flash 1.2s ease-out forwards; outline: 2px solid rgb(var(--c-accent)); outline-offset: -2px; }

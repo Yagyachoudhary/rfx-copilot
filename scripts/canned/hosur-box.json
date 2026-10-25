@@ -1,0 +1,341 @@
+{
+ "document_overview": "Phone photo of a printed rate card, angled and shadowed; lower rows blurred.",
+ "currency": {
+  "code": "INR"
+ },
+ "tax": {
+  "treatment": "inclusive",
+  "rate_percent": 18,
+  "text": "INCLUSIVE of GST 18%"
+ },
+ "freight": {
+  "type": "included",
+  "text": "delivered Hosur",
+  "source": {
+   "file_index": 1,
+   "region": "header"
+  }
+ },
+ "discounts": [],
+ "unresolved_references": [],
+ "other_notes": [
+  "Printing extra @ Rs 0.80 per colour per box (applies to printed lines L2, L11).",
+  "Rates subject to paper price change."
+ ],
+ "lines": [
+  {
+   "raw_text": "3 Ply Box 250x200x150",
+   "rfq_line_no": 1,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "pc",
+   "unit_price": 10.4,
+   "currency": "INR",
+   "price_basis": "per_unit",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "region": "rate table row 1"
+   },
+   "source_snippet": "3 Ply Box 250x200x150 | 10.4 | pc"
+  },
+  {
+   "raw_text": "3 Ply Box 300x200x150 (1 col)",
+   "rfq_line_no": 2,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "pc",
+   "unit_price": 13.3,
+   "currency": "INR",
+   "price_basis": "per_unit",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "region": "rate table row 2"
+   },
+   "source_snippet": "3 Ply Box 300x200x150 (1 col) | 13.3 | pc"
+  },
+  {
+   "raw_text": "3 Ply Box 350x250x200",
+   "rfq_line_no": 3,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "pc",
+   "unit_price": 18.2,
+   "currency": "INR",
+   "price_basis": "per_unit",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "region": "rate table row 3"
+   },
+   "source_snippet": "3 Ply Box 350x250x200 | 18.2 | pc"
+  },
+  {
+   "raw_text": "3 Ply Box 400x300x200",
+   "rfq_line_no": 4,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "pc",
+   "unit_price": 22.3,
+   "currency": "INR",
+   "price_basis": "per_unit",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "region": "rate table row 4"
+   },
+   "source_snippet": "3 Ply Box 400x300x200 | 22.3 | pc"
+  },
+  {
+   "raw_text": "3 Ply Box 200x150x100",
+   "rfq_line_no": 5,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "pc",
+   "unit_price": 6.3,
+   "currency": "INR",
+   "price_basis": "per_unit",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "region": "rate table row 5"
+   },
+   "source_snippet": "3 Ply Box 200x150x100 | 6.3 | pc"
+  },
+  {
+   "raw_text": "5 Ply Box 400x300x300",
+   "rfq_line_no": 7,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "pc",
+   "unit_price": 34.1,
+   "currency": "INR",
+   "price_basis": "per_unit",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "region": "rate table row 6"
+   },
+   "source_snippet": "5 Ply Box 400x300x300 | 34.1 | pc"
+  },
+  {
+   "raw_text": "5 Ply Box 450x300x300",
+   "rfq_line_no": 8,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "pc",
+   "unit_price": 41.2,
+   "currency": "INR",
+   "price_basis": "per_unit",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "region": "rate table row 7"
+   },
+   "source_snippet": "5 Ply Box 450x300x300 | 41.2 | pc"
+  },
+  {
+   "raw_text": "5 Ply Box 500x400x300",
+   "rfq_line_no": 9,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "pc",
+   "unit_price": 50.3,
+   "currency": "INR",
+   "price_basis": "per_unit",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "region": "rate table row 8"
+   },
+   "source_snippet": "5 Ply Box 500x400x300 | 50.3 | pc"
+  },
+  {
+   "raw_text": "5 Ply Box 600x400x400",
+   "rfq_line_no": 10,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "pc",
+   "unit_price": 69.3,
+   "currency": "INR",
+   "price_basis": "per_unit",
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "region": "rate table row 9"
+   },
+   "source_snippet": "5 Ply Box 600x400x400 | 69.3 | pc"
+  },
+  {
+   "raw_text": "5 Ply Box 350x300x250 (2 col)",
+   "rfq_line_no": 11,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "pc",
+   "unit_price": 35.5,
+   "currency": "INR",
+   "price_basis": "per_unit",
+   "confidence": "medium",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "region": "rate table row 10"
+   },
+   "source_snippet": "5 Ply Box 350x300x250 (2 col) | 35.5 | pc"
+  },
+  {
+   "raw_text": "7 Ply Box 600x500x500",
+   "rfq_line_no": 13,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "pc",
+   "unit_price": 140.0,
+   "currency": "INR",
+   "price_basis": "per_unit",
+   "confidence": "medium",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "region": "rate table row 11"
+   },
+   "source_snippet": "7 Ply Box 600x500x500 | 140.0 | pc"
+  },
+  {
+   "raw_text": "Mailer E-flute 220x160x60",
+   "rfq_line_no": 16,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "pc",
+   "unit_price": 9.1,
+   "currency": "INR",
+   "price_basis": "per_unit",
+   "confidence": "medium",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "region": "rate table row 12"
+   },
+   "source_snippet": "Mailer E-flute 220x160x60 | 9.1 | pc"
+  },
+  {
+   "raw_text": "Partition 12 cell",
+   "rfq_line_no": 18,
+   "mapping_confidence": "high",
+   "uom": "bundle of 50 sets",
+   "unit_price": 438,
+   "currency": "INR",
+   "price_basis": "per_pack",
+   "basis_quantity": 50,
+   "pack_size_evidence": "PER: bundle of 50 sets",
+   "confidence": "medium",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "region": "rate table row 13"
+   },
+   "source_snippet": "Partition 12 cell | 438 | bundle of 50 sets"
+  },
+  {
+   "raw_text": "Partition 6 cell",
+   "rfq_line_no": 20,
+   "mapping_confidence": "high",
+   "uom": "bundle of 50 sets",
+   "unit_price": 284,
+   "currency": "INR",
+   "price_basis": "per_pack",
+   "basis_quantity": 50,
+   "pack_size_evidence": "PER: bundle of 50 sets",
+   "confidence": "medium",
+   "legibility": "partial",
+   "notes": "Row partly in shadow; digits legible.",
+   "source": {
+    "file_index": 1,
+    "region": "rate table row 14"
+   },
+   "source_snippet": "Partition 6 cell | 284 | bundle of 50 sets"
+  },
+  {
+   "raw_text": "Layer Pad 1200x1000",
+   "rfq_line_no": 21,
+   "mapping_confidence": "high",
+   "uom": null,
+   "unit_price": null,
+   "currency": "INR",
+   "price_basis": "unknown",
+   "confidence": "low",
+   "legibility": "unreadable",
+   "notes": "Rate and unit blurred/shadowed in the photo; not guessed.",
+   "source": {
+    "file_index": 1,
+    "region": "rate table row 15, lower right (shadow/blur)"
+   },
+   "source_snippet": "Layer Pad 1200x1000 | [blurred] | [blurred]"
+  },
+  {
+   "raw_text": "Edge Protector 50x50x5 1m",
+   "rfq_line_no": 23,
+   "mapping_confidence": "high",
+   "uom": null,
+   "unit_price": null,
+   "currency": "INR",
+   "price_basis": "unknown",
+   "confidence": "low",
+   "legibility": "unreadable",
+   "notes": "Rate and unit blurred/shadowed in the photo; not guessed.",
+   "source": {
+    "file_index": 1,
+    "region": "rate table row 16, lower right (shadow/blur)"
+   },
+   "source_snippet": "Edge Protector 50x50x5 1m | [blurred] | [blurred]"
+  },
+  {
+   "raw_text": "Edge Protector 35x35x3 0.8m",
+   "rfq_line_no": 24,
+   "mapping_confidence": "high",
+   "uom": null,
+   "unit_price": null,
+   "currency": "INR",
+   "price_basis": "unknown",
+   "confidence": "low",
+   "legibility": "unreadable",
+   "notes": "Rate and unit blurred/shadowed in the photo; not guessed.",
+   "source": {
+    "file_index": 1,
+    "region": "rate table row 17, lower right (shadow/blur)"
+   },
+   "source_snippet": "Edge Protector 35x35x3 0.8m | [blurred] | [blurred]"
+  },
+  {
+   "raw_text": "Pallet Sleeve 1200x1000x1000",
+   "rfq_line_no": 29,
+   "mapping_confidence": "high",
+   "uom": null,
+   "unit_price": null,
+   "currency": "INR",
+   "price_basis": "unknown",
+   "confidence": "low",
+   "legibility": "unreadable",
+   "notes": "Rate and unit blurred/shadowed in the photo; not guessed.",
+   "source": {
+    "file_index": 1,
+    "region": "rate table row 18, lower right (shadow/blur)"
+   },
+   "source_snippet": "Pallet Sleeve 1200x1000x1000 | [blurred] | [blurred]"
+  }
+ ],
+ "questionnaire": [],
+ "extraction_warnings": [
+  "4 rates in the lower-right of the photo are unreadable due to shadow and blur.",
+  "No questionnaire answers in a rate card."
+ ]
+}

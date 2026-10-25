@@ -1,0 +1,657 @@
+{
+ "document_overview": "PDF quotation on letterhead; 27 of 30 lines; freight and discount in footnotes; questionnaire on page 2; ISO certificate attached.",
+ "quote_reference": "DPI/HSR/2026/1187",
+ "quote_date": "30 Oct 2026",
+ "currency": {
+  "code": "INR"
+ },
+ "tax": {
+  "treatment": "exclusive",
+  "rate_percent": 18,
+  "text": "GST @ 18% extra"
+ },
+ "freight": {
+  "type": "extra_percent",
+  "percent": 2.5,
+  "text": "Freight to customer DC will be charged extra @ 2.5% of basic value.",
+  "source": {
+   "file_index": 1,
+   "page": 1,
+   "region": "footnote *"
+  }
+ },
+ "payment_terms": {
+  "text": "60 days from invoice acceptable",
+  "days": 60
+ },
+ "validity_days": 60,
+ "lead_time": {
+  "days": 7,
+  "text": "7 working days from PO"
+ },
+ "discounts": [
+  {
+   "description": "Special discount of 3% on basic rates",
+   "percent": 3,
+   "conditional": true,
+   "condition": "PO released on or before 30-Nov-2026",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "region": "footnote **"
+   }
+  }
+ ],
+ "unresolved_references": [],
+ "other_notes": [
+  "Not quoted: corrugated sheet roll and stretch film items (explicitly declined)."
+ ],
+ "lines": [
+  {
+   "raw_text": "3-ply carton 250x200x150",
+   "rfq_line_no": 1,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "pcs",
+   "unit_price": 9.26,
+   "currency": "INR",
+   "price_basis": "per_unit",
+   "extended_price": 370400.0,
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "region": "table row 1"
+   },
+   "source_snippet": "1 | 3-ply carton 250x200x150 | 40,000 pcs | 9.26"
+  },
+  {
+   "raw_text": "3-ply carton 300x200x150, 1-colour print",
+   "rfq_line_no": 2,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "pcs",
+   "unit_price": 10.99,
+   "currency": "INR",
+   "price_basis": "per_unit",
+   "extended_price": 659400.0,
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "region": "table row 2"
+   },
+   "source_snippet": "2 | 3-ply carton 300x200x150, 1-colour print | 60,000 pcs | 10.99"
+  },
+  {
+   "raw_text": "3-ply carton 350x250x200",
+   "rfq_line_no": 3,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "pcs",
+   "unit_price": 15.2,
+   "currency": "INR",
+   "price_basis": "per_unit",
+   "extended_price": 532000.0,
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "region": "table row 3"
+   },
+   "source_snippet": "3 | 3-ply carton 350x250x200 | 35,000 pcs | 15.20"
+  },
+  {
+   "raw_text": "3-ply carton 400x300x200",
+   "rfq_line_no": 4,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "pcs",
+   "unit_price": 18.98,
+   "currency": "INR",
+   "price_basis": "per_unit",
+   "extended_price": 474500.0,
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "region": "table row 4"
+   },
+   "source_snippet": "4 | 3-ply carton 400x300x200 | 25,000 pcs | 18.98"
+  },
+  {
+   "raw_text": "3-ply carton 200x150x100 (e-com small)",
+   "rfq_line_no": 5,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "pcs",
+   "unit_price": 5.09,
+   "currency": "INR",
+   "price_basis": "per_unit",
+   "extended_price": 254500.0,
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "region": "table row 5"
+   },
+   "source_snippet": "5 | 3-ply carton 200x150x100 (e-com small) | 50,000 pcs | 5.09"
+  },
+  {
+   "raw_text": "3-ply carton 450x350x250",
+   "rfq_line_no": 6,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "pcs",
+   "unit_price": 24.98,
+   "currency": "INR",
+   "price_basis": "per_unit",
+   "extended_price": 374700.0,
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "region": "table row 6"
+   },
+   "source_snippet": "6 | 3-ply carton 450x350x250 | 15,000 pcs | 24.98"
+  },
+  {
+   "raw_text": "5-ply carton 400x300x300",
+   "rfq_line_no": 7,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "pcs",
+   "unit_price": 29.74,
+   "currency": "INR",
+   "price_basis": "per_unit",
+   "extended_price": 892200.0,
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "region": "table row 7"
+   },
+   "source_snippet": "7 | 5-ply carton 400x300x300 | 30,000 pcs | 29.74"
+  },
+  {
+   "raw_text": "5-ply master carton 450x300x300",
+   "rfq_line_no": 8,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "pcs",
+   "unit_price": 34.87,
+   "currency": "INR",
+   "price_basis": "per_unit",
+   "extended_price": 871750.0,
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "region": "table row 8"
+   },
+   "source_snippet": "8 | 5-ply master carton 450x300x300 | r 25,000 pcs | 34.87"
+  },
+  {
+   "raw_text": "5-ply carton 500x400x300",
+   "rfq_line_no": 9,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "pcs",
+   "unit_price": 43.94,
+   "currency": "INR",
+   "price_basis": "per_unit",
+   "extended_price": 790920.0,
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "region": "table row 9"
+   },
+   "source_snippet": "9 | 5-ply carton 500x400x300 | 18,000 pcs | 43.94"
+  },
+  {
+   "raw_text": "5-ply carton 600x400x400",
+   "rfq_line_no": 10,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "pcs",
+   "unit_price": 59.96,
+   "currency": "INR",
+   "price_basis": "per_unit",
+   "extended_price": 719520.0,
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "region": "table row 10"
+   },
+   "source_snippet": "10 | 5-ply carton 600x400x400 | 12,000 pcs | 59.96"
+  },
+  {
+   "raw_text": "5-ply carton 350x300x250, 2-colour print",
+   "rfq_line_no": 11,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "pcs",
+   "unit_price": 28.83,
+   "currency": "INR",
+   "price_basis": "per_unit",
+   "extended_price": 576600.0,
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "region": "table row 11"
+   },
+   "source_snippet": "11 | 5-ply carton 350x300x250, 2-colour print | 20,000 pcs | 28.83"
+  },
+  {
+   "raw_text": "5-ply carton 550x450x350",
+   "rfq_line_no": 12,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "pcs",
+   "unit_price": 55.94,
+   "currency": "INR",
+   "price_basis": "per_unit",
+   "extended_price": 447520.0,
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "region": "table row 12"
+   },
+   "source_snippet": "12 | 5-ply carton 550x450x350 | 8,000 pcs | 55.94"
+  },
+  {
+   "raw_text": "7-ply heavy-duty carton 600x500x500",
+   "rfq_line_no": 13,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "pcs",
+   "unit_price": 112.17,
+   "currency": "INR",
+   "price_basis": "per_unit",
+   "extended_price": 448680.0,
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "region": "table row 13"
+   },
+   "source_snippet": "13 | 7-ply heavy-duty carton 600x500x500 | 4,000 pcs | 112.17"
+  },
+  {
+   "raw_text": "7-ply heavy-duty export carton 450x300x300",
+   "rfq_line_no": 14,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "pcs",
+   "unit_price": 49.01,
+   "currency": "INR",
+   "price_basis": "per_unit",
+   "extended_price": 245050.0,
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "region": "table row 14"
+   },
+   "source_snippet": "14 | 7-ply heavy-duty export carton 450x300x300 | k 5,000 pcs | 49.01"
+  },
+  {
+   "raw_text": "Die-cut mailer box 300x220x80, 2-colour print",
+   "rfq_line_no": 15,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "pcs",
+   "unit_price": 14.03,
+   "currency": "INR",
+   "price_basis": "per_unit",
+   "extended_price": 420900.0,
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "region": "table row 15"
+   },
+   "source_snippet": "15 | Die-cut mailer box 300x220x80, 2-colour print | 30,000 pcs | 14.03"
+  },
+  {
+   "raw_text": "Die-cut mailer box 220x160x60",
+   "rfq_line_no": 16,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "pcs",
+   "unit_price": 7.77,
+   "currency": "INR",
+   "price_basis": "per_unit",
+   "extended_price": 310800.0,
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "region": "table row 16"
+   },
+   "source_snippet": "16 | Die-cut mailer box 220x160x60 | 40,000 pcs | 7.77"
+  },
+  {
+   "raw_text": "Die-cut tray with lid 400x300x100",
+   "rfq_line_no": 17,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "pcs",
+   "unit_price": 20.68,
+   "currency": "INR",
+   "price_basis": "per_unit",
+   "extended_price": 206800.0,
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "region": "table row 17"
+   },
+   "source_snippet": "17 | Die-cut tray with lid 400x300x100 | 10,000 pcs | 20.68"
+  },
+  {
+   "raw_text": "Corrugated partition set, 12-cell (1 L bottles)",
+   "rfq_line_no": 18,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "sets",
+   "unit_price": 7.46,
+   "currency": "INR",
+   "price_basis": "per_unit",
+   "extended_price": 149200.0,
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "region": "table row 18"
+   },
+   "source_snippet": "18 | Corrugated partition set, 12-cell (1 L bottles) | 20,000 sets | 7.46"
+  },
+  {
+   "raw_text": "Corrugated partition set, 24-cell",
+   "rfq_line_no": 19,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "sets",
+   "unit_price": 12.45,
+   "currency": "INR",
+   "price_basis": "per_unit",
+   "extended_price": 124500.0,
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "region": "table row 19"
+   },
+   "source_snippet": "19 | Corrugated partition set, 24-cell | 10,000 sets | 12.45"
+  },
+  {
+   "raw_text": "Corrugated partition set, 6-cell",
+   "rfq_line_no": 20,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "sets",
+   "unit_price": 4.91,
+   "currency": "INR",
+   "price_basis": "per_unit",
+   "extended_price": 73650.0,
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "region": "table row 20"
+   },
+   "source_snippet": "20 | Corrugated partition set, 6-cell | 15,000 sets | 4.91"
+  },
+  {
+   "raw_text": "Corrugated layer pad 1200x1000",
+   "rfq_line_no": 21,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "pcs",
+   "unit_price": 28.4,
+   "currency": "INR",
+   "price_basis": "per_unit",
+   "extended_price": 340800.0,
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "region": "table row 21"
+   },
+   "source_snippet": "21 | Corrugated layer pad 1200x1000 | 12,000 pcs | 28.40"
+  },
+  {
+   "raw_text": "Paper edge protector 50x50x5 x 1000",
+   "rfq_line_no": 23,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "pcs",
+   "unit_price": 9.62,
+   "currency": "INR",
+   "price_basis": "per_unit",
+   "extended_price": 240500.0,
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "region": "table row 22"
+   },
+   "source_snippet": "22 | Paper edge protector 50x50x5 x 1000 | 25,000 pcs | 9.62"
+  },
+  {
+   "raw_text": "Paper edge protector 35x35x3 x 800",
+   "rfq_line_no": 24,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "pcs",
+   "unit_price": 4.99,
+   "currency": "INR",
+   "price_basis": "per_unit",
+   "extended_price": 99800.0,
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "region": "table row 23"
+   },
+   "source_snippet": "23 | Paper edge protector 35x35x3 x 800 | 20,000 pcs | 4.99"
+  },
+  {
+   "raw_text": "BOPP tape 48 x 65 m, clear",
+   "rfq_line_no": 25,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "rolls",
+   "unit_price": 33.64,
+   "currency": "INR",
+   "price_basis": "per_unit",
+   "extended_price": 605520.0,
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "region": "table row 24"
+   },
+   "source_snippet": "24 | BOPP tape 48 x 65 m, clear | 18,000 rolls | 33.64"
+  },
+  {
+   "raw_text": "BOPP tape 72 x 65 m, printed logo",
+   "rfq_line_no": 26,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "rolls",
+   "unit_price": 55.87,
+   "currency": "INR",
+   "price_basis": "per_unit",
+   "extended_price": 335220.0,
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "region": "table row 25"
+   },
+   "source_snippet": "25 | BOPP tape 72 x 65 m, printed logo | 6,000 rolls | 55.87"
+  },
+  {
+   "raw_text": "Corrugated pallet sleeve 1200x1000x1000",
+   "rfq_line_no": 29,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "pcs",
+   "unit_price": 389.81,
+   "currency": "INR",
+   "price_basis": "per_unit",
+   "extended_price": 584715.0,
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "region": "table row 26"
+   },
+   "source_snippet": "26 | Corrugated pallet sleeve 1200x1000x1000 | 1,500 pcs | 389.81"
+  },
+  {
+   "raw_text": "Kraft paper void-fill roll 450 x 300 m",
+   "rfq_line_no": 30,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "rolls",
+   "unit_price": 1126.04,
+   "currency": "INR",
+   "price_basis": "per_unit",
+   "extended_price": 900832.0,
+   "confidence": "high",
+   "legibility": "clear",
+   "source": {
+    "file_index": 1,
+    "page": 1,
+    "region": "table row 27"
+   },
+   "source_snippet": "27 | Kraft paper void-fill roll 450 x 300 m | 800 rolls | 1,126.04"
+  }
+ ],
+ "questionnaire": [
+  {
+   "q_no": 1,
+   "raw_answer": "Yes. Certificate no. QMS-DEMO-44817 attached (valid till 14-Mar-2027).",
+   "value_bool": true,
+   "evidence_type": "document_attached",
+   "evidence_snippet": "Certificate No: QMS-DEMO-44817 ... Valid until: 14-Mar-2027",
+   "source": {
+    "file_index": 1,
+    "page": 2
+   },
+   "confidence": "high"
+  },
+  {
+   "q_no": 2,
+   "raw_answer": "Yes - in-house lab, equipment calibrated annually (NABL-traceable).",
+   "value_bool": true,
+   "evidence_type": "claim",
+   "source": {
+    "file_index": 1,
+    "page": 2
+   },
+   "confidence": "high"
+  },
+  {
+   "q_no": 3,
+   "raw_answer": "300 tonnes per month",
+   "value_number": 300,
+   "value_unit": "t/month",
+   "evidence_type": "claim",
+   "source": {
+    "file_index": 1,
+    "page": 2
+   },
+   "confidence": "high"
+  },
+  {
+   "q_no": 4,
+   "raw_answer": "7 working days",
+   "value_number": 7,
+   "evidence_type": "claim",
+   "source": {
+    "file_index": 1,
+    "page": 2
+   },
+   "confidence": "high"
+  },
+  {
+   "q_no": 5,
+   "raw_answer": "Accepted",
+   "value_bool": true,
+   "evidence_type": "claim",
+   "source": {
+    "file_index": 1,
+    "page": 2
+   },
+   "confidence": "high"
+  },
+  {
+   "q_no": 6,
+   "raw_answer": "Recycled board standard; FSC on request at +4%",
+   "value_bool": true,
+   "evidence_type": "claim",
+   "source": {
+    "file_index": 1,
+    "page": 2
+   },
+   "confidence": "medium"
+  },
+  {
+   "q_no": 7,
+   "raw_answer": "6 km",
+   "value_number": 6,
+   "evidence_type": "claim",
+   "source": {
+    "file_index": 1,
+    "page": 2
+   },
+   "confidence": "high"
+  },
+  {
+   "q_no": 8,
+   "raw_answer": "Cauvery Beverages (demo); Western Ghats Foods (demo)",
+   "value_text": "Cauvery Beverages; Western Ghats Foods",
+   "evidence_type": "claim",
+   "source": {
+    "file_index": 1,
+    "page": 2
+   },
+   "confidence": "high"
+  }
+ ],
+ "extraction_warnings": []
+}

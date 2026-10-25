@@ -1,0 +1,496 @@
+{
+  "_note": "Fictional demo data. Buyer, suppliers, people, certificates and prices are invented.",
+  "buyer_org_name": "Nilgiri Consumer Foods (Demo)",
+  "rfq": {
+    "ref_code": "RFQ-2026-0142",
+    "title": "Corrugated packaging - FY27 H1 rate contract (Hosur DC)",
+    "description": "Six-month rate contract for corrugated cartons, mailers, partitions, protective packaging, tapes and stretch film for the Hosur distribution centre. Prices to be delivered Hosur DC, GST shown separately.",
+    "category": "Corrugated packaging",
+    "currency": "INR",
+    "response_deadline": "2026-11-06",
+    "required_by": "2026-12-01",
+    "delivery_location": "Hosur DC, Tamil Nadu (demo)",
+    "commercial_terms": {
+      "price_basis": "Delivered Hosur DC, per requested unit of measure",
+      "tax": "GST extra, shown separately",
+      "payment_terms": "60 days from invoice",
+      "validity_days": 90,
+      "freight": "Include freight in rates or state it separately"
+    },
+    "evaluation_rules": {
+      "criteria": [
+        {
+          "name": "Evaluated cost (normalized, ex-GST)",
+          "weight": 60
+        },
+        {
+          "name": "Questionnaire / quality qualification",
+          "weight": 25
+        },
+        {
+          "name": "Lead time and commercial terms",
+          "weight": 15
+        }
+      ],
+      "qualification": "Supplier must meet all must-pass questionnaire items (Q1-Q4)."
+    }
+  },
+  "lines": [
+    {
+      "line_no": 1,
+      "description": "3-ply RSC carton 250x200x150 mm",
+      "specification": "3-ply, B-flute, 150 GSM kraft liner, plain, ID dimensions",
+      "quantity": 40000,
+      "uom": "pcs",
+      "category": "3-ply cartons"
+    },
+    {
+      "line_no": 2,
+      "description": "3-ply RSC carton 300x200x150 mm, 1-colour print",
+      "specification": "3-ply, B-flute, 1-colour flexo print (logo), ID dimensions",
+      "quantity": 60000,
+      "uom": "pcs",
+      "category": "3-ply cartons"
+    },
+    {
+      "line_no": 3,
+      "description": "3-ply RSC carton 350x250x200 mm",
+      "specification": "3-ply, B-flute, 150 GSM kraft, plain",
+      "quantity": 35000,
+      "uom": "pcs",
+      "category": "3-ply cartons"
+    },
+    {
+      "line_no": 4,
+      "description": "3-ply RSC carton 400x300x200 mm",
+      "specification": "3-ply, B-flute, 150 GSM kraft, plain",
+      "quantity": 25000,
+      "uom": "pcs",
+      "category": "3-ply cartons"
+    },
+    {
+      "line_no": 5,
+      "description": "3-ply RSC carton 200x150x100 mm (e-com small)",
+      "specification": "3-ply, B-flute, 120 GSM kraft, plain",
+      "quantity": 50000,
+      "uom": "pcs",
+      "category": "3-ply cartons"
+    },
+    {
+      "line_no": 6,
+      "description": "3-ply RSC carton 450x350x250 mm",
+      "specification": "3-ply, C-flute, 180 GSM kraft, plain",
+      "quantity": 15000,
+      "uom": "pcs",
+      "category": "3-ply cartons"
+    },
+    {
+      "line_no": 7,
+      "description": "5-ply RSC carton 400x300x300 mm",
+      "specification": "5-ply, BC-flute, BCT >= 350 kgf, plain",
+      "quantity": 30000,
+      "uom": "pcs",
+      "category": "5-ply cartons"
+    },
+    {
+      "line_no": 8,
+      "description": "5-ply RSC master carton 450x300x300 mm",
+      "specification": "5-ply, BC-flute, BCT >= 400 kgf, 1-colour print",
+      "quantity": 25000,
+      "uom": "pcs",
+      "category": "5-ply cartons"
+    },
+    {
+      "line_no": 9,
+      "description": "5-ply RSC carton 500x400x300 mm",
+      "specification": "5-ply, BC-flute, BCT >= 420 kgf, plain",
+      "quantity": 18000,
+      "uom": "pcs",
+      "category": "5-ply cartons"
+    },
+    {
+      "line_no": 10,
+      "description": "5-ply RSC carton 600x400x400 mm",
+      "specification": "5-ply, BC-flute, BCT >= 500 kgf, plain",
+      "quantity": 12000,
+      "uom": "pcs",
+      "category": "5-ply cartons"
+    },
+    {
+      "line_no": 11,
+      "description": "5-ply RSC carton 350x300x250 mm, 2-colour print",
+      "specification": "5-ply, BC-flute, 2-colour flexo print",
+      "quantity": 20000,
+      "uom": "pcs",
+      "category": "5-ply cartons"
+    },
+    {
+      "line_no": 12,
+      "description": "5-ply RSC carton 550x450x350 mm",
+      "specification": "5-ply, BC-flute, BCT >= 520 kgf, plain",
+      "quantity": 8000,
+      "uom": "pcs",
+      "category": "5-ply cartons"
+    },
+    {
+      "line_no": 13,
+      "description": "7-ply heavy-duty carton 600x500x500 mm",
+      "specification": "7-ply, BCB-flute, BCT >= 900 kgf",
+      "quantity": 4000,
+      "uom": "pcs",
+      "category": "7-ply cartons"
+    },
+    {
+      "line_no": 14,
+      "description": "7-ply heavy-duty export carton 450x300x300 mm",
+      "specification": "7-ply, BCB-flute, export grade, BCT >= 750 kgf",
+      "quantity": 5000,
+      "uom": "pcs",
+      "category": "7-ply cartons"
+    },
+    {
+      "line_no": 15,
+      "description": "Die-cut mailer box 300x220x80 mm, 2-colour print",
+      "specification": "E-flute, die-cut, tuck-front, 2-colour print",
+      "quantity": 30000,
+      "uom": "pcs",
+      "category": "Mailers & trays"
+    },
+    {
+      "line_no": 16,
+      "description": "Die-cut mailer box 220x160x60 mm",
+      "specification": "E-flute, die-cut, tuck-front, plain",
+      "quantity": 40000,
+      "uom": "pcs",
+      "category": "Mailers & trays"
+    },
+    {
+      "line_no": 17,
+      "description": "Die-cut tray with lid 400x300x100 mm",
+      "specification": "3-ply, B-flute, two-piece tray + lid",
+      "quantity": 10000,
+      "uom": "pcs",
+      "category": "Mailers & trays"
+    },
+    {
+      "line_no": 18,
+      "description": "Corrugated partition set, 12-cell (1 L bottles)",
+      "specification": "3-ply, B-flute, interlocking, fits line 7 carton",
+      "quantity": 20000,
+      "uom": "sets",
+      "category": "Partitions & pads"
+    },
+    {
+      "line_no": 19,
+      "description": "Corrugated partition set, 24-cell",
+      "specification": "3-ply, B-flute, interlocking, fits line 9 carton",
+      "quantity": 10000,
+      "uom": "sets",
+      "category": "Partitions & pads"
+    },
+    {
+      "line_no": 20,
+      "description": "Corrugated partition set, 6-cell",
+      "specification": "3-ply, B-flute, interlocking, fits line 3 carton",
+      "quantity": 15000,
+      "uom": "sets",
+      "category": "Partitions & pads"
+    },
+    {
+      "line_no": 21,
+      "description": "Corrugated layer pad 1200x1000 mm",
+      "specification": "3-ply, B-flute, pallet layer pad",
+      "quantity": 12000,
+      "uom": "pcs",
+      "category": "Partitions & pads"
+    },
+    {
+      "line_no": 22,
+      "description": "Corrugated sheet roll 1 m x 50 m",
+      "specification": "2-ply single-face, E-flute",
+      "quantity": 400,
+      "uom": "rolls",
+      "category": "Partitions & pads"
+    },
+    {
+      "line_no": 23,
+      "description": "Paper edge protector 50x50x5 mm x 1000 mm",
+      "specification": "Laminated kraft, L-profile",
+      "quantity": 25000,
+      "uom": "pcs",
+      "category": "Protective"
+    },
+    {
+      "line_no": 24,
+      "description": "Paper edge protector 35x35x3 mm x 800 mm",
+      "specification": "Laminated kraft, L-profile",
+      "quantity": 20000,
+      "uom": "pcs",
+      "category": "Protective"
+    },
+    {
+      "line_no": 25,
+      "description": "BOPP tape 48 mm x 65 m, clear",
+      "specification": "40 micron, acrylic adhesive",
+      "quantity": 18000,
+      "uom": "rolls",
+      "category": "Tapes & films"
+    },
+    {
+      "line_no": 26,
+      "description": "BOPP tape 72 mm x 65 m, printed logo",
+      "specification": "45 micron, 1-colour logo print",
+      "quantity": 6000,
+      "uom": "rolls",
+      "category": "Tapes & films"
+    },
+    {
+      "line_no": 27,
+      "description": "Stretch film 500 mm x 23 micron, hand roll",
+      "specification": "LLDPE cast, hand grade",
+      "quantity": 6000,
+      "uom": "kg",
+      "category": "Tapes & films"
+    },
+    {
+      "line_no": 28,
+      "description": "Stretch film 500 mm x 17 micron, machine grade",
+      "specification": "LLDPE cast, 250% pre-stretch",
+      "quantity": 4000,
+      "uom": "kg",
+      "category": "Tapes & films"
+    },
+    {
+      "line_no": 29,
+      "description": "Corrugated pallet sleeve 1200x1000x1000 mm",
+      "specification": "5-ply, BC-flute, with top cap",
+      "quantity": 1500,
+      "uom": "pcs",
+      "category": "Protective"
+    },
+    {
+      "line_no": 30,
+      "description": "Kraft paper void-fill roll 450 mm x 300 m",
+      "specification": "70 GSM recycled kraft",
+      "quantity": 800,
+      "uom": "rolls",
+      "category": "Protective"
+    }
+  ],
+  "questions": [
+    {
+      "q_no": 1,
+      "question": "Do you hold a valid ISO 9001:2015 certificate? Please attach it.",
+      "answer_type": "yes_no",
+      "must_pass": true,
+      "pass_rule": {
+        "op": "eq",
+        "value": true
+      },
+      "requires_evidence": true
+    },
+    {
+      "q_no": 2,
+      "question": "Can you provide BCT/ECT test reports for every batch (NABL lab or calibrated in-house lab)?",
+      "answer_type": "yes_no",
+      "must_pass": true,
+      "pass_rule": {
+        "op": "eq",
+        "value": true
+      },
+      "requires_evidence": false
+    },
+    {
+      "q_no": 3,
+      "question": "Monthly corrugation capacity you can commit to this contract (tonnes/month)?",
+      "answer_type": "number",
+      "must_pass": true,
+      "pass_rule": {
+        "op": "gte",
+        "value": 150
+      },
+      "requires_evidence": false
+    },
+    {
+      "q_no": 4,
+      "question": "Standard lead time from PO to delivery at Hosur DC for regular cartons (days)?",
+      "answer_type": "number",
+      "must_pass": true,
+      "pass_rule": {
+        "op": "lte",
+        "value": 14
+      },
+      "requires_evidence": false
+    },
+    {
+      "q_no": 5,
+      "question": "Do you accept 60-day payment terms from invoice date?",
+      "answer_type": "yes_no",
+      "must_pass": false,
+      "pass_rule": null,
+      "requires_evidence": false
+    },
+    {
+      "q_no": 6,
+      "question": "Can you supply FSC-certified or 100% recycled-fibre board on request?",
+      "answer_type": "yes_no",
+      "must_pass": false,
+      "pass_rule": null,
+      "requires_evidence": false
+    },
+    {
+      "q_no": 7,
+      "question": "Distance of your manufacturing plant from Hosur DC (km)?",
+      "answer_type": "number",
+      "must_pass": false,
+      "pass_rule": null,
+      "requires_evidence": false
+    },
+    {
+      "q_no": 8,
+      "question": "Name two current FMCG / food customers we may contact as references.",
+      "answer_type": "text",
+      "must_pass": false,
+      "pass_rule": null,
+      "requires_evidence": false
+    }
+  ],
+  "suppliers": [
+    {
+      "key": "shree-balaji",
+      "name": "Shree Balaji Corrugators",
+      "short_code": "SBC",
+      "contact_name": "Venkatesh R.",
+      "email": "sales@shreebalaji-demo.example",
+      "phone": "+91 80 0000 1101",
+      "location": "Peenya Industrial Area, Bengaluru"
+    },
+    {
+      "key": "deccan",
+      "name": "Deccan Packaging Industries Pvt Ltd",
+      "short_code": "DPI",
+      "contact_name": "Anita Rao",
+      "email": "quotes@deccanpack-demo.example",
+      "phone": "+91 4344 000 220",
+      "location": "SIPCOT Phase II, Hosur"
+    },
+    {
+      "key": "pacific",
+      "name": "Pacific Pack Solutions Pte Ltd",
+      "short_code": "PPS",
+      "contact_name": "Marcus Tan",
+      "email": "marcus.tan@pacificpack-demo.example",
+      "phone": "+65 6000 0330",
+      "location": "Singapore (warehouse: Sriperumbudur, Chennai)"
+    },
+    {
+      "key": "hosur-box",
+      "name": "Hosur Box Works",
+      "short_code": "HBW",
+      "contact_name": "Murugan S.",
+      "email": "hosurboxworks-demo@example.com",
+      "phone": "+91 98 0000 0440",
+      "location": "Bagalur Road, Hosur"
+    },
+    {
+      "key": "sri-lakshmi",
+      "name": "Sri Lakshmi Paper Products",
+      "short_code": "SLP",
+      "contact_name": "Ramesh K.",
+      "email": "ramesh.slpp-demo@example.com",
+      "phone": "+91 99 0000 0550",
+      "location": "Jigani, Bengaluru"
+    }
+  ],
+  "sample_responses": [
+    {
+      "supplier": "shree-balaji",
+      "version": 1,
+      "channel": "email",
+      "received_at": "2026-10-29T11:42:00+05:30",
+      "email_subject": "Quotation against RFQ-2026-0142",
+      "email_body": "Please find attached our quotation. Regards, Venkatesh",
+      "files": [
+        {
+          "path": "responses/shree-balaji/SBC_Quotation_RFQ-0142.xlsx",
+          "kind": "quote"
+        }
+      ]
+    },
+    {
+      "supplier": "deccan",
+      "version": 1,
+      "channel": "email",
+      "received_at": "2026-10-30T16:05:00+05:30",
+      "email_subject": "DPI quotation - RFQ-2026-0142",
+      "email_body": "Dear team, our quotation and ISO certificate are attached. - Anita",
+      "files": [
+        {
+          "path": "responses/deccan/DPI_Quotation_RFQ-2026-0142.pdf",
+          "kind": "quote"
+        },
+        {
+          "path": "responses/deccan/DPI_ISO9001_Certificate.pdf",
+          "kind": "attachment"
+        }
+      ]
+    },
+    {
+      "supplier": "pacific",
+      "version": 1,
+      "channel": "email",
+      "received_at": "2026-10-31T08:20:00+05:30",
+      "email_subject": "Pacific Pack Solutions - offer RFQ-2026-0142",
+      "email_body": "Please see our offer letter attached. Best, Marcus",
+      "files": [
+        {
+          "path": "responses/pacific/Pacific_Pack_Offer_RFQ-2026-0142.docx",
+          "kind": "quote"
+        }
+      ]
+    },
+    {
+      "supplier": "hosur-box",
+      "version": 1,
+      "channel": "whatsapp",
+      "received_at": "2026-10-29T17:46:00+05:30",
+      "email_subject": null,
+      "email_body": "Sir rate card photo sending. pls check. - Murugan",
+      "files": [
+        {
+          "path": "responses/hosur-box/IMG_20261029_174512_ratecard.jpg",
+          "kind": "quote"
+        }
+      ]
+    },
+    {
+      "supplier": "sri-lakshmi",
+      "version": 1,
+      "channel": "email",
+      "received_at": "2026-11-02T09:14:00+05:30",
+      "email_subject": "RE: RFQ-2026-0142 Corrugated packaging - quote",
+      "email_body": null,
+      "files": [
+        {
+          "path": "responses/sri-lakshmi/RE_RFQ-2026-0142_quote.eml",
+          "kind": "email_body"
+        }
+      ]
+    },
+    {
+      "supplier": "shree-balaji",
+      "version": 2,
+      "channel": "email",
+      "received_at": "2026-11-02T15:10:00+05:30",
+      "email_subject": "REVISED quotation - RFQ-2026-0142",
+      "email_body": "Sir, please consider our revised quotation. Item 3 rate corrected (typing error) and duplicate entry for master carton removed. Regards, Venkatesh",
+      "files": [
+        {
+          "path": "responses/shree-balaji/SBC_Quotation_RFQ-0142_REVISED.xlsx",
+          "kind": "quote"
+        }
+      ],
+      "is_correction": true
+    }
+  ]
+}

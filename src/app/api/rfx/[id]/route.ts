@@ -1,0 +1,42 @@
+import { NextResponse } from "next/server";
+import { audit, getContext } from "@/lib/context";
+import { jsonError } from "@/lib/api";
+import { headerFromEditor, replaceLinesAndQuestions, syncInvites } from "@/lib/rfx-save";
+import { recomputeResponse, refreshOutliers } from "@/lib/pipeline";
+
+export const maxDuration = 120;
+
+export async function PATCH(req: Request, { params }: { params: Promise<{ id: string }> }) {
+  try {
+    const { id } = await params;
+    const ctx = await getContext("api");
+    const s = await req.json();
+    const { data: rfq } = await ctx.supabase.from("rfqs").select("*").eq("id", id).single();
+    if (!rfq) return NextResponse.json({ error: "Not found" }, { status: 404 });
+    const { count: respCount } = await ctx.supabase.from("supplier_responses").select("id", { count: "exact", head: true }).eq("rfq_id", id);
+    const locked = rfq.status !== "draft" || (respCount ?? 0) > 0;
+    const h = headerFromEditor(s);
+    const update: any = { ...h, updated_at: new Date().toISOString() };
+    if (locked) delete update.currency;
+    const { error } = await ctx.supabase.from("rfqs").update(update).eq("id", id);
+    if (error) throw new Error(error.message);
+    if (!locked) await replaceLinesAndQuestions(ctx.supabase, ctx.orgId, id, s);
+    await syncInvites(ctx.supabase, ctx.orgId, id, s.supplierIds ?? []);
+    const oldRate = rfq.currency_policy?.rates?.USD?.rate;
+    const newRate = h.currency_policy.rates.USD.rate;
+    let recomputed = 0;
+    if (Number(oldRate) !== Number(newRate)) {
+      const actor = { orgId: ctx.orgId, userId: ctx.user.id, email: ctx.user.email };
+      const { data: active } = await ctx.supabase.from("supplier_responses").select("id, status").eq("rfq_id", id).eq("is_active", true);
+      for (const r of (active ?? []).filter((r) => ["needs_review", "ready"].includes(r.status))) {
+        await recomputeResponse(ctx.supabase, actor, r.id);
+        recomputed++;
+      }
+      await refreshOutliers(ctx.supabase, actor, id);
+    }
+    await audit(ctx, "rfx.updated", { rfqId: id, entityType: "rfq", entityId: id, details: { lines_locked: locked, fx_usd: { from: oldRate, to: newRate }, recomputed_responses: recomputed } });
+    return NextResponse.json({ ok: true, recomputed });
+  } catch (e) {
+    return jsonError(e);
+  }
+}

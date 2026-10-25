@@ -1,0 +1,615 @@
+{
+ "document_overview": "Word offer letter; prices in USD inside paragraphs and one table; delivered Hosur, duties included, GST extra.",
+ "currency": {
+  "code": "USD",
+  "evidence": "All prices below are in US Dollars (USD)"
+ },
+ "tax": {
+  "treatment": "exclusive",
+  "rate_percent": null,
+  "text": "exclusive of Indian GST"
+ },
+ "freight": {
+  "type": "included",
+  "text": "delivered to your Hosur DC, inclusive of import duties",
+  "source": {
+   "file_index": 1,
+   "paragraph": 6
+  }
+ },
+ "payment_terms": {
+  "text": "30 days from bill of lading against irrevocable LC",
+  "days": 30
+ },
+ "validity_days": 45,
+ "lead_time": {
+  "days": 21,
+  "text": "21 days from PO"
+ },
+ "discounts": [],
+ "unresolved_references": [],
+ "other_notes": [
+  "Not quoted this round: edge protectors, pallet sleeves, void-fill rolls.",
+  "Exchange-rate risk stays with the buyer; invoices in USD."
+ ],
+ "lines": [
+  {
+   "raw_text": "3-ply 250x200x150 mm",
+   "rfq_line_no": 1,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "pc",
+   "unit_price": 0.105,
+   "currency": "USD",
+   "price_basis": "per_unit",
+   "basis_quantity": null,
+   "pack_size_evidence": null,
+   "confidence": "high",
+   "legibility": "clear",
+   "notes": null,
+   "source": {
+    "file_index": 1,
+    "paragraph": 8
+   },
+   "source_snippet": "USD 0.105 per piece for 250x200x150 mm"
+  },
+  {
+   "raw_text": "3-ply 300x200x150 mm printed",
+   "rfq_line_no": 2,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "pc",
+   "unit_price": 0.124,
+   "currency": "USD",
+   "price_basis": "per_unit",
+   "basis_quantity": null,
+   "pack_size_evidence": null,
+   "confidence": "high",
+   "legibility": "clear",
+   "notes": null,
+   "source": {
+    "file_index": 1,
+    "paragraph": 8
+   },
+   "source_snippet": "USD 0.124 for the 300x200x150 mm printed carton"
+  },
+  {
+   "raw_text": "3-ply 350x250x200 mm",
+   "rfq_line_no": 3,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "pc",
+   "unit_price": 0.175,
+   "currency": "USD",
+   "price_basis": "per_unit",
+   "basis_quantity": null,
+   "pack_size_evidence": null,
+   "confidence": "high",
+   "legibility": "clear",
+   "notes": null,
+   "source": {
+    "file_index": 1,
+    "paragraph": 8
+   },
+   "source_snippet": "USD 0.175 for 350x250x200 mm"
+  },
+  {
+   "raw_text": "3-ply 400x300x200 mm",
+   "rfq_line_no": 4,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "pc",
+   "unit_price": 0.221,
+   "currency": "USD",
+   "price_basis": "per_unit",
+   "basis_quantity": null,
+   "pack_size_evidence": null,
+   "confidence": "high",
+   "legibility": "clear",
+   "notes": null,
+   "source": {
+    "file_index": 1,
+    "paragraph": 8
+   },
+   "source_snippet": "USD 0.221 for 400x300x200 mm"
+  },
+  {
+   "raw_text": "e-commerce carton 200x150x100 mm",
+   "rfq_line_no": 5,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "pc",
+   "unit_price": 57.65,
+   "currency": "USD",
+   "price_basis": "per_n_units",
+   "basis_quantity": 1000,
+   "pack_size_evidence": null,
+   "confidence": "high",
+   "legibility": "clear",
+   "notes": null,
+   "source": {
+    "file_index": 1,
+    "paragraph": 8
+   },
+   "source_snippet": "(200x150x100 mm) is USD 57.65 per thousand pieces"
+  },
+  {
+   "raw_text": "450x350x250 mm C-flute",
+   "rfq_line_no": 6,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "pc",
+   "unit_price": 0.281,
+   "currency": "USD",
+   "price_basis": "per_unit",
+   "basis_quantity": null,
+   "pack_size_evidence": null,
+   "confidence": "high",
+   "legibility": "clear",
+   "notes": null,
+   "source": {
+    "file_index": 1,
+    "paragraph": 8
+   },
+   "source_snippet": "450x350x250 mm C-flute carton is USD 0.281 per piece"
+  },
+  {
+   "raw_text": "5-ply 400x300x300 mm",
+   "rfq_line_no": 7,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "pc",
+   "unit_price": 0.353,
+   "currency": "USD",
+   "price_basis": "per_unit",
+   "basis_quantity": null,
+   "pack_size_evidence": null,
+   "confidence": "high",
+   "legibility": "clear",
+   "notes": null,
+   "source": {
+    "file_index": 1,
+    "paragraph": 9
+   },
+   "source_snippet": "400x300x300 mm at USD 0.353"
+  },
+  {
+   "raw_text": "5-ply 500x400x300 mm",
+   "rfq_line_no": 9,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "pc",
+   "unit_price": 0.491,
+   "currency": "USD",
+   "price_basis": "per_unit",
+   "basis_quantity": null,
+   "pack_size_evidence": null,
+   "confidence": "high",
+   "legibility": "clear",
+   "notes": null,
+   "source": {
+    "file_index": 1,
+    "paragraph": 9
+   },
+   "source_snippet": "500x400x300 mm at USD 0.491"
+  },
+  {
+   "raw_text": "5-ply 600x400x400 mm",
+   "rfq_line_no": 10,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "pc",
+   "unit_price": 0.701,
+   "currency": "USD",
+   "price_basis": "per_unit",
+   "basis_quantity": null,
+   "pack_size_evidence": null,
+   "confidence": "high",
+   "legibility": "clear",
+   "notes": null,
+   "source": {
+    "file_index": 1,
+    "paragraph": 9
+   },
+   "source_snippet": "600x400x400 mm at USD 0.701"
+  },
+  {
+   "raw_text": "5-ply 2-colour 350x300x250 mm",
+   "rfq_line_no": 11,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "pc",
+   "unit_price": 0.347,
+   "currency": "USD",
+   "price_basis": "per_unit",
+   "basis_quantity": null,
+   "pack_size_evidence": null,
+   "confidence": "high",
+   "legibility": "clear",
+   "notes": null,
+   "source": {
+    "file_index": 1,
+    "paragraph": 9
+   },
+   "source_snippet": "2-colour 350x300x250 mm at USD 0.347"
+  },
+  {
+   "raw_text": "5-ply 550x450x350 mm",
+   "rfq_line_no": 12,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "pc",
+   "unit_price": 0.652,
+   "currency": "USD",
+   "price_basis": "per_unit",
+   "basis_quantity": null,
+   "pack_size_evidence": null,
+   "confidence": "high",
+   "legibility": "clear",
+   "notes": null,
+   "source": {
+    "file_index": 1,
+    "paragraph": 9
+   },
+   "source_snippet": "550x450x350 mm at USD 0.652"
+  },
+  {
+   "raw_text": "heavy-duty 450x300x300 mm carton (ply not stated)",
+   "rfq_line_no": 8,
+   "mapping_confidence": "low",
+   "candidate_line_nos": [
+    8,
+    14
+   ],
+   "uom": "pc",
+   "unit_price": 0.44,
+   "currency": "USD",
+   "price_basis": "per_unit",
+   "basis_quantity": null,
+   "pack_size_evidence": null,
+   "confidence": "medium",
+   "legibility": "clear",
+   "notes": "Ply not stated: size matches L8 (5-ply master carton) and L14 (7-ply export carton).",
+   "source": {
+    "file_index": 1,
+    "paragraph": 10
+   },
+   "source_snippet": "For the heavy-duty 450x300x300 mm carton we can offer USD 0.44 per piece"
+  },
+  {
+   "raw_text": "7-ply 600x500x500 mm heavy-duty",
+   "rfq_line_no": 13,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "pc",
+   "unit_price": 1.352,
+   "currency": "USD",
+   "price_basis": "per_unit",
+   "basis_quantity": null,
+   "pack_size_evidence": null,
+   "confidence": "high",
+   "legibility": "clear",
+   "notes": null,
+   "source": {
+    "file_index": 1,
+    "paragraph": 10
+   },
+   "source_snippet": "7-ply 600x500x500 mm heavy-duty carton is USD 1.352 per piece"
+  },
+  {
+   "raw_text": "Mailer 300x220x80 E-flute, 2-col",
+   "rfq_line_no": 15,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "pc",
+   "unit_price": 0.163,
+   "currency": "USD",
+   "price_basis": "per_unit",
+   "basis_quantity": null,
+   "pack_size_evidence": null,
+   "confidence": "high",
+   "legibility": "clear",
+   "notes": null,
+   "source": {
+    "file_index": 1,
+    "region": "table 1 row 2"
+   },
+   "source_snippet": "Mailer 300x220x80 E-flute, 2-col | 0.163 | per pc"
+  },
+  {
+   "raw_text": "Mailer 220x160x60 E-flute",
+   "rfq_line_no": 16,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "pc",
+   "unit_price": 0.092,
+   "currency": "USD",
+   "price_basis": "per_unit",
+   "basis_quantity": null,
+   "pack_size_evidence": null,
+   "confidence": "high",
+   "legibility": "clear",
+   "notes": null,
+   "source": {
+    "file_index": 1,
+    "region": "table 1 row 3"
+   },
+   "source_snippet": "Mailer 220x160x60 E-flute | 0.092 | per pc"
+  },
+  {
+   "raw_text": "Tray + lid 400x300x100",
+   "rfq_line_no": 17,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "pc",
+   "unit_price": 0.229,
+   "currency": "USD",
+   "price_basis": "per_unit",
+   "basis_quantity": null,
+   "pack_size_evidence": null,
+   "confidence": "high",
+   "legibility": "clear",
+   "notes": null,
+   "source": {
+    "file_index": 1,
+    "region": "table 1 row 4"
+   },
+   "source_snippet": "Tray + lid 400x300x100 | 0.229 | per pc"
+  },
+  {
+   "raw_text": "Partition 12-cell",
+   "rfq_line_no": 18,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "set",
+   "unit_price": 0.086,
+   "currency": "USD",
+   "price_basis": "per_unit",
+   "basis_quantity": null,
+   "pack_size_evidence": null,
+   "confidence": "high",
+   "legibility": "clear",
+   "notes": null,
+   "source": {
+    "file_index": 1,
+    "region": "table 1 row 5"
+   },
+   "source_snippet": "Partition 12-cell | 0.086 | per set"
+  },
+  {
+   "raw_text": "Partition 24-cell",
+   "rfq_line_no": 19,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "set",
+   "unit_price": 0.134,
+   "currency": "USD",
+   "price_basis": "per_unit",
+   "basis_quantity": null,
+   "pack_size_evidence": null,
+   "confidence": "high",
+   "legibility": "clear",
+   "notes": null,
+   "source": {
+    "file_index": 1,
+    "region": "table 1 row 6"
+   },
+   "source_snippet": "Partition 24-cell | 0.134 | per set"
+  },
+  {
+   "raw_text": "Partition 6-cell",
+   "rfq_line_no": 20,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "set",
+   "unit_price": 0.055,
+   "currency": "USD",
+   "price_basis": "per_unit",
+   "basis_quantity": null,
+   "pack_size_evidence": null,
+   "confidence": "high",
+   "legibility": "clear",
+   "notes": null,
+   "source": {
+    "file_index": 1,
+    "region": "table 1 row 7"
+   },
+   "source_snippet": "Partition 6-cell | 0.055 | per set"
+  },
+  {
+   "raw_text": "Layer pad 1200x1000, 3-ply",
+   "rfq_line_no": 21,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "pc",
+   "unit_price": 0.298,
+   "currency": "USD",
+   "price_basis": "per_unit",
+   "basis_quantity": null,
+   "pack_size_evidence": null,
+   "confidence": "high",
+   "legibility": "clear",
+   "notes": null,
+   "source": {
+    "file_index": 1,
+    "region": "table 1 row 8"
+   },
+   "source_snippet": "Layer pad 1200x1000, 3-ply | 0.298 | per pc"
+  },
+  {
+   "raw_text": "Single-face roll 1 m x 50 m",
+   "rfq_line_no": 22,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "roll",
+   "unit_price": 7.2,
+   "currency": "USD",
+   "price_basis": "per_unit",
+   "basis_quantity": null,
+   "pack_size_evidence": null,
+   "confidence": "high",
+   "legibility": "clear",
+   "notes": null,
+   "source": {
+    "file_index": 1,
+    "region": "table 1 row 9"
+   },
+   "source_snippet": "Single-face roll 1 m x 50 m | 7.20 | per roll"
+  },
+  {
+   "raw_text": "Clear BOPP tape 48 mm x 65 m",
+   "rfq_line_no": 25,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "box",
+   "unit_price": 13.06,
+   "currency": "USD",
+   "price_basis": "per_pack",
+   "basis_quantity": 36,
+   "pack_size_evidence": "each carton box contains 36 rolls",
+   "confidence": "high",
+   "legibility": "clear",
+   "notes": null,
+   "source": {
+    "file_index": 1,
+    "paragraph": 13
+   },
+   "source_snippet": "USD 13.06 per box; each carton box contains 36 rolls"
+  },
+  {
+   "raw_text": "Printed 72 mm x 65 m logo tape",
+   "rfq_line_no": 26,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "box",
+   "unit_price": 15.4,
+   "currency": "USD",
+   "price_basis": "per_pack",
+   "basis_quantity": null,
+   "pack_size_evidence": null,
+   "confidence": "medium",
+   "legibility": "clear",
+   "notes": "Pack size for 72 mm tape not stated.",
+   "source": {
+    "file_index": 1,
+    "paragraph": 13
+   },
+   "source_snippet": "Printed 72 mm x 65 m logo tape is USD 15.4 per box"
+  },
+  {
+   "raw_text": "Hand stretch film 23 mic",
+   "rfq_line_no": 27,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "kg",
+   "unit_price": 1.92,
+   "currency": "USD",
+   "price_basis": "per_kg",
+   "basis_quantity": null,
+   "pack_size_evidence": null,
+   "confidence": "high",
+   "legibility": "clear",
+   "notes": null,
+   "source": {
+    "file_index": 1,
+    "paragraph": 13
+   },
+   "source_snippet": "USD 1.92/kg"
+  },
+  {
+   "raw_text": "Machine film 17 mic",
+   "rfq_line_no": 28,
+   "mapping_confidence": "high",
+   "candidate_line_nos": [],
+   "uom": "kg",
+   "unit_price": 2.02,
+   "currency": "USD",
+   "price_basis": "per_kg",
+   "basis_quantity": null,
+   "pack_size_evidence": null,
+   "confidence": "high",
+   "legibility": "clear",
+   "notes": null,
+   "source": {
+    "file_index": 1,
+    "paragraph": 13
+   },
+   "source_snippet": "USD 2.02/kg"
+  }
+ ],
+ "questionnaire": [
+  {
+   "q_no": 1,
+   "raw_answer": "Yes, our Singapore plant is ISO 9001:2015 certified (certificate to follow).",
+   "value_bool": true,
+   "evidence_type": "claim",
+   "source": {
+    "file_index": 1,
+    "paragraph": 18
+   },
+   "confidence": "high"
+  },
+  {
+   "q_no": 2,
+   "raw_answer": "Yes, third-party SGS reports per shipment.",
+   "value_bool": true,
+   "evidence_type": "claim",
+   "source": {
+    "file_index": 1,
+    "paragraph": 19
+   },
+   "confidence": "high"
+  },
+  {
+   "q_no": 3,
+   "raw_answer": "500 tonnes per month across our regional network.",
+   "value_number": 500,
+   "evidence_type": "claim",
+   "source": {
+    "file_index": 1,
+    "paragraph": 20
+   },
+   "confidence": "high"
+  },
+  {
+   "q_no": 4,
+   "raw_answer": "21 days to Hosur DC.",
+   "value_number": 21,
+   "evidence_type": "claim",
+   "source": {
+    "file_index": 1,
+    "paragraph": 21
+   },
+   "confidence": "high"
+  },
+  {
+   "q_no": 5,
+   "raw_answer": "Not possible; LC 30 days.",
+   "value_bool": false,
+   "evidence_type": "claim",
+   "confidence": "high"
+  },
+  {
+   "q_no": 6,
+   "raw_answer": "Yes, FSC-certified board available as standard.",
+   "value_bool": true,
+   "evidence_type": "claim",
+   "confidence": "high"
+  },
+  {
+   "q_no": 7,
+   "raw_answer": "Chennai warehouse is approx. 280 km from Hosur.",
+   "value_number": 280,
+   "evidence_type": "claim",
+   "confidence": "high"
+  },
+  {
+   "q_no": 8,
+   "raw_answer": "Straits Confectionery (demo); Lion City Foods (demo).",
+   "value_text": "Straits Confectionery; Lion City Foods",
+   "evidence_type": "claim",
+   "confidence": "high"
+  }
+ ],
+ "extraction_warnings": []
+}
