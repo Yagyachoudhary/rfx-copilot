@@ -1,4 +1,5 @@
 import { callTool, deadlineIn, MODELS } from "./client";
+import type { Attempt } from "./gemini";
 import type { PreparedPart } from "../parsers";
 
 export type RfxDraft = {
@@ -85,6 +86,8 @@ export async function draftRfx(params: {
   context?: Record<string, string | null | undefined>;
   answers?: { question: string; answer: string }[];
   parts?: PreparedPart[];
+  /** Diagnostics only: override the model and observe each attempt. */
+  diag?: { model?: string; trace?: Attempt[]; jsonOnly?: boolean; noFallback?: boolean; budgetSeconds?: number };
 }) {
   const system = `You are an RFx co-pilot for an enterprise procurement team (${params.orgName}). Turn the buyer's plain-language requirement into a clear, sendable RFx draft.
 - Be specific and supplier-readable: sizes, grades, construction, units of measure, quantities.
@@ -105,12 +108,15 @@ export async function draftRfx(params: {
     else content.push({ type: "text", text: `DOCUMENT: ${p.label}` }, { type: "image", source: { type: "base64", media_type: p.mediaType, data: p.base64 } });
   }
   return callTool<RfxDraft>({
-    model: MODELS.analyst,
+    model: params.diag?.model ?? MODELS.analyst,
+    trace: params.diag?.trace,
+    jsonOnly: params.diag?.jsonOnly,
+    noFallback: params.diag?.noFallback,
     system,
     content,
     tool: { name: "draft_rfx", description: "Return the editable RFx draft.", input_schema: SCHEMA },
     maxTokens: 12000,
-    deadline: deadlineIn(165), // route maxDuration is 180 s
+    deadline: deadlineIn(params.diag?.budgetSeconds ?? 165), // route maxDuration is 180 s
   });
 }
 

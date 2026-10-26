@@ -86,13 +86,17 @@ const withThinkingRoom = (n: number) => (thinkingConfig() ? n + 4000 : n);
 const tooSlow = () =>
   new Error("The AI took too long to respond (Google's servers may be busy). Please try again in a minute.");
 
+/** One attempt against Gemini, for diagnosing slow or failing calls (server logs and /api/ai/diagnose). */
+export type Attempt = { model: string; ms: number; outcome: "ok" | "busy" | "error" | "timeout" | "thinking-rejected"; detail?: string; finishReason?: string | null; outputTokens?: number; modelVersion?: string };
+export const traceText = (t: Attempt[]) => t.map((a) => `${a.model} ${a.outcome} in ${(a.ms / 1000).toFixed(1)}s${a.finishReason ? ` (${a.finishReason}, ${a.outputTokens ?? 0} tokens out)` : ""}${a.detail ? `: ${a.detail.slice(0, 160)}` : ""}`).join(" | ");
+
 /**
  * generateContent with resilience for the free tier: retries "busy" errors (503) with backoff,
  * then falls back to Flash-Lite, all within a deadline, before giving up with a plain-language message.
  */
-async function generate(model: string, request: Record<string, any>, deadline = deadlineIn()) {
+async function generate(model: string, request: Record<string, any>, deadline = deadlineIn(), trace: Attempt[] = [], noFallback = false) {
   const fallback = process.env.AI_MODEL_FALLBACK || "gemini-flash-lite-latest";
-  const models = model === fallback ? [model] : [model, fallback];
+  const models = model === fallback || noFallback ? [model] : [model, fallback];
   const thinking = thinkingConfig();
   let useThinking = Boolean(thinking);
   let last: any;
@@ -100,26 +104,43 @@ async function generate(model: string, request: Record<string, any>, deadline = 
     for (const wait of [0, 2000, 5000]) {
       if (wait) await sleep(wait);
       const remaining = deadline - Date.now();
-      if (remaining < 8000) throw last && !busy(last) ? friendlyError(last) : tooSlow();
+      if (remaining < 8000) {
+        console.error("[gemini]", traceText(trace));
+        throw last && !busy(last) ? friendlyError(last) : tooSlow();
+      }
       const ac = new AbortController();
       const timer = setTimeout(() => ac.abort(), remaining);
+      const t0 = Date.now();
       try {
         const config = { ...(request.config ?? {}), abortSignal: ac.signal, ...(useThinking ? { thinkingConfig: thinking } : {}) };
-        return await gemini().models.generateContent({ model: m, ...request, config } as any);
+        const res: any = await gemini().models.generateContent({ model: m, ...request, config } as any);
+        trace.push({ model: m, ms: Date.now() - t0, outcome: "ok", finishReason: res?.candidates?.[0]?.finishReason ?? null, outputTokens: usageOf(res).output, modelVersion: res?.modelVersion });
+        return res;
       } catch (e: any) {
         last = e;
-        if (ac.signal.aborted) throw tooSlow();
+        const detail = String(e?.message ?? e);
+        if (ac.signal.aborted) {
+          trace.push({ model: m, ms: Date.now() - t0, outcome: "timeout" });
+          console.error("[gemini]", traceText(trace));
+          throw tooSlow();
+        }
         // Older models reject the thinking setting: drop it and retry straight away.
-        if (useThinking && /thinking/i.test(String(e?.message ?? e))) {
+        if (useThinking && /thinking/i.test(detail)) {
+          trace.push({ model: m, ms: Date.now() - t0, outcome: "thinking-rejected", detail });
           useThinking = false;
           continue;
         }
-        if (!busy(e)) throw friendlyError(e);
+        trace.push({ model: m, ms: Date.now() - t0, outcome: busy(e) ? "busy" : "error", detail });
+        if (!busy(e)) {
+          console.error("[gemini]", traceText(trace));
+          throw friendlyError(e);
+        }
       } finally {
         clearTimeout(timer);
       }
     }
   }
+  console.error("[gemini]", traceText(trace));
   throw friendlyError(last);
 }
 
@@ -130,7 +151,13 @@ export async function geminiCallTool<T>(opts: {
   tool: { name: string; description: string; input_schema: Record<string, any> };
   maxTokens?: number;
   deadline?: number;
+  trace?: Attempt[];
+  /** Skip the function-call attempt and ask for JSON directly (for diagnostics). */
+  jsonOnly?: boolean;
+  /** Don't fall back to Flash-Lite (for diagnostics). */
+  noFallback?: boolean;
 }): Promise<{ input: T; usage: { input: number; output: number }; stopReason: string | null }> {
+  const trace = opts.trace ?? [];
   const usage = { input: 0, output: 0 };
   const deadline = opts.deadline ?? deadlineIn();
   const contents: Content[] = [{ role: "user", parts: toGeminiParts(opts.content) }];
@@ -138,7 +165,8 @@ export async function geminiCallTool<T>(opts: {
   for (let attempt = 0; attempt < 2; attempt++) {
     // First try a forced function call. If Gemini returns nothing usable (it sometimes reports
     // MALFORMED_FUNCTION_CALL on large schemas), the second try asks for plain JSON matching the same schema.
-    const jsonMode = attempt > 0;
+    const jsonMode = attempt > 0 || Boolean(opts.jsonOnly);
+    if (opts.jsonOnly && attempt > 0) break;
     const res: any = await generate(
       opts.model,
       {
@@ -153,6 +181,8 @@ export async function geminiCallTool<T>(opts: {
             },
       },
       deadline,
+      trace,
+      opts.noFallback,
     );
     const u = usageOf(res);
     usage.input += u.input;
@@ -170,6 +200,7 @@ export async function geminiCallTool<T>(opts: {
       }
     }
   }
+  console.error("[gemini] no structured result:", traceText(trace));
   throw new Error("The AI did not return a structured result. Please retry.");
 }
 
@@ -191,4 +222,16 @@ export async function geminiStep(opts: { model: string; system: string; contents
     text: (res.text ?? "") as string,
     usage: usageOf(res),
   };
+}
+
+/** One quick call to a model, no retries or fallback: is it reachable, and how fast? */
+export async function pingModel(model: string): Promise<Attempt> {
+  const trace: Attempt[] = [];
+  try {
+    await generate(model, { contents: [{ role: "user", parts: [{ text: "Reply with the single word OK." }] }], config: { maxOutputTokens: withThinkingRoom(20) } }, deadlineIn(30), trace, true);
+  } catch {
+    /* recorded in trace */
+  }
+  // Only the last attempt matters (the first may be a rejected thinking setting).
+  return trace[trace.length - 1] ?? { model, ms: 0, outcome: "error", detail: "no attempt made" };
 }

@@ -1,5 +1,5 @@
 import Anthropic from "@anthropic-ai/sdk";
-import { deadlineIn, geminiCallTool } from "./gemini";
+import { deadlineIn, geminiCallTool, type Attempt } from "./gemini";
 export { deadlineIn };
 
 /**
@@ -65,6 +65,10 @@ export async function callTool<T>(opts: {
   maxTokens?: number;
   /** Epoch ms by which the call must finish (Gemini path); see deadlineIn(). */
   deadline?: number;
+  /** Gemini only: diagnostics hooks, see gemini.ts. */
+  trace?: Attempt[];
+  jsonOnly?: boolean;
+  noFallback?: boolean;
 }): Promise<{ input: T; usage: { input: number; output: number }; stopReason: string | null }> {
   if (PROVIDER === "gemini") return geminiCallTool<T>(opts);
   const system = `${opts.system}\n\nReturn your result ONLY by calling the \`${opts.tool.name}\` tool exactly once with the complete input. Do not answer in prose.`;
