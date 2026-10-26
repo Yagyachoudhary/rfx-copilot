@@ -64,7 +64,7 @@ npm run dev
 | `AI_PROVIDER` | optional | `anthropic` (default) or `gemini`. Switches drafting, clarifying questions, extraction and the Analyst together |
 | `ANTHROPIC_API_KEY` | console.anthropic.com | Server-only; needed when the provider is `anthropic` |
 | `GEMINI_API_KEY` | aistudio.google.com | Server-only; needed when the provider is `gemini`. On Google's free tier, prompts may be used to improve Google's products and read by reviewers: demo data only |
-| `AI_MODEL_EXTRACTION`, `AI_MODEL_ANALYST`, `AI_MODEL_FAST` | optional | Claude: `claude-sonnet-5-5` / `claude-sonnet-5-5` / `claude-haiku-5-5`. Gemini: `gemini-flash-latest` / `gemini-flash-latest` / `gemini-flash-lite-latest` |
+| `AI_MODEL_EXTRACTION`, `AI_MODEL_ANALYST`, `AI_MODEL_FAST` | optional | Claude: `claude-sonnet-5-5` / `claude-sonnet-5-5` / `claude-haiku-5-5`. Gemini: `gemini-flash-lite-latest` for all three (the bigger `gemini-flash-latest` is often overloaded on the free tier; use it on a paid key). If a model is busy, hangs or is over quota, the app falls back to the other Flash model automatically. Check live behaviour at `/api/ai/diagnose`. |
 | `DEMO_FX_USD_INR`, `DEMO_FX_AS_OF` | optional | default USD→INR rate for new RFx (editable per RFx) |
 | `DISABLE_SAMPLE_CACHE` | optional | set to `1` to make the sample event call the model live instead of reusing its saved reading |
 

@@ -56,12 +56,14 @@ function finishReason(res: any): string | null {
 
 function friendlyError(e: any): Error {
   const m = String(e?.message ?? e);
-  if (/429|RESOURCE_EXHAUSTED|quota/i.test(m)) return new Error("Gemini's free daily limit has been reached. Try again later, or switch AI_PROVIDER back to anthropic.");
+  if (/429|RESOURCE_EXHAUSTED|quota/i.test(m)) return new Error("Gemini's free usage limit has been reached. Try again in a few minutes, or switch AI_PROVIDER back to anthropic.");
   if (/503|UNAVAILABLE|overloaded|high demand/i.test(m)) return new Error("Gemini is busy right now (high demand on Google's side). Please try again in a minute.");
   return e instanceof Error ? e : new Error(m);
 }
 
 const busy = (e: any) => /503|UNAVAILABLE|overloaded|high demand|500|INTERNAL/i.test(String(e?.message ?? e));
+/** Quota is per model, so a 429 on one model is a reason to try the other, not to stop. */
+const overQuota = (e: any) => /429|RESOURCE_EXHAUSTED|quota/i.test(String(e?.message ?? e));
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 /**
@@ -95,21 +97,27 @@ export const traceText = (t: Attempt[]) => t.map((a) => `${a.model} ${a.outcome}
  * then falls back to Flash-Lite, all within a deadline, before giving up with a plain-language message.
  */
 async function generate(model: string, request: Record<string, any>, deadline = deadlineIn(), trace: Attempt[] = [], noFallback = false) {
-  const fallback = process.env.AI_MODEL_FALLBACK || "gemini-flash-lite-latest";
+  const lite = "gemini-flash-lite-latest";
+  const fallback = process.env.AI_MODEL_FALLBACK || (model === lite ? "gemini-flash-latest" : lite);
   const models = model === fallback || noFallback ? [model] : [model, fallback];
   const thinking = thinkingConfig();
   let useThinking = Boolean(thinking);
   let last: any;
-  for (const m of models) {
-    for (const wait of [0, 2000, 5000]) {
+  for (let mi = 0; mi < models.length; mi++) {
+    const m = models[mi];
+    const hasNext = mi < models.length - 1;
+    for (const wait of hasNext ? [0, 2000] : [0, 2000, 5000]) {
       if (wait) await sleep(wait);
       const remaining = deadline - Date.now();
       if (remaining < 8000) {
         console.error("[gemini]", traceText(trace));
         throw last && !busy(last) ? friendlyError(last) : tooSlow();
       }
+      // A model that hangs must not use up the whole budget while another model is left to try.
+      const cap = hasNext ? Math.min(remaining - 45_000, 60_000) : remaining;
+      if (cap < 8000) break;
       const ac = new AbortController();
-      const timer = setTimeout(() => ac.abort(), remaining);
+      const timer = setTimeout(() => ac.abort(), cap);
       const t0 = Date.now();
       try {
         const config = { ...(request.config ?? {}), abortSignal: ac.signal, ...(useThinking ? { thinkingConfig: thinking } : {}) };
@@ -121,6 +129,7 @@ async function generate(model: string, request: Record<string, any>, deadline = 
         const detail = String(e?.message ?? e);
         if (ac.signal.aborted) {
           trace.push({ model: m, ms: Date.now() - t0, outcome: "timeout" });
+          if (hasNext) break; // try the next model
           console.error("[gemini]", traceText(trace));
           throw tooSlow();
         }
@@ -131,6 +140,7 @@ async function generate(model: string, request: Record<string, any>, deadline = 
           continue;
         }
         trace.push({ model: m, ms: Date.now() - t0, outcome: busy(e) ? "busy" : "error", detail });
+        if (overQuota(e) && hasNext) break; // this model's quota is used up; the next has its own
         if (!busy(e)) {
           console.error("[gemini]", traceText(trace));
           throw friendlyError(e);
@@ -141,8 +151,10 @@ async function generate(model: string, request: Record<string, any>, deadline = 
     }
   }
   console.error("[gemini]", traceText(trace));
-  throw friendlyError(last);
+  throw last && !isAbort(last) ? friendlyError(last) : tooSlow();
 }
+
+const isAbort = (e: any) => /abort/i.test(String(e?.name ?? "") + String(e?.message ?? ""));
 
 export async function geminiCallTool<T>(opts: {
   model: string;

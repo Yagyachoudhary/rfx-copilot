@@ -10,8 +10,10 @@ export const PROVIDER: "anthropic" | "gemini" = (process.env.AI_PROVIDER || "").
 
 const DEFAULTS = {
   anthropic: { extraction: "claude-sonnet-5-5", analyst: "claude-sonnet-5-5", fast: "claude-haiku-5-5" },
-  // "-latest" aliases track Google's current Flash models; override with AI_MODEL_* if needed.
-  gemini: { extraction: "gemini-flash-latest", analyst: "gemini-flash-latest", fast: "gemini-flash-lite-latest" },
+  // Flash-Lite by default: on the free tier the bigger Flash model is often overloaded (503) and has a much
+  // smaller quota (429), while Flash-Lite answers in seconds. Set AI_MODEL_* to gemini-flash-latest for
+  // higher quality on a paid key.
+  gemini: { extraction: "gemini-flash-lite-latest", analyst: "gemini-flash-lite-latest", fast: "gemini-flash-lite-latest" },
 }[PROVIDER];
 
 export const MODELS = {
