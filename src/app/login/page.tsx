@@ -10,10 +10,10 @@ const RESEND_SECONDS = 60; // Supabase allows one code per email per 60 s by def
 /** Turn Supabase auth errors into plain sentences. */
 function friendly(err: any): string {
   const m = String(err?.message ?? err ?? "");
-  if (/not authorized/i.test(m)) return "This email can't receive codes yet: the app's email sender isn't set up. Ask the owner to add custom SMTP in Supabase.";
-  if (/rate limit|too many|after \d+ seconds/i.test(m)) return "Too many codes requested. Wait a minute and try again.";
-  if (/expired|invalid|otp/i.test(m)) return "That code didn't work. It may have expired or have a typo. Check it, or send a new one.";
-  if (/signups not allowed/i.test(m)) return "New sign-ups are switched off for this workspace.";
+  if (/not authorized/i.test(m)) return "We couldn’t send a code to this address. Please contact your workspace administrator.";
+  if (/rate limit|too many|after \d+ seconds/i.test(m)) return "Too many requests. Please wait a minute before requesting another code.";
+  if (/expired|invalid|otp/i.test(m)) return "This code is invalid or has expired. Check the code or request a new one.";
+  if (/signups not allowed/i.test(m)) return "New accounts are not enabled for this workspace.";
   return m || "Something went wrong. Please try again.";
 }
 
@@ -88,8 +88,8 @@ export default function LoginPage() {
           </span>
           RFx Copilot
         </div>
-        <h1 className="text-[34px] sm:text-[40px] font-extrabold leading-[1.08] tracking-tight">Quote comparison, without the spreadsheet</h1>
-        <p className="mt-3 text-ink-muted text-[15px] leading-relaxed">Suppliers reply in any format. RFx Copilot reads them, lines them up and shows you only what needs a decision.</p>
+        <h1 className="text-[34px] sm:text-[40px] font-extrabold leading-[1.08] tracking-tight">Every supplier quote, compared like for like</h1>
+        <p className="mt-3 text-ink-muted text-[15px] leading-relaxed">RFx Copilot reads supplier responses in any format, normalises them to a single basis and flags what needs your review, so every award decision traces back to its source.</p>
 
         {step === "email" ? (
           <form onSubmit={sendCode} className="mt-8 space-y-4">
@@ -103,9 +103,9 @@ export default function LoginPage() {
             {error && <div className="chip-bad chip !rounded-md !whitespace-normal !text-[12px] w-full">{error}</div>}
             <button className="btn-primary w-full h-11 text-[14px] rounded-xl" disabled={busy || !email}>
               {busy && <Loader2 className="w-4 h-4 animate-spin" />}
-              Email me a sign-in code
+              Continue with email
             </button>
-            <p className="text-[12px] text-ink-muted text-center">No password needed. New here? The same code creates your account.</p>
+            <p className="text-[12px] text-ink-muted text-center">We’ll email you a one-time sign-in code. New users are set up automatically.</p>
           </form>
         ) : (
           <form
@@ -118,12 +118,12 @@ export default function LoginPage() {
             <div className="flex items-start gap-3 rounded-xl border border-line bg-white p-3">
               <span className="w-8 h-8 rounded-lg grid place-items-center bg-accent/10 text-accent shrink-0"><ShieldCheck className="w-4 h-4" /></span>
               <div className="text-[13px] leading-snug">
-                We sent a code to <b className="break-all">{email}</b>.
-                <div className="text-ink-muted text-[12px] mt-0.5">Check spam if it isn&apos;t there in a minute.</div>
+                Enter the 6-digit code sent to <b className="break-all">{email}</b>.
+                <div className="text-ink-muted text-[12px] mt-0.5">The code expires shortly. If it hasn&apos;t arrived, check your spam folder.</div>
               </div>
             </div>
             <div>
-              <label className="label" htmlFor="code">Sign-in code</label>
+              <label className="label" htmlFor="code">Verification code</label>
               <input
                 id="code"
                 ref={codeRef}
@@ -142,11 +142,11 @@ export default function LoginPage() {
             {error && <div className="chip-bad chip !rounded-md !whitespace-normal !text-[12px] w-full">{error}</div>}
             <button className="btn-primary w-full h-11 text-[14px] rounded-xl" disabled={busy || code.length < 6}>
               {busy && <Loader2 className="w-4 h-4 animate-spin" />}
-              Sign in
+              Verify and sign in
             </button>
             <div className="flex items-center justify-between text-[13px]">
               <button type="button" className="btn-ghost !px-2" onClick={() => { setStep("email"); setError(null); }}>
-                <ArrowLeft className="w-3.5 h-3.5" /> Different email
+                <ArrowLeft className="w-3.5 h-3.5" /> Use a different email
               </button>
               <button type="button" className="btn-ghost !px-2" disabled={busy || wait > 0} onClick={() => sendCode()}>
                 {wait > 0 ? `Resend code in ${wait}s` : "Resend code"}
