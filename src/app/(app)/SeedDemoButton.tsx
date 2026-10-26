@@ -1,4 +1,5 @@
 "use client";
+import { readJson } from "@/lib/read-json";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Database, Loader2 } from "lucide-react";
@@ -15,7 +16,7 @@ export function SeedDemoButton({ primary }: { primary?: boolean }) {
       onClick={async () => {
         setBusy(true);
         const res = await fetch("/api/demo/seed", { method: "POST" });
-        const j = await res.json();
+        const j = await readJson(res);
         setBusy(false);
         if (!res.ok) return setErr(j.error ?? "Failed");
         router.push(`/rfx/${j.rfqId}/responses`);

@@ -1,4 +1,5 @@
 "use client";
+import { readJson } from "@/lib/read-json";
 import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { Loader2, X } from "lucide-react";
@@ -42,7 +43,7 @@ export function GuideOverlay({ latestRfqId }: { latestRfqId: string | null }) {
     setErr(null);
     try {
       const res = await fetch("/api/demo/seed", { method: "POST" });
-      const j = await res.json();
+      const j = await readJson(res);
       if (!res.ok) throw new Error(j.error ?? "Could not load the sample event");
       router.push(`/rfx/${j.rfqId}/responses`);
       router.refresh();

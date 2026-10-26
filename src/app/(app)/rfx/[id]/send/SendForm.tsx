@@ -1,4 +1,5 @@
 "use client";
+import { readJson } from "@/lib/read-json";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { CheckCircle2, Loader2, Mail, Send } from "lucide-react";
@@ -80,7 +81,7 @@ export function SendForm({ rfqId, status, defaultSubject, defaultBody, invites, 
             setBusy(true);
             setErr(null);
             const res = await fetch(`/api/rfx/${rfqId}/send`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ channel, supplierIds: sel, subject, body }) });
-            const j = await res.json();
+            const j = await readJson(res);
             setBusy(false);
             if (!res.ok) return setErr(j.error);
             setMsg(`Sent to ${j.sent} supplier(s) (simulated) at ${fmtDateTime(j.at)}`);

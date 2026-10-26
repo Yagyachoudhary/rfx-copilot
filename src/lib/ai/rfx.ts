@@ -1,4 +1,4 @@
-import { callTool, MODELS } from "./client";
+import { callTool, deadlineIn, MODELS } from "./client";
 import type { PreparedPart } from "../parsers";
 
 export type RfxDraft = {
@@ -110,6 +110,7 @@ export async function draftRfx(params: {
     content,
     tool: { name: "draft_rfx", description: "Return the editable RFx draft.", input_schema: SCHEMA },
     maxTokens: 12000,
+    deadline: deadlineIn(165), // route maxDuration is 180 s
   });
 }
 
@@ -120,6 +121,7 @@ export type Clarification = { id: string; kind: "specs" | "quantity" | "delivery
 export async function clarifyRfx(params: { brief: string; context?: Record<string, string | null | undefined>; answers?: { question: string; answer: string }[]; hasDocs?: boolean }) {
   const ctx = Object.entries(params.context ?? {}).filter(([, v]) => v).map(([k, v]) => `${k}: ${v}`).join("\n");
   const ans = (params.answers ?? []).map((a) => `Q: ${a.question} → ${a.answer}`).join("\n");
+  const deadline = deadlineIn(50); // route maxDuration is 60 s
   const tryModel = async (model: string) =>
     callTool<{ summary: string; questions: Clarification[] }>({
       model,
@@ -155,6 +157,7 @@ export async function clarifyRfx(params: { brief: string; context?: Record<strin
         },
       },
       maxTokens: 1500,
+      deadline,
     });
   try {
     return await tryModel(MODELS.fast);

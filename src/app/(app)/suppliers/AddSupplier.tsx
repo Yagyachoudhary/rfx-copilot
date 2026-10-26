@@ -1,4 +1,5 @@
 "use client";
+import { readJson } from "@/lib/read-json";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Loader2, Plus, X } from "lucide-react";
@@ -24,7 +25,7 @@ export function AddSupplier() {
           setBusy(true);
           setErr(null);
           const res = await fetch("/api/suppliers", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(f) });
-          const j = await res.json();
+          const j = await readJson(res);
           setBusy(false);
           if (!res.ok) return setErr(j.error);
           setOpen(false);

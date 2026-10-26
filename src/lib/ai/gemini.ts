@@ -65,21 +65,58 @@ const busy = (e: any) => /503|UNAVAILABLE|overloaded|high demand|500|INTERNAL/i.
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 /**
- * generateContent with resilience for the free tier: retries "busy" errors (503) with backoff,
- * then falls back to Flash-Lite before giving up with a plain-language message.
+ * Time budget for one AI feature. Vercel stops a function at its maxDuration and returns a plain-text error
+ * page, so we stop earlier and return a readable message instead. Each route passes a budget below its
+ * maxDuration; AI_TIME_BUDGET_SECONDS can lower them all (e.g. on a plan with a shorter limit).
  */
-async function generate(model: string, request: Record<string, any>) {
+export function deadlineIn(seconds = 150) {
+  const cap = Number(process.env.AI_TIME_BUDGET_SECONDS) || Infinity;
+  return Date.now() + Math.min(seconds, cap) * 1000;
+}
+
+/** Keep Gemini's "thinking" short: much faster, and enough for drafting and reading quotes. AI_GEMINI_THINKING=off|low|medium|high. */
+function thinkingConfig() {
+  const level = (process.env.AI_GEMINI_THINKING || "low").toUpperCase();
+  return level === "OFF" || level === "DEFAULT" ? undefined : { thinkingLevel: level };
+}
+
+/** Gemini counts thinking tokens against the output limit, so leave room for them. */
+const withThinkingRoom = (n: number) => (thinkingConfig() ? n + 4000 : n);
+
+const tooSlow = () =>
+  new Error("The AI took too long to respond (Google's servers may be busy). Please try again in a minute.");
+
+/**
+ * generateContent with resilience for the free tier: retries "busy" errors (503) with backoff,
+ * then falls back to Flash-Lite, all within a deadline, before giving up with a plain-language message.
+ */
+async function generate(model: string, request: Record<string, any>, deadline = deadlineIn()) {
   const fallback = process.env.AI_MODEL_FALLBACK || "gemini-flash-lite-latest";
   const models = model === fallback ? [model] : [model, fallback];
+  const thinking = thinkingConfig();
+  let useThinking = Boolean(thinking);
   let last: any;
   for (const m of models) {
     for (const wait of [0, 2000, 5000]) {
       if (wait) await sleep(wait);
+      const remaining = deadline - Date.now();
+      if (remaining < 8000) throw last && !busy(last) ? friendlyError(last) : tooSlow();
+      const ac = new AbortController();
+      const timer = setTimeout(() => ac.abort(), remaining);
       try {
-        return await gemini().models.generateContent({ model: m, ...request } as any);
-      } catch (e) {
+        const config = { ...(request.config ?? {}), abortSignal: ac.signal, ...(useThinking ? { thinkingConfig: thinking } : {}) };
+        return await gemini().models.generateContent({ model: m, ...request, config } as any);
+      } catch (e: any) {
         last = e;
+        if (ac.signal.aborted) throw tooSlow();
+        // Older models reject the thinking setting: drop it and retry straight away.
+        if (useThinking && /thinking/i.test(String(e?.message ?? e))) {
+          useThinking = false;
+          continue;
+        }
         if (!busy(e)) throw friendlyError(e);
+      } finally {
+        clearTimeout(timer);
       }
     }
   }
@@ -92,19 +129,31 @@ export async function geminiCallTool<T>(opts: {
   content: any;
   tool: { name: string; description: string; input_schema: Record<string, any> };
   maxTokens?: number;
+  deadline?: number;
 }): Promise<{ input: T; usage: { input: number; output: number }; stopReason: string | null }> {
   const usage = { input: 0, output: 0 };
+  const deadline = opts.deadline ?? deadlineIn();
   const contents: Content[] = [{ role: "user", parts: toGeminiParts(opts.content) }];
+  const schema = toGeminiSchema(opts.tool.input_schema);
   for (let attempt = 0; attempt < 2; attempt++) {
-    const res: any = await generate(opts.model, {
-        contents,
-        config: {
-          systemInstruction: opts.system,
-          maxOutputTokens: opts.maxTokens ?? 8000,
-          tools: [{ functionDeclarations: [{ name: opts.tool.name, description: opts.tool.description, parametersJsonSchema: toGeminiSchema(opts.tool.input_schema) }] }],
-          toolConfig: { functionCallingConfig: { mode: FunctionCallingConfigMode.ANY, allowedFunctionNames: [opts.tool.name] } },
-        },
-      });
+    // First try a forced function call. If Gemini returns nothing usable (it sometimes reports
+    // MALFORMED_FUNCTION_CALL on large schemas), the second try asks for plain JSON matching the same schema.
+    const jsonMode = attempt > 0;
+    const res: any = await generate(
+      opts.model,
+      {
+        contents: jsonMode ? [{ role: "user", parts: toGeminiParts(opts.content) }] : contents,
+        config: jsonMode
+          ? { systemInstruction: opts.system, maxOutputTokens: withThinkingRoom(opts.maxTokens ?? 8000), responseMimeType: "application/json", responseJsonSchema: schema }
+          : {
+              systemInstruction: opts.system,
+              maxOutputTokens: withThinkingRoom(opts.maxTokens ?? 8000),
+              tools: [{ functionDeclarations: [{ name: opts.tool.name, description: opts.tool.description, parametersJsonSchema: schema }] }],
+              toolConfig: { functionCallingConfig: { mode: FunctionCallingConfigMode.ANY, allowedFunctionNames: [opts.tool.name] } },
+            },
+      },
+      deadline,
+    );
     const u = usageOf(res);
     usage.input += u.input;
     usage.output += u.output;
@@ -117,27 +166,24 @@ export async function geminiCallTool<T>(opts: {
         const fenced = text.match(/```(?:json)?\s*([\s\S]*?)```/);
         return { input: JSON.parse(fenced ? fenced[1] : text.slice(text.indexOf("{"), text.lastIndexOf("}") + 1)) as T, usage, stopReason: finishReason(res) };
       } catch {
-        /* nudge below */
+        /* try plain JSON mode next */
       }
     }
-    const candidate = res.candidates?.[0]?.content;
-    if (candidate) contents.push(candidate);
-    contents.push({ role: "user", parts: [{ text: `Please call the ${opts.tool.name} function now with the complete result.` }] });
   }
   throw new Error("The AI did not return a structured result. Please retry.");
 }
 
 /** One step of a multi-turn tool loop (used by the Analyst). */
-export async function geminiStep(opts: { model: string; system: string; contents: Content[]; tools: { name: string; description: string; input_schema: any }[]; maxTokens?: number }) {
+export async function geminiStep(opts: { model: string; system: string; contents: Content[]; tools: { name: string; description: string; input_schema: any }[]; maxTokens?: number; deadline?: number }) {
   const res: any = await generate(opts.model, {
       contents: opts.contents,
       config: {
         systemInstruction: opts.system,
-        maxOutputTokens: opts.maxTokens ?? 4000,
+        maxOutputTokens: withThinkingRoom(opts.maxTokens ?? 4000),
         tools: [{ functionDeclarations: opts.tools.map((t) => ({ name: t.name, description: t.description, parametersJsonSchema: toGeminiSchema(t.input_schema) })) }],
         toolConfig: { functionCallingConfig: { mode: FunctionCallingConfigMode.AUTO } },
       },
-    });
+    }, opts.deadline);
   return {
     // The model's turn exactly as returned (keeps thought signatures that Gemini needs on the next turn).
     content: (res.candidates?.[0]?.content ?? { role: "model", parts: [{ text: res.text ?? "" }] }) as Content,

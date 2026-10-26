@@ -1,4 +1,5 @@
 "use client";
+import { readJson } from "@/lib/read-json";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { CheckCircle2, Loader2, RotateCcw, ShieldAlert } from "lucide-react";
@@ -29,7 +30,7 @@ export function ExceptionList({ items, showSupplier, compact }: { items: Exc[]; 
     setBusy(true);
     setErr(null);
     const res = await fetch(`/api/exceptions/${id}`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ action, note }) });
-    const j = await res.json();
+    const j = await readJson(res);
     setBusy(false);
     if (!res.ok) return setErr(j.error);
     setOpen(null);

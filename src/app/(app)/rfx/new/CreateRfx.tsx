@@ -1,4 +1,5 @@
 "use client";
+import { readJson } from "@/lib/read-json";
 import { useEffect, useMemo, useRef, useState } from "react";
 import clsx from "clsx";
 import {
@@ -95,7 +96,7 @@ export function CreateRfx({ suppliers, initialBrief }: { suppliers: { id: string
     setAnalysing(true);
     try {
       const res = await fetch("/api/rfx/clarify", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ brief, context, answers, hasDocs: files.length > 0 }) });
-      const j = await res.json();
+      const j = await readJson(res);
       if (res.ok) {
         setSummary(j.summary);
         setQs((prev) => [...prev.filter((p) => p.answer), ...(j.questions ?? []).filter((n: Q) => !prev.some((p) => p.answer && p.title === n.title))]);
@@ -120,7 +121,7 @@ export function CreateRfx({ suppliers, initialBrief }: { suppliers: { id: string
       fd.set("answers", JSON.stringify(answers));
       files.forEach((f) => fd.append("files", f));
       const res = await fetch("/api/rfx/draft", { method: "POST", body: fd });
-      const j = await res.json();
+      const j = await readJson(res);
       if (!res.ok) throw new Error(j.error ?? "Draft failed");
       const d = j.draft;
       const base = blankState();

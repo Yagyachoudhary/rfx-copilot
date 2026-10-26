@@ -1,7 +1,7 @@
 import type Anthropic from "@anthropic-ai/sdk";
 import type { Database } from "sql.js";
 import { anthropic, MODELS, PROVIDER } from "./client";
-import { geminiStep } from "./gemini";
+import { deadlineIn, geminiStep } from "./gemini";
 import type { Content } from "@google/genai";
 import { ANALYST_SCHEMA, runReadOnly } from "../analysis-db";
 import type { RfqBundle } from "../data";
@@ -138,9 +138,10 @@ export async function runAnalyst(opts: {
       ...opts.history.slice(-12).map((m) => ({ role: m.role === "assistant" ? "model" : "user", parts: [{ text: m.content }] }) as Content),
       { role: "user", parts: [{ text: opts.question }] },
     ];
+    const deadline = deadlineIn(280); // route maxDuration is 300 s, shared by every step
     for (let step = 0; step < 10; step++) {
       emit({ type: "status", text: step === 0 ? "Reading the current RFx data…" : "Working through the numbers…" });
-      const r = await geminiStep({ model: MODELS.analyst, system, contents, tools: TOOLS as any });
+      const r = await geminiStep({ model: MODELS.analyst, system, contents, tools: TOOLS as any, deadline });
       contents.push(r.content);
       if (!r.calls.length) {
         const text = r.text.trim();

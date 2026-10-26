@@ -1,4 +1,5 @@
 "use client";
+import { readJson } from "@/lib/read-json";
 import { useEffect, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -31,7 +32,7 @@ export function useCopilot(rfqId: string | null) {
     try {
       const res = await fetch(`/api/rfx/${rfqId}/analyst`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ question }) });
       if (!res.ok || !res.body) {
-        const j = await res.json().catch(() => ({}));
+        const j = await readJson(res).catch(() => ({}));
         throw new Error(j.error ?? `HTTP ${res.status}`);
       }
       const reader = res.body.getReader();

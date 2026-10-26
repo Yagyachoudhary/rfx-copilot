@@ -1,4 +1,5 @@
 "use client";
+import { readJson } from "@/lib/read-json";
 import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import clsx from "clsx";
@@ -58,7 +59,7 @@ export function DecisionWorkspace({ rfqId, rfq, cmp, openExceptions, decisions }
     setBusy(status);
     setErr(null);
     const res = await fetch(`/api/rfx/${rfqId}/decision`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ status, options: opts, scenario: r, rationale, acknowledgedExceptions: affected.map((a) => a.id) }) });
-    const j = await res.json();
+    const j = await readJson(res);
     setBusy(null);
     if (!res.ok) return setErr(j.error);
     router.refresh();
@@ -174,7 +175,7 @@ export function DecisionWorkspace({ rfqId, rfq, cmp, openExceptions, decisions }
               setBusy("ai");
               setErr(null);
               const res = await fetch(`/api/rfx/${rfqId}/decision/draft`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ scenario: r, exceptions: affected }) });
-              const j = await res.json();
+              const j = await readJson(res);
               setBusy(null);
               if (!res.ok) return setErr(j.error);
               setRationale(j.text);

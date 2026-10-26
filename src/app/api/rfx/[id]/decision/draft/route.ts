@@ -3,7 +3,7 @@ import { getContext } from "@/lib/context";
 import { jsonError } from "@/lib/api";
 import { loadRfqBundle } from "@/lib/data";
 import { computeScenario } from "@/lib/compare";
-import { callTool, MODELS } from "@/lib/ai/client";
+import { callTool, deadlineIn, MODELS } from "@/lib/ai/client";
 
 export const maxDuration = 90;
 
@@ -24,6 +24,7 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
       content: JSON.stringify({ rfq: { ref: b.rfq.ref_code, title: b.rfq.title, lines: b.lines.length, currency: b.rfq.currency }, scenario: { title: scenario.title, total: scenario.total, complete: scenario.totalIsComplete, subtotal: scenario.subtotal, freight: scenario.freightTotal, discounts: scenario.discountTotal, by_supplier: scenario.bySupplier, unpriced: scenario.unpricedLines, assumptions: scenario.assumptions, excluded: scenario.excludedSuppliers }, suppliers, open_exceptions_on_awarded: exceptions }),
       tool: { name: "draft", description: "Return the rationale text", input_schema: { type: "object", properties: { text: { type: "string" } }, required: ["text"] } },
       maxTokens: 1500,
+      deadline: deadlineIn(80), // route maxDuration is 90 s
     });
     return NextResponse.json({ text: input.text });
   } catch (e) {

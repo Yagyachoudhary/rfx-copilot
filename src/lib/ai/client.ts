@@ -1,5 +1,6 @@
 import Anthropic from "@anthropic-ai/sdk";
-import { geminiCallTool } from "./gemini";
+import { deadlineIn, geminiCallTool } from "./gemini";
+export { deadlineIn };
 
 /**
  * Which model provider runs the AI features. AI_PROVIDER=gemini switches drafting, clarifying questions,
@@ -62,6 +63,8 @@ export async function callTool<T>(opts: {
   content: Anthropic.MessageParam["content"];
   tool: { name: string; description: string; input_schema: Record<string, any> };
   maxTokens?: number;
+  /** Epoch ms by which the call must finish (Gemini path); see deadlineIn(). */
+  deadline?: number;
 }): Promise<{ input: T; usage: { input: number; output: number }; stopReason: string | null }> {
   if (PROVIDER === "gemini") return geminiCallTool<T>(opts);
   const system = `${opts.system}\n\nReturn your result ONLY by calling the \`${opts.tool.name}\` tool exactly once with the complete input. Do not answer in prose.`;

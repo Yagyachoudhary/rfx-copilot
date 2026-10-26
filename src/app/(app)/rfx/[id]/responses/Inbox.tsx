@@ -1,4 +1,5 @@
 "use client";
+import { readJson } from "@/lib/read-json";
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -56,7 +57,7 @@ export function Inbox({ rfqId, rows, isDemo }: { rfqId: string; rows: any[]; isD
     setErr(null);
     try {
       const res = await fetch(url, { method: "POST", headers: body ? { "content-type": "application/json" } : undefined, body: body ? JSON.stringify(body) : undefined });
-      const j = await res.json();
+      const j = await readJson(res);
       if (!res.ok) throw new Error(j.error ?? "Failed");
       router.refresh();
     } catch (e: any) {
@@ -81,7 +82,7 @@ export function Inbox({ rfqId, rows, isDemo }: { rfqId: string; rows: any[]; isD
               try {
                 for (const s of pending) {
                   const res = await fetch(`/api/rfx/${rfqId}/responses`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ sample: s.index }) });
-                  if (!res.ok) throw new Error((await res.json()).error);
+                  if (!res.ok) throw new Error((await readJson(res)).error);
                 }
                 router.refresh();
               } catch (e: any) {
@@ -233,7 +234,7 @@ function UploadDialog({ rfqId, supplier, onClose, onDone }: { rfqId: string; sup
               fd.append("kinds", i === 0 ? "quote" : "attachment");
             });
             const res = await fetch(`/api/rfx/${rfqId}/responses`, { method: "POST", body: fd });
-            const j = await res.json();
+            const j = await readJson(res);
             setBusy(false);
             if (!res.ok) return setErr(j.error);
             onDone();

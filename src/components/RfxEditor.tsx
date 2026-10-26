@@ -1,4 +1,5 @@
 "use client";
+import { readJson } from "@/lib/read-json";
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { AlertTriangle, Loader2, Plus, Save, Sparkles, Trash2, Wand2 } from "lucide-react";
@@ -50,7 +51,7 @@ export function RfxEditor({
     setErr(null);
     try {
       const res = await fetch("/api/rfx/draft", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ brief, lines: pasted }) });
-      const j = await res.json();
+      const j = await readJson(res);
       if (!res.ok) throw new Error(j.error ?? "Draft failed");
       const d = j.draft;
       setS((p) => ({
@@ -87,7 +88,7 @@ export function RfxEditor({
         headers: { "content-type": "application/json" },
         body: JSON.stringify(s),
       });
-      const j = await res.json();
+      const j = await readJson(res);
       if (!res.ok) throw new Error(j.error ?? "Save failed");
       setSaved(true);
       if (!rfqId) router.push(`/rfx/${j.id}/send`);

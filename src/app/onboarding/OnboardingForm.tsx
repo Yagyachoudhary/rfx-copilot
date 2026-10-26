@@ -1,4 +1,5 @@
 "use client";
+import { readJson } from "@/lib/read-json";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Loader2, PlayCircle } from "lucide-react";
@@ -14,7 +15,7 @@ export default function OnboardingForm({ email }: { email: string }) {
     const domain = email.split("@")[1]?.split(".")[0];
     const name = seed ? "Nilgiri Consumer Foods (Demo)" : domain ? domain[0].toUpperCase() + domain.slice(1) : "My company";
     const res = await fetch("/api/onboarding", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ name, seed }) });
-    const j = await res.json();
+    const j = await readJson(res);
     setBusy(null);
     if (!res.ok) return setErr(j.error ?? "Something went wrong");
     router.push(j.rfqId ? `/rfx/${j.rfqId}/responses` : "/rfx/new");

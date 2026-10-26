@@ -1,5 +1,5 @@
 import type Anthropic from "@anthropic-ai/sdk";
-import { callTool, MODELS } from "./client";
+import { callTool, deadlineIn, MODELS } from "./client";
 import type { PreparedPart } from "../parsers";
 import type { RfqLine, RfqQuestion } from "../types";
 
@@ -219,5 +219,6 @@ export async function runExtraction(content: Anthropic.MessageParam["content"]) 
       input_schema: SCHEMA,
     },
     maxTokens: 20000,
+    deadline: deadlineIn(270), // processing routes allow 300 s
   });
 }

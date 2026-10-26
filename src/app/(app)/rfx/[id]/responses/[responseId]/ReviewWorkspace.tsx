@@ -1,4 +1,5 @@
 "use client";
+import { readJson } from "@/lib/read-json";
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -76,7 +77,7 @@ export function ReviewWorkspace(props: Any) {
     setErr(null);
     try {
       const r = await fn();
-      if (!r.ok) throw new Error((await r.json()).error ?? "Failed");
+      if (!r.ok) throw new Error((await readJson(r)).error ?? "Failed");
       router.refresh();
     } catch (e: Any) {
       setErr(e.message);
