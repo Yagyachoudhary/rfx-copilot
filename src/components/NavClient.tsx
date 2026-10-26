@@ -1,4 +1,5 @@
 "use client";
+import { openGuide } from "./GuideOverlay";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
@@ -8,7 +9,6 @@ import { createClient } from "@/lib/supabase/client";
 
 export function Sidebar({ latestRfqId }: { latestRfqId: string | null }) {
   const path = usePathname();
-  const router = useRouter();
   const inEvent = path.match(/^\/rfx\/([0-9a-f-]{36})/)?.[1] ?? null;
   const rfq = inEvent ?? latestRfqId;
   const items = [
@@ -52,8 +52,7 @@ export function Sidebar({ latestRfqId }: { latestRfqId: string | null }) {
             try {
               localStorage.removeItem("rfxc:guide-dismissed");
             } catch {}
-            router.push("/");
-            router.refresh();
+            openGuide();
           }}
         >
           Show me around →

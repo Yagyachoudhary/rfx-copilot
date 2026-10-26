@@ -6,7 +6,7 @@ export default function Setup() {
         <p className="text-ink-muted">This deployment is missing environment variables. Add them in Vercel → Project → Settings → Environment Variables and redeploy:</p>
         <pre className="bg-surface-muted/60 p-3 rounded text-[12px] overflow-auto">{`NEXT_PUBLIC_SUPABASE_URL
 NEXT_PUBLIC_SUPABASE_ANON_KEY
-ANTHROPIC_API_KEY`}</pre>
+ANTHROPIC_API_KEY   (or AI_PROVIDER=gemini + GEMINI_API_KEY)`}</pre>
         <p className="text-ink-muted text-[13px]">Then run <code>supabase/migrations/0001_schema.sql</code> in the Supabase SQL editor. See README.md.</p>
       </div>
     </div>

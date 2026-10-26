@@ -61,8 +61,10 @@ npm run dev
 |---|---|---|
 | `NEXT_PUBLIC_SUPABASE_URL` | Supabase → Project Settings → API | |
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase → Project Settings → API (anon / publishable key) | RLS protects data; no service-role key is used |
-| `ANTHROPIC_API_KEY` | console.anthropic.com | Server-only |
-| `AI_MODEL_EXTRACTION`, `AI_MODEL_ANALYST`, `AI_MODEL_FAST` | optional | default `claude-sonnet-5-5` / `claude-sonnet-5-5` / `claude-haiku-5-5` |
+| `AI_PROVIDER` | optional | `anthropic` (default) or `gemini`. Switches drafting, clarifying questions, extraction and the Analyst together |
+| `ANTHROPIC_API_KEY` | console.anthropic.com | Server-only; needed when the provider is `anthropic` |
+| `GEMINI_API_KEY` | aistudio.google.com | Server-only; needed when the provider is `gemini`. On Google's free tier, prompts may be used to improve Google's products and read by reviewers: demo data only |
+| `AI_MODEL_EXTRACTION`, `AI_MODEL_ANALYST`, `AI_MODEL_FAST` | optional | Claude: `claude-sonnet-5-5` / `claude-sonnet-5-5` / `claude-haiku-5-5`. Gemini: `gemini-flash-latest` / `gemini-flash-latest` / `gemini-flash-lite-latest` |
 | `DEMO_FX_USD_INR`, `DEMO_FX_AS_OF` | optional | default USD→INR rate for new RFx (editable per RFx) |
 | `DISABLE_SAMPLE_CACHE` | optional | set to `1` to make the sample event call the model live instead of reusing its saved reading |
 
@@ -117,6 +119,9 @@ npm run dev
 npm run typecheck && npm run lint && npm test && npm run build
 # Live AI check on the sample documents (no database needed):
 ANTHROPIC_API_KEY=... npx tsx scripts/test-pipeline.ts --analyst "Which suppliers quoted fewer than 30 lines?"
+# Same check on Gemini, then a side-by-side table against Claude's readings:
+AI_PROVIDER=gemini GEMINI_API_KEY=... npx tsx scripts/test-pipeline.ts
+npx tsx scripts/compare-providers.ts
 ```
 
 **Sample event costs nothing to replay.** The sample supplier files never change, so their real model readings are

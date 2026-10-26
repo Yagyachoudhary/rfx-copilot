@@ -1,6 +1,8 @@
 import type Anthropic from "@anthropic-ai/sdk";
 import type { Database } from "sql.js";
-import { anthropic, MODELS } from "./client";
+import { anthropic, MODELS, PROVIDER } from "./client";
+import { geminiStep } from "./gemini";
+import type { Content } from "@google/genai";
 import { ANALYST_SCHEMA, runReadOnly } from "../analysis-db";
 import type { RfqBundle } from "../data";
 
@@ -94,66 +96,86 @@ export async function runAnalyst(opts: {
   exportFile: (fileName: string, format: "xlsx" | "csv", columns: string[], rows: any[][], title?: string) => Promise<{ url: string | null; fileName: string }>;
 }) {
   const { bundle, db, emit } = opts;
-  const messages: Anthropic.MessageParam[] = [
-    ...opts.history.slice(-12).map((m) => ({ role: m.role, content: m.content }) as Anthropic.MessageParam),
-    { role: "user", content: opts.question },
-  ];
   const system = analystSystemPrompt(bundle);
   let n = 0;
-  for (let step = 0; step < 10; step++) {
-    emit({ type: "status", text: step === 0 ? "Reading the current RFx data…" : "Working through the numbers…" });
-    const res = await anthropic().messages.create({
-      model: MODELS.analyst,
-      max_tokens: 4000,
-      system,
-      tools: TOOLS,
-      messages,
-    });
-    messages.push({ role: "assistant", content: res.content as any });
-    const toolUses = res.content.filter((c: any) => c.type === "tool_use") as Anthropic.ToolUseBlock[];
-    if (!toolUses.length || res.stop_reason !== "tool_use") {
-      const text = res.content
-        .filter((c: any) => c.type === "text")
-        .map((c: any) => c.text)
-        .join("\n")
-        .trim();
-      emit({ type: "text", text: text || "(no answer)" });
-      return text;
-    }
-    const results: Anthropic.ToolResultBlockParam[] = [];
-    for (const tu of toolUses) {
-      const input = tu.input as any;
-      const id = `t${++n}`;
-      try {
-        if (tu.name === "run_sql") {
-          const r = runReadOnly(db, input.query);
-          emit({ type: "sql", id, purpose: input.purpose, query: input.query, columns: r.columns, rows: r.rows.slice(0, 60), truncated: r.truncated || r.rows.length > 60 });
-          results.push({ type: "tool_result", tool_use_id: tu.id, content: JSON.stringify({ columns: r.columns, rows: r.rows, truncated: r.truncated }) });
-        } else if (tu.name === "make_chart") {
-          const r = runReadOnly(db, input.query, 60);
-          const data = r.rows.map((row) => Object.fromEntries(r.columns.map((c, i) => [c, row[i]])));
-          const ys = (input.y as string[]).filter((y) => r.columns.includes(y));
-          if (!r.columns.includes(input.x) || !ys.length) throw new Error(`Chart columns not in query result (got ${r.columns.join(", ")})`);
-          emit({ type: "chart", id, title: input.title, chartType: input.chart_type, x: input.x, y: ys, data, query: input.query, yLabel: input.y_label });
-          results.push({ type: "tool_result", tool_use_id: tu.id, content: `Chart rendered for the buyer with ${data.length} points.` });
-        } else if (tu.name === "export_table") {
-          const r = runReadOnly(db, input.query, 5000);
-          const fmt = input.format === "csv" ? "csv" : "xlsx";
-          let name = String(input.file_name || `export.${fmt}`);
-          if (!name.endsWith(`.${fmt}`)) name = `${name.replace(/\.\w+$/, "")}.${fmt}`;
-          const out = await opts.exportFile(name, fmt, r.columns, r.rows, input.title);
-          emit({ type: "export", id, fileName: out.fileName, url: out.url, rows: r.rows.length, query: input.query });
-          results.push({ type: "tool_result", tool_use_id: tu.id, content: `Export created: ${out.fileName} (${r.rows.length} rows). The buyer sees a download link.` });
-        } else {
-          throw new Error(`Unknown tool ${tu.name}`);
-        }
-      } catch (e: any) {
-        const msg = e?.message ?? String(e);
-        if (tu.name === "run_sql") emit({ type: "sql", id, purpose: input.purpose ?? "", query: input.query ?? "", columns: [], rows: [], truncated: false, error: msg });
-        results.push({ type: "tool_result", tool_use_id: tu.id, content: `Error: ${msg}`, is_error: true });
+
+  /** Runs one tool call and returns what goes back to the model. Shared by both providers. */
+  async function runTool(name: string, input: any): Promise<{ content: string; isError: boolean }> {
+    const id = `t${++n}`;
+    try {
+      if (name === "run_sql") {
+        const r = runReadOnly(db, input.query);
+        emit({ type: "sql", id, purpose: input.purpose, query: input.query, columns: r.columns, rows: r.rows.slice(0, 60), truncated: r.truncated || r.rows.length > 60 });
+        return { content: JSON.stringify({ columns: r.columns, rows: r.rows, truncated: r.truncated }), isError: false };
       }
+      if (name === "make_chart") {
+        const r = runReadOnly(db, input.query, 60);
+        const data = r.rows.map((row) => Object.fromEntries(r.columns.map((c, i) => [c, row[i]])));
+        const ys = ((input.y ?? []) as string[]).filter((y) => r.columns.includes(y));
+        if (!r.columns.includes(input.x) || !ys.length) throw new Error(`Chart columns not in query result (got ${r.columns.join(", ")})`);
+        emit({ type: "chart", id, title: input.title, chartType: input.chart_type, x: input.x, y: ys, data, query: input.query, yLabel: input.y_label });
+        return { content: `Chart rendered for the buyer with ${data.length} points.`, isError: false };
+      }
+      if (name === "export_table") {
+        const r = runReadOnly(db, input.query, 5000);
+        const fmt = input.format === "csv" ? "csv" : "xlsx";
+        let fileName = String(input.file_name || `export.${fmt}`);
+        if (!fileName.endsWith(`.${fmt}`)) fileName = `${fileName.replace(/\.\w+$/, "")}.${fmt}`;
+        const out = await opts.exportFile(fileName, fmt, r.columns, r.rows, input.title);
+        emit({ type: "export", id, fileName: out.fileName, url: out.url, rows: r.rows.length, query: input.query });
+        return { content: `Export created: ${out.fileName} (${r.rows.length} rows). The buyer sees a download link.`, isError: false };
+      }
+      throw new Error(`Unknown tool ${name}`);
+    } catch (e: any) {
+      const msg = e?.message ?? String(e);
+      if (name === "run_sql") emit({ type: "sql", id, purpose: input?.purpose ?? "", query: input?.query ?? "", columns: [], rows: [], truncated: false, error: msg });
+      return { content: `Error: ${msg}`, isError: true };
     }
-    messages.push({ role: "user", content: results });
+  }
+
+  if (PROVIDER === "gemini") {
+    const contents: Content[] = [
+      ...opts.history.slice(-12).map((m) => ({ role: m.role === "assistant" ? "model" : "user", parts: [{ text: m.content }] }) as Content),
+      { role: "user", parts: [{ text: opts.question }] },
+    ];
+    for (let step = 0; step < 10; step++) {
+      emit({ type: "status", text: step === 0 ? "Reading the current RFx data…" : "Working through the numbers…" });
+      const r = await geminiStep({ model: MODELS.analyst, system, contents, tools: TOOLS as any });
+      contents.push(r.content);
+      if (!r.calls.length) {
+        const text = r.text.trim();
+        emit({ type: "text", text: text || "(no answer)" });
+        return text;
+      }
+      const parts: any[] = [];
+      for (const c of r.calls) {
+        const out = await runTool(c.name, c.args ?? {});
+        parts.push({ functionResponse: { ...(c.id ? { id: c.id } : {}), name: c.name, response: out.isError ? { error: out.content } : { result: out.content } } });
+      }
+      contents.push({ role: "user", parts });
+    }
+  } else {
+    const messages: Anthropic.MessageParam[] = [
+      ...opts.history.slice(-12).map((m) => ({ role: m.role, content: m.content }) as Anthropic.MessageParam),
+      { role: "user", content: opts.question },
+    ];
+    for (let step = 0; step < 10; step++) {
+      emit({ type: "status", text: step === 0 ? "Reading the current RFx data…" : "Working through the numbers…" });
+      const res = await anthropic().messages.create({ model: MODELS.analyst, max_tokens: 4000, system, tools: TOOLS, messages });
+      messages.push({ role: "assistant", content: res.content as any });
+      const toolUses = res.content.filter((c: any) => c.type === "tool_use") as Anthropic.ToolUseBlock[];
+      if (!toolUses.length || res.stop_reason !== "tool_use") {
+        const text = res.content.filter((c: any) => c.type === "text").map((c: any) => c.text).join("\n").trim();
+        emit({ type: "text", text: text || "(no answer)" });
+        return text;
+      }
+      const results: Anthropic.ToolResultBlockParam[] = [];
+      for (const tu of toolUses) {
+        const out = await runTool(tu.name, tu.input as any);
+        results.push({ type: "tool_result", tool_use_id: tu.id, content: out.content, ...(out.isError ? { is_error: true } : {}) });
+      }
+      messages.push({ role: "user", content: results });
+    }
   }
   const msg = "I stopped after 10 steps without a final answer. Try narrowing the question.";
   emit({ type: "text", text: msg });

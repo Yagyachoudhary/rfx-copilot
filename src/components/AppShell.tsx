@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Suspense } from "react";
 import { CopilotLauncher } from "./Copilot";
+import { GuideOverlay } from "./GuideOverlay";
 import { SearchBox, Sidebar, UserMenu } from "./NavClient";
 
 export function AppShell({ children, orgName, email, latestRfqId }: { children: React.ReactNode; orgName: string; email: string | null; latestRfqId: string | null }) {
@@ -30,6 +31,7 @@ export function AppShell({ children, orgName, email, latestRfqId }: { children: 
         <main className="flex-1 min-w-0 px-4 md:px-7 py-6 pb-24">{children}</main>
       </div>
       <CopilotLauncher />
+      <GuideOverlay latestRfqId={latestRfqId} />
     </div>
   );
 }

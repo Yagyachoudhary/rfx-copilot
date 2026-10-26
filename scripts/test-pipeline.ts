@@ -23,7 +23,8 @@ const args = process.argv.slice(2);
 const only = args.includes("--only") ? args[args.indexOf("--only") + 1].split(",") : null;
 const analystQ = args.includes("--analyst") ? args[args.indexOf("--analyst") + 1] : null;
 const useCache = args.includes("--cache");
-const OUT = path.join(process.cwd(), "scripts", "out");
+// Claude results go to scripts/out (also the source of the saved sample readings); other providers get their own folder.
+const OUT = path.join(process.cwd(), "scripts", (process.env.AI_PROVIDER || "anthropic").toLowerCase() === "gemini" ? "out-gemini" : "out");
 fs.mkdirSync(OUT, { recursive: true });
 
 async function main() {

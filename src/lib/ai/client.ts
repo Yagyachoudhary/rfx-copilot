@@ -1,13 +1,26 @@
 import Anthropic from "@anthropic-ai/sdk";
+import { geminiCallTool } from "./gemini";
+
+/**
+ * Which model provider runs the AI features. AI_PROVIDER=gemini switches drafting, clarifying questions,
+ * extraction and the Analyst to Google Gemini; anything else (default) uses Anthropic Claude.
+ */
+export const PROVIDER: "anthropic" | "gemini" = (process.env.AI_PROVIDER || "").toLowerCase() === "gemini" ? "gemini" : "anthropic";
+
+const DEFAULTS = {
+  anthropic: { extraction: "claude-sonnet-5-5", analyst: "claude-sonnet-5-5", fast: "claude-haiku-5-5" },
+  // "-latest" aliases track Google's current Flash models; override with AI_MODEL_* if needed.
+  gemini: { extraction: "gemini-flash-latest", analyst: "gemini-flash-latest", fast: "gemini-flash-lite-latest" },
+}[PROVIDER];
 
 export const MODELS = {
-  extraction: process.env.AI_MODEL_EXTRACTION || "claude-sonnet-5-5",
-  analyst: process.env.AI_MODEL_ANALYST || "claude-sonnet-5-5",
-  fast: process.env.AI_MODEL_FAST || "claude-haiku-5-5",
+  extraction: process.env.AI_MODEL_EXTRACTION || DEFAULTS.extraction,
+  analyst: process.env.AI_MODEL_ANALYST || DEFAULTS.analyst,
+  fast: process.env.AI_MODEL_FAST || DEFAULTS.fast,
 };
 
 export function aiConfigured() {
-  return Boolean(process.env.ANTHROPIC_API_KEY);
+  return PROVIDER === "gemini" ? Boolean(process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY) : Boolean(process.env.ANTHROPIC_API_KEY);
 }
 
 let _client: Anthropic | null = null;
@@ -50,6 +63,7 @@ export async function callTool<T>(opts: {
   tool: { name: string; description: string; input_schema: Record<string, any> };
   maxTokens?: number;
 }): Promise<{ input: T; usage: { input: number; output: number }; stopReason: string | null }> {
+  if (PROVIDER === "gemini") return geminiCallTool<T>(opts);
   const system = `${opts.system}\n\nReturn your result ONLY by calling the \`${opts.tool.name}\` tool exactly once with the complete input. Do not answer in prose.`;
   const tools = [{ name: opts.tool.name, description: opts.tool.description, input_schema: opts.tool.input_schema as any }];
   const messages: Anthropic.MessageParam[] = [{ role: "user", content: opts.content }];
