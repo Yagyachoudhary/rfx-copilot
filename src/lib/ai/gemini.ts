@@ -54,10 +54,36 @@ function finishReason(res: any): string | null {
   return res?.candidates?.[0]?.finishReason ?? null;
 }
 
-function rateLimitMessage(e: any): Error {
+function friendlyError(e: any): Error {
   const m = String(e?.message ?? e);
-  if (/429|RESOURCE_EXHAUSTED|quota/i.test(m)) return new Error("Gemini quota reached (free-tier limits are low). Wait and retry, or switch AI_PROVIDER back to anthropic.");
+  if (/429|RESOURCE_EXHAUSTED|quota/i.test(m)) return new Error("Gemini's free daily limit has been reached. Try again later, or switch AI_PROVIDER back to anthropic.");
+  if (/503|UNAVAILABLE|overloaded|high demand/i.test(m)) return new Error("Gemini is busy right now (high demand on Google's side). Please try again in a minute.");
   return e instanceof Error ? e : new Error(m);
+}
+
+const busy = (e: any) => /503|UNAVAILABLE|overloaded|high demand|500|INTERNAL/i.test(String(e?.message ?? e));
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+/**
+ * generateContent with resilience for the free tier: retries "busy" errors (503) with backoff,
+ * then falls back to Flash-Lite before giving up with a plain-language message.
+ */
+async function generate(model: string, request: Record<string, any>) {
+  const fallback = process.env.AI_MODEL_FALLBACK || "gemini-flash-lite-latest";
+  const models = model === fallback ? [model] : [model, fallback];
+  let last: any;
+  for (const m of models) {
+    for (const wait of [0, 2000, 5000]) {
+      if (wait) await sleep(wait);
+      try {
+        return await gemini().models.generateContent({ model: m, ...request } as any);
+      } catch (e) {
+        last = e;
+        if (!busy(e)) throw friendlyError(e);
+      }
+    }
+  }
+  throw friendlyError(last);
 }
 
 export async function geminiCallTool<T>(opts: {
@@ -70,10 +96,7 @@ export async function geminiCallTool<T>(opts: {
   const usage = { input: 0, output: 0 };
   const contents: Content[] = [{ role: "user", parts: toGeminiParts(opts.content) }];
   for (let attempt = 0; attempt < 2; attempt++) {
-    let res: any;
-    try {
-      res = await gemini().models.generateContent({
-        model: opts.model,
+    const res: any = await generate(opts.model, {
         contents,
         config: {
           systemInstruction: opts.system,
@@ -82,9 +105,6 @@ export async function geminiCallTool<T>(opts: {
           toolConfig: { functionCallingConfig: { mode: FunctionCallingConfigMode.ANY, allowedFunctionNames: [opts.tool.name] } },
         },
       });
-    } catch (e) {
-      throw rateLimitMessage(e);
-    }
     const u = usageOf(res);
     usage.input += u.input;
     usage.output += u.output;
@@ -109,10 +129,7 @@ export async function geminiCallTool<T>(opts: {
 
 /** One step of a multi-turn tool loop (used by the Analyst). */
 export async function geminiStep(opts: { model: string; system: string; contents: Content[]; tools: { name: string; description: string; input_schema: any }[]; maxTokens?: number }) {
-  let res: any;
-  try {
-    res = await gemini().models.generateContent({
-      model: opts.model,
+  const res: any = await generate(opts.model, {
       contents: opts.contents,
       config: {
         systemInstruction: opts.system,
@@ -121,9 +138,6 @@ export async function geminiStep(opts: { model: string; system: string; contents
         toolConfig: { functionCallingConfig: { mode: FunctionCallingConfigMode.AUTO } },
       },
     });
-  } catch (e) {
-    throw rateLimitMessage(e);
-  }
   return {
     // The model's turn exactly as returned (keeps thought signatures that Gemini needs on the next turn).
     content: (res.candidates?.[0]?.content ?? { role: "model", parts: [{ text: res.text ?? "" }] }) as Content,
