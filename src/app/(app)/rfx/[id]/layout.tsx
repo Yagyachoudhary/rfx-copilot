@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, CheckCircle2, History, Loader2 } from "lucide-react";
 import { CopilotButton } from "@/components/Copilot";
+import { ConfirmDelete } from "@/components/ConfirmDelete";
 import { getContext } from "@/lib/context";
 import { fmtDate } from "@/components/ui";
 import { FlowStepper, type Step } from "./RfxTabs";
@@ -69,6 +70,15 @@ export default async function RfxLayout({ children, params }: { children: React.
         <div className="flex gap-2">
           <CopilotButton />
           <Link href={`${base}/activity`} className="btn-ghost" title="Activity log" aria-label="Activity log"><History className="w-4 h-4" /></Link>
+          {ctx.role !== "viewer" && (
+            <ConfirmDelete
+              url={`/api/rfx/${id}`}
+              redirectTo="/"
+              title="Delete this event"
+              confirmLabel="Delete event"
+              body={<><p>This permanently deletes <b className="text-ink">{rfq.title}</b> ({rfq.ref_code}): its lines, supplier replies and files, issues, AI Analyst chat and decision.</p><p>This can&apos;t be undone.</p></>}
+            />
+          )}
         </div>
       </div>
       <FlowStepper steps={steps} />

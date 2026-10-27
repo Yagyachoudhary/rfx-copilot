@@ -56,8 +56,11 @@ function finishReason(res: any): string | null {
 
 function friendlyError(e: any): Error {
   const m = String(e?.message ?? e);
-  if (/429|RESOURCE_EXHAUSTED|quota/i.test(m)) return new Error("Gemini's free usage limit has been reached. Try again in a few minutes, or switch AI_PROVIDER back to anthropic.");
-  if (/503|UNAVAILABLE|overloaded|high demand/i.test(m)) return new Error("Gemini is busy right now (high demand on Google's side). Please try again in a minute.");
+  if (/429|RESOURCE_EXHAUSTED|quota/i.test(m)) {
+    console.error("[gemini] quota exceeded; consider AI_PROVIDER=anthropic or a paid Gemini key");
+    return new Error("The AI service has reached its usage limit for now. Please try again in a few minutes.");
+  }
+  if (/503|UNAVAILABLE|overloaded|high demand/i.test(m)) return new Error("The AI service is busy right now. Please try again in a minute.");
   return e instanceof Error ? e : new Error(m);
 }
 
@@ -86,7 +89,7 @@ function thinkingConfig() {
 const withThinkingRoom = (n: number) => (thinkingConfig() ? n + 4000 : n);
 
 const tooSlow = () =>
-  new Error("The AI took too long to respond (Google's servers may be busy). Please try again in a minute.");
+  new Error("The AI took too long to respond. Please try again in a minute.");
 
 /** One attempt against Gemini, for diagnosing slow or failing calls (server logs and /api/ai/diagnose). */
 export type Attempt = { model: string; ms: number; outcome: "ok" | "busy" | "error" | "timeout" | "thinking-rejected"; detail?: string; finishReason?: string | null; outputTokens?: number; modelVersion?: string };

@@ -40,3 +40,30 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
     return jsonError(e);
   }
 }
+
+/** Delete a sourcing event and everything in it (lines, invites, replies, issues, analyst chat, decisions). */
+export async function DELETE(_req: Request, { params }: { params: Promise<{ id: string }> }) {
+  try {
+    const { id } = await params;
+    const ctx = await getContext("api");
+    if (ctx.role === "viewer") return NextResponse.json({ error: "Viewers can't delete events." }, { status: 403 });
+    const { data: rfq } = await ctx.supabase.from("rfqs").select("id, ref_code, title, is_demo").eq("id", id).maybeSingle();
+    if (!rfq) return NextResponse.json({ error: "Not found" }, { status: 404 });
+    // Delete in dependency order: issues and quote lines point at the event's line items without cascading,
+    // and replies can point at earlier versions.
+    const db = ctx.supabase;
+    const step = async (what: string, q: PromiseLike<{ error: any }>) => {
+      const { error } = await q;
+      if (error) throw new Error(`Couldn't delete ${what}: ${error.message}`);
+    };
+    await step("version links", db.from("supplier_responses").update({ supersedes_id: null }).eq("rfq_id", id));
+    await step("issues", db.from("exceptions").delete().eq("rfq_id", id));
+    await step("supplier replies", db.from("supplier_responses").delete().eq("rfq_id", id));
+    await step("the event", db.from("rfqs").delete().eq("id", id));
+    // Logged without rfq_id, so the record survives the event's own deletion.
+    await audit(ctx, "rfx.deleted", { entityType: "rfq", entityId: id, details: { ref: rfq.ref_code, title: rfq.title, demo: rfq.is_demo } });
+    return NextResponse.json({ ok: true });
+  } catch (e) {
+    return jsonError(e);
+  }
+}

@@ -75,7 +75,10 @@ export function CreateRfx({ suppliers, initialBrief }: { suppliers: { id: string
   const [files, setFiles] = useState<File[]>([]);
   const [qs, setQs] = useState<Q[]>([]);
   const [summary, setSummary] = useState("");
-  const [notes, setNotes] = useState<string[]>([]);
+  // Chat with the copilot panel: buyer notes and the copilot's replies, in order.
+  const [thread, setThread] = useState<{ role: "user" | "assistant"; text: string }[]>([]);
+  const notes = thread.filter((m) => m.role === "user").map((m) => m.text);
+  const [copilotErr, setCopilotErr] = useState<string | null>(null);
   const [analysing, setAnalysing] = useState(false);
   const [open, setOpen] = useState<string | null>(null);
   const [drafting, setDrafting] = useState(false);
@@ -89,21 +92,44 @@ export function CreateRfx({ suppliers, initialBrief }: { suppliers: { id: string
   const context = { title, category, expected_annual_spend_inr: spend, response_deadline: deadline, delivery_locations: locations };
   const answers = [...qs.filter((q) => q.answer).map((q) => ({ question: q.title, answer: q.answer! })), ...notes.map((n) => ({ question: "Additional note from buyer", answer: n }))];
 
-  async function analyse(force = false) {
+  async function analyse(force = false, extraNote?: string): Promise<boolean> {
     const key = JSON.stringify([brief.trim(), category, locations, files.map((f) => f.name)]);
-    if (!force && (brief.trim().length < 12 || key === lastAnalysed.current)) return;
+    if (!force && (brief.trim().length < 12 || key === lastAnalysed.current)) return true;
     lastAnalysed.current = key;
     setAnalysing(true);
+    setCopilotErr(null);
+    const body = { brief, context, answers: extraNote ? [...answers, { question: "Additional note from buyer", answer: extraNote }] : answers, hasDocs: files.length > 0 };
     try {
-      const res = await fetch("/api/rfx/clarify", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ brief, context, answers, hasDocs: files.length > 0 }) });
+      const res = await fetch("/api/rfx/clarify", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
       const j = await readJson(res);
-      if (res.ok) {
-        setSummary(j.summary);
-        setQs((prev) => [...prev.filter((p) => p.answer), ...(j.questions ?? []).filter((n: Q) => !prev.some((p) => p.answer && p.title === n.title))]);
-      }
+      if (!res.ok) throw new Error(j.error ?? "The copilot couldn't read your request.");
+      setSummary(j.summary);
+      setQs((prev) => [...prev.filter((p) => p.answer), ...(j.questions ?? []).filter((n: Q) => !prev.some((p) => p.answer && p.title === n.title))]);
+      return true;
+    } catch (e: any) {
+      // Never fail silently: say what went wrong and offer a retry. Drafting still works without this step.
+      setCopilotErr(e?.message === "Failed to fetch" ? "I couldn't reach the server. Check your connection and try again." : e?.message ?? "Something went wrong.");
+      lastAnalysed.current = "";
+      return false;
     } finally {
       setAnalysing(false);
     }
+  }
+
+  /** The chat box: drafting requests start the draft; anything else is added as a note and re-checked. */
+  async function sendChat(text: string) {
+    if (!brief.trim()) {
+      setBrief(text);
+      return;
+    }
+    setThread((t) => [...t, { role: "user", text }]);
+    if (/\b(draft|generate|create|write|make)\b/i.test(text) && text.length < 120) {
+      setThread((t) => [...t, { role: "assistant", text: "On it. Drafting your RFx now; it usually takes 15 to 30 seconds. You can edit everything before it goes to suppliers." }]);
+      await generate();
+      return;
+    }
+    const ok = await analyse(true, text);
+    setThread((t) => [...t, { role: "assistant", text: ok ? "Got it. I've added that to your request and updated my questions. Click Generate RFx draft whenever you're ready." : "I've noted that. I couldn't re-check the request just now, but it will be included when you generate the draft." }]);
   }
   useEffect(() => {
     const t = setTimeout(() => analyse(), 1400);
@@ -314,7 +340,19 @@ export function CreateRfx({ suppliers, initialBrief }: { suppliers: { id: string
                 <div className="flex justify-end gap-2">
                   <div className="bg-surface-muted/70 rounded-2xl rounded-tr-sm px-3.5 py-2 text-[13px] max-w-[85%] line-clamp-4">{brief}</div>
                 </div>
-                {analysing && !summary && <div className="flex items-center gap-2 text-[13px] text-ink-muted"><Loader2 className="w-4 h-4 animate-spin" /> Reading your request…</div>}
+                {copilotErr && !analysing && (
+                  <div className="flex gap-2.5 text-[13.5px] rounded-xl border border-line bg-surface-muted/50 p-3">
+                    <Sparkles className="w-5 h-5 text-brand-mid shrink-0 mt-0.5" />
+                    <div className="space-y-2">
+                      <p>{copilotErr}</p>
+                      <p className="text-ink-muted text-[12.5px]">You can still generate the draft; my questions are optional.</p>
+                      <div className="flex flex-wrap gap-2">
+                        <button className="chip chip-muted !py-1.5 !px-3 hover:border-accent" onClick={() => analyse(true)}>Try again</button>
+                        <button className="chip chip-brand !py-1.5 !px-3" onClick={generate} disabled={drafting}>{drafting ? "Drafting…" : "Generate the draft"}</button>
+                      </div>
+                    </div>
+                  </div>
+                )}
                 {summary && (
                   <div className="flex gap-2.5 text-[13.5px]">
                     <Sparkles className="w-5 h-5 text-brand-mid shrink-0 mt-0.5" />
@@ -349,9 +387,17 @@ export function CreateRfx({ suppliers, initialBrief }: { suppliers: { id: string
                     </div>
                   );
                 })}
-                {notes.map((n, i) => (
-                  <div key={i} className="flex justify-end"><div className="bg-surface-muted/70 rounded-2xl rounded-tr-sm px-3.5 py-2 text-[13px] max-w-[85%]">{n}</div></div>
-                ))}
+                {thread.map((m, i) =>
+                  m.role === "user" ? (
+                    <div key={i} className="flex justify-end"><div className="bg-surface-muted/70 rounded-2xl rounded-tr-sm px-3.5 py-2 text-[13px] max-w-[85%]">{m.text}</div></div>
+                  ) : (
+                    <div key={i} className="flex gap-2.5 text-[13.5px]"><Sparkles className="w-5 h-5 text-brand-mid shrink-0 mt-0.5" /><p>{m.text}</p></div>
+                  ),
+                )}
+                {(analysing || drafting) && (
+                  <div className="flex items-center gap-2 text-[13px] text-ink-muted"><Loader2 className="w-4 h-4 animate-spin" /> {drafting ? "Drafting your RFx…" : summary ? "Updating…" : "Reading your request…"}</div>
+                )}
+                {err && !drafting && <div className="chip-bad chip !rounded-md !whitespace-normal !text-[12px] w-full">{err}</div>}
                 {summary && (
                   <div>
                     <div className="text-[13px] font-semibold mb-2">You can also:</div>
@@ -368,10 +414,10 @@ export function CreateRfx({ suppliers, initialBrief }: { suppliers: { id: string
             className="p-4 border-t border-line flex gap-2"
             onSubmit={(e) => {
               e.preventDefault();
-              if (!chat.trim()) return;
-              if (!brief.trim()) setBrief(chat.trim());
-              else setNotes([...notes, chat.trim()]);
+              if (!chat.trim() || analysing || drafting) return;
+              const text = chat.trim();
               setChat("");
+              sendChat(text);
             }}
           >
             <input className="input h-11 rounded-xl" placeholder="Ask anything or add more details…" value={chat} onChange={(e) => setChat(e.target.value)} />

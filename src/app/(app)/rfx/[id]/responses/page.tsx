@@ -43,5 +43,5 @@ export default async function ResponsesPage({ params }: { params: Promise<{ id: 
         .map((r) => ({ ...r, files: (files ?? []).filter((f) => f.response_id === r.id), issues: (exc ?? []).filter((e) => e.response_id === r.id).length })),
       samples: samples.filter((s) => s.supplierName === i.supplier.name),
     }));
-  return <Inbox rfqId={id} rows={rows} isDemo={!!rfq?.is_demo} />;
+  return <Inbox rfqId={id} rows={rows} isDemo={!!rfq?.is_demo} readOnly={ctx.role === "viewer"} />;
 }

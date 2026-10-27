@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ConfirmDelete } from "@/components/ConfirmDelete";
 import { AlertTriangle, FilePlus2, Inbox, Sparkles } from "lucide-react";
 import { getContext } from "@/lib/context";
 import { Card, Empty, fmtDate, LinkBtn, PageHeader, RfqStatusChip, Stat } from "@/components/ui";
@@ -86,6 +87,7 @@ export default async function Dashboard({ searchParams }: { searchParams: Promis
                   <th>Responses</th>
                   <th>Needs attention</th>
                   <th>Deadline</th>
+                  <th className="w-10"><span className="sr-only">Actions</span></th>
                 </tr>
               </thead>
               <tbody>
@@ -119,6 +121,16 @@ export default async function Dashboard({ searchParams }: { searchParams: Promis
                       </div>
                     </td>
                     <td className="num text-[12px] whitespace-nowrap">{fmtDate(r.response_deadline)}</td>
+                    <td>
+                      {ctx.role !== "viewer" && (
+                        <ConfirmDelete
+                          url={`/api/rfx/${r.id}`}
+                          title="Delete this event"
+                          confirmLabel="Delete event"
+                          body={<><p>This permanently deletes <b className="text-ink">{r.title}</b> ({r.ref_code}): its lines, supplier replies and files, issues, AI Analyst chat and decision.</p><p>This can&apos;t be undone.{r.is_demo ? " You can load the sample event again at any time." : ""}</p></>}
+                        />
+                      )}
+                    </td>
                   </tr>
                 ))}
               </tbody>

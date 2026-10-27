@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { AlertTriangle, CheckCircle2, Download, FileImage, FileSpreadsheet, FileText, FileType2, History, Loader2, Mail, RotateCw, Upload, X, Zap } from "lucide-react";
 import clsx from "clsx";
 import { fmtDateTime } from "@/components/ui";
+import { ConfirmDelete } from "@/components/ConfirmDelete";
 
 const BUSY = ["received", "parsing", "extracting", "normalizing"];
 
@@ -37,7 +38,7 @@ function Coverage({ s }: { s: any }) {
   );
 }
 
-export function Inbox({ rfqId, rows, isDemo }: { rfqId: string; rows: any[]; isDemo: boolean }) {
+export function Inbox({ rfqId, rows, isDemo, readOnly = false }: { rfqId: string; rows: any[]; isDemo: boolean; readOnly?: boolean }) {
   const router = useRouter();
   const [busy, setBusy] = useState<string | null>(null);
   const [err, setErr] = useState<string | null>(null);
@@ -155,6 +156,13 @@ export function Inbox({ rfqId, rows, isDemo }: { rfqId: string; rows: any[]; isD
                       <span className="font-semibold">v{o.version}</span>
                       <span className="text-ink-muted">{fmtDateTime(o.received_at)}</span>
                       <button className="ml-auto text-accent font-semibold" onClick={() => call(o.id, `/api/responses/${o.id}/activate`)}>Use this version</button>
+                      <ConfirmDelete
+                        url={`/api/responses/${o.id}`}
+                        className="!h-6 !px-1"
+                        title={`Remove version ${o.version}`}
+                        confirmLabel="Remove version"
+                        body={<p>Remove version {o.version} from {r.supplier.name}{o.files?.length ? <> ({o.files.map((f: any) => f.file_name).join(", ")})</> : null}? The version in use isn&apos;t affected.</p>}
+                      />
                     </div>
                   ))}
                 </div>
@@ -179,6 +187,21 @@ export function Inbox({ rfqId, rows, isDemo }: { rfqId: string; rows: any[]; isD
                   </button>
                 )}
                 <button className="btn-ghost px-2" onClick={() => setUploadFor(r.supplier)} title="Upload files" aria-label="Upload files"><Upload className="w-4 h-4" /></button>
+                {act && !isBusy && !readOnly && (
+                  <ConfirmDelete
+                    url={`/api/responses/${act.id}`}
+                    title={`Remove ${r.supplier.name}'s reply`}
+                    confirmLabel="Remove reply"
+                    body={
+                      <>
+                        <p>
+                          This removes the reply{act.files.length ? <> and its file{act.files.length > 1 ? "s" : ""} (<b className="text-ink">{act.files.map((f: any) => f.file_name).join(", ")}</b>)</> : null}, with the prices and issues read from it.
+                        </p>
+                        <p>{older.length ? `Version ${Math.max(...older.map((o: any) => o.version))} becomes the reply in use again.` : "To replace a wrong file, remove the reply and upload the right one."}</p>
+                      </>
+                    }
+                  />
+                )}
               </div>
             </article>
           );
